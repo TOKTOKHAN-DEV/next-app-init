@@ -1,0 +1,33 @@
+export const MY_IMAGES = {
+  ICONS_120: { src: 'icons/120.png', alt: '120' },
+  ICONS_152: { src: 'icons/152.png', alt: '152' },
+  ICONS_167: { src: 'icons/167.png', alt: '167' },
+  ICONS_180: { src: 'icons/180.png', alt: '180' },
+  ICONS_192: { src: 'icons/192.png', alt: '192' },
+  ICONS_384: { src: 'icons/384.png', alt: '384' },
+  ICONS_512: { src: 'icons/512.png', alt: '512' },
+  ICONS_LOGO: { src: 'icons/LOGO.png', alt: 'logo' },
+  ICONS_SOCIAL_APPLE: { src: 'icons/social/apple.png', alt: 'apple' },
+  ICONS_SOCIAL_FACEBOOK: { src: 'icons/social/facebook.png', alt: 'facebook' },
+  ICONS_SOCIAL_GOOGLE: { src: 'icons/social/google.png', alt: 'google' },
+  ICONS_SOCIAL_KAKAO: { src: 'icons/social/kakao.png', alt: 'kakao' },
+  ICONS_SOCIAL_NAVER: { src: 'icons/social/naver.png', alt: 'naver' },
+  ICONS_SVG_ARROW_LEFT_SMALL: {
+    src: 'icons/svg/arrow-left-small.svg',
+    alt: 'arrow-left-small',
+  },
+  ICONS_SVG_ARROW_LEFT: { src: 'icons/svg/arrow-left.svg', alt: 'arrow-left' },
+  ICONS_SVG_ARROW_RIGHT_SMALL: {
+    src: 'icons/svg/arrow-right-small.svg',
+    alt: 'arrow-right-small',
+  },
+  ICONS_SVG_ARROW_RIGHT: {
+    src: 'icons/svg/arrow-right.svg',
+    alt: 'arrow-right',
+  },
+  ICONS_SVG_CLIP: { src: 'icons/svg/clip.svg', alt: 'clip' },
+  ICONS_SVG_FILTER: { src: 'icons/svg/filter.svg', alt: 'filter' },
+  ICONS_SVG_MENU: { src: 'icons/svg/menu.svg', alt: 'menu' },
+  IMAGES_NEW_OG: { src: 'images/new_og.png', alt: 'new-og' },
+  VERCEL: { src: 'vercel.svg', alt: 'vercel' },
+}
