@@ -1,6 +1,6 @@
 {
-  "name": "@toktokhan-fe/template-next-app-router",
-  "version": "1.3.1",
+  "name": "@toktokhan-fe/next-app-init",
+  "version": "0.0.0",
   "description": "Simple project that shows the usage of Next.js with TypeScript",
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
@@ -20,7 +20,8 @@
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "semantic-release": "semantic-release",
     "checklist:progress": "node src/scripts/update-checklist-progress.js",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "changeset": "changeset"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "^2.2.2",
@@ -58,6 +59,7 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.0",
+    "@changesets/cli": "^2.27.5",
     "@next/bundle-analyzer": "^13.4.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
