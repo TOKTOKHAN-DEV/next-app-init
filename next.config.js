@@ -27,20 +27,13 @@ module.exports = withBundleAnalyzer({
   compiler: {
     emotion: true,
     removeConsole:
-      process.env.NODE_ENV === 'production'
-        ? { exclude: ['error'] }
-        : process.env.NODE_ENV === 'development'
-        ? false
-        : { exclude: ['error'] },
+      process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
   },
   modularizeImports: {
     'lodash-es': {
       transform: 'lodash-es/{{member}}',
       preventFullImport: true,
     },
-  },
-  webpack: (config, { isServer }) => {
-    return config
   },
   async headers() {
     return [
