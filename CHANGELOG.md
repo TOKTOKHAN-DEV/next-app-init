@@ -1,5 +1,11 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.1
+
+### Patch Changes
+
+- b749cd0: initialize
+
 ## 1.3.1
 
 ### Patch Changes
