@@ -26,21 +26,6 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Update pnpm-lock.yaml
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add pnpm-lock.yaml
-          if git diff --quiet && git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update pnpm-lock.yaml"
-            git push
-          fi
-
       - name: Get pnpm store directory
         shell: bash
         run: |
