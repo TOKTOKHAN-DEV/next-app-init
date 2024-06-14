@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- b69d5c4: 똑똑한 개발자 컨벤션이 담긴 Next.js app-router 가 적용 된 보일러 플레이트 입니다.
+
+## 0.0.1
+
+### Patch Changes
+
 - b749cd0: initialize
 
 ## 1.3.1
