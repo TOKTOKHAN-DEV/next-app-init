@@ -1,8 +1,8 @@
-import { RootConfig } from '@toktokhan-fe/cli'
-import { genApi } from '@toktokhan-fe/cli-plugin-gen-api-react-query'
-import { genImg } from '@toktokhan-fe/cli-plugin-gen-img'
-import { genSitemap } from '@toktokhan-fe/cli-plugin-gen-sitemap-next-page'
-import { genTheme } from '@toktokhan-fe/cli-plugin-gen-theme-chakra'
+import { RootConfig } from '@toktokhan-dev/cli'
+import { genApi } from '@toktokhan-dev/cli-plugin-gen-api-react-query'
+import { genImg } from '@toktokhan-dev/cli-plugin-gen-img'
+import { genSitemap } from '@toktokhan-dev/cli-plugin-gen-sitemap-next-page'
+import { genTheme } from '@toktokhan-dev/cli-plugin-gen-theme-chakra'
 
 const config: RootConfig<{
   plugins: [typeof genImg, typeof genApi, typeof genTheme, typeof genSitemap]

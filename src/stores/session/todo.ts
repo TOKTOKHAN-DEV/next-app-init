@@ -1,7 +1,7 @@
 import {
   SyncedStorageFactory,
   useSyncWebStorage,
-} from '@toktokhan-fe/react-web'
+} from '@toktokhan-dev/react-web'
 
 export type TodoType = {
   text: string

@@ -1,5 +1,5 @@
 {
-  "extends": "@toktokhan-fe/ts-config/nextjs.json",
+  "extends": "@toktokhan-dev/ts-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {

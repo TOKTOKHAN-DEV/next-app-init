@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { createContextSelector } from '@toktokhan-fe/react-universal'
+import { createContextSelector } from '@toktokhan-dev/react-universal'
 
 export const {
   Provider: HomePageProvider,

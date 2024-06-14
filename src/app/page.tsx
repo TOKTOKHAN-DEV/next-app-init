@@ -13,7 +13,7 @@ export default function HomePage() {
       flexDir={'column'}
     >
       <Text color="brand.400" textStyle={['pre-heading-01', 'pre-display-05']}>
-        TOKTOKHAN-FEd
+        toktokhan-dev
       </Text>
       <Text textStyle={['pre-heading-05', 'pre-heading-03']}>
         Next app template

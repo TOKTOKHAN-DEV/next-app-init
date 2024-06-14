@@ -4,7 +4,7 @@ import { ENV } from '@/configs/env';
 import { tokenStorage } from '@/utils/web-storage/token';
 
 import { refresh } from './refresh';
-import { apiLogger, styledConsole } from '@toktokhan-fe/react-universal';
+import { apiLogger, styledConsole } from '@toktokhan-dev/react-universal';
 
 const isDev = ENV.NODE_ENV === 'development';
 

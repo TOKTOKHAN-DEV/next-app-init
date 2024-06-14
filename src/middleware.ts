@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 // import { calcMaxAge } from './utils/middleware/calc-max-age'
 // import { getJwtCookieOptions } from './utils/middleware/get-jwt-cookie-option'
 import { matchingPath } from './utils/middleware/matching-path'
-// import { jwtDecode } from '@toktokhan-fe/universal'
+// import { jwtDecode } from '@toktokhan-dev/universal'
 // import { ENV } from './configs/env'
 
 const PATHS = {

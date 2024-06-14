@@ -3,7 +3,7 @@ import { useReducer } from 'react'
 import {
   createContextSelector,
   createSlice,
-} from '@toktokhan-fe/react-universal'
+} from '@toktokhan-dev/react-universal'
 
 export type GlobalStateType = {
   count: number

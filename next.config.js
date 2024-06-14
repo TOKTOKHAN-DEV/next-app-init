@@ -40,9 +40,6 @@ module.exports = withBundleAnalyzer({
     },
   },
   webpack: (config, { isServer }) => {
-    if (isServer) {
-      require('./src/scripts/generate-sitemap-json.js')
-    }
     return config
   },
   async headers() {

@@ -11,9 +11,9 @@
 ### Patch Changes
 
 - Updated dependencies [bb60ca7]
-  - @toktokhan-fe/react-universal@0.3.1
-  - @toktokhan-fe/react-web@0.3.1
-  - @toktokhan-fe/universal@1.3.1
+  - @toktokhan-dev/react-universal@0.3.1
+  - @toktokhan-dev/react-web@0.3.1
+  - @toktokhan-dev/universal@1.3.1
 
 ## 1.3.0
 
@@ -24,9 +24,9 @@
 ### Patch Changes
 
 - Updated dependencies [7baac8a]
-  - @toktokhan-fe/react-universal@0.3.0
-  - @toktokhan-fe/react-web@0.3.0
-  - @toktokhan-fe/universal@1.3.0
+  - @toktokhan-dev/react-universal@0.3.0
+  - @toktokhan-dev/react-web@0.3.0
+  - @toktokhan-dev/universal@1.3.0
 
 ## 1.2.0
 
@@ -37,9 +37,9 @@
 ### Patch Changes
 
 - Updated dependencies [ea08e81]
-  - @toktokhan-fe/react-universal@0.2.0
-  - @toktokhan-fe/react-web@0.2.0
-  - @toktokhan-fe/universal@1.2.0
+  - @toktokhan-dev/react-universal@0.2.0
+  - @toktokhan-dev/react-web@0.2.0
+  - @toktokhan-dev/universal@1.2.0
 
 ## 1.1.0
 
@@ -50,7 +50,7 @@
 ### Patch Changes
 
 - Updated dependencies [b75ab4c]
-  - @toktokhan-fe/react-web@0.1.0
+  - @toktokhan-dev/react-web@0.1.0
 
 ## 1.0.0
 

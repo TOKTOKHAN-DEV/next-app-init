@@ -1,5 +1,5 @@
 import { UseQueryOptions } from '@tanstack/react-query'
-import { AsyncFn, AsyncFnReturn, Parameter } from '@toktokhan-fe/universal'
+import { AsyncFn, AsyncFnReturn, Parameter } from '@toktokhan-dev/universal'
 
 import { AxiosError } from 'axios'
 

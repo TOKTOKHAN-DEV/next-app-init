@@ -38,8 +38,8 @@ export const Bookmarks = () => {
                   href: 'https://tanstack.com/query/latest/docs/framework/react/overview',
                 },
                 {
-                  text: 'toktokhan-fe',
-                  href: 'https://toktokhan-fe-docs.vercel.app/',
+                  text: 'toktokhan-dev',
+                  href: 'https://toktokhan-dev-docs.vercel.app/',
                 },
                 {
                   text: 'dayjs',
@@ -50,16 +50,16 @@ export const Bookmarks = () => {
                   href: 'https://lodash.com/docs/4.17.15',
                 },
                 {
-                  text: '@toktokhan-fe/universal',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/universal',
+                  text: '@toktokhan-dev/universal',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/universal',
                 },
                 {
-                  text: '@toktokhan-fe/react-universal',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/react-universal',
+                  text: '@toktokhan-dev/react-universal',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/react-universal',
                 },
                 {
-                  text: '@toktokhan-fe/react-web',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/react-web',
+                  text: '@toktokhan-dev/react-web',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/react-web',
                 },
               ]}
             />
@@ -128,23 +128,23 @@ export const Bookmarks = () => {
               data={[
                 {
                   text: 'tokript',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/docs/tokript/Overview',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Overview',
                 },
                 {
                   text: 'gen:theme',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-theme-chakra',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-theme-chakra',
                 },
                 {
                   text: 'gen:api',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-api-react-query',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-api-react-query',
                 },
                 {
                   text: 'gen:img',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-img',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-img',
                 },
                 {
                   text: 'gen:route',
-                  href: 'https://toktokhan-fe-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-route-next-page',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-route-next-page',
                 },
                 {
                   text: 'gen:icon',

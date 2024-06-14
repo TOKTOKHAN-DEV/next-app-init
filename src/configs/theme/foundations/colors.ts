@@ -1,5 +1,6 @@
+import { volumeUpObject } from '@toktokhan-dev/universal'
+
 import { colorSchema } from '@/generated/tokens/colors'
-import { volumeUpObject } from '@toktokhan-fe/universal'
 
 const colors = {
   ...volumeUpObject('.', colorSchema),

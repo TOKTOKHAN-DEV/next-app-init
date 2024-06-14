@@ -5,7 +5,7 @@
 import { LoginFormDataType } from '../hooks/useLoginForm'
 
 // import fetchExtended from '@/configs/fetch/fetch-extend'
-// import { jwtDecode } from '@toktokhan-fe/universal'
+// import { jwtDecode } from '@toktokhan-dev/universal'
 // import { calcMaxAge } from '@/utils/middleware/calc-max-age'
 // import { getJwtCookieOptions } from '@/utils/middleware/get-jwt-cookie-option'
 

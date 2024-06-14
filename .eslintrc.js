@@ -1,6 +1,6 @@
 const config = {
   extends: [
-    '@toktokhan-fe/eslint-config/base',
+    '@toktokhan-dev/eslint-config/base',
     'plugin:@next/next/recommended',
   ],
 }

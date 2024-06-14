@@ -1,4 +1,4 @@
-import { SyncedStorageFactory } from '@toktokhan-fe/react-web'
+import { SyncedStorageFactory } from '@toktokhan-dev/react-web'
 
 export type TokenType = {
   access: string

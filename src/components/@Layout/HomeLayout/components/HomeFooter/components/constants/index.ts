@@ -10,6 +10,6 @@ export const FOOTER_INFO = {
     전화: '02) 000-0000',
   },
   Email: {
-    이메일: 'toktokhan-fe@toktokhan.dev',
+    이메일: 'toktokhan-dev@toktokhan.dev',
   },
 }

@@ -1,4 +1,4 @@
-import { AsyncFnReturn } from '@toktokhan-fe/universal'
+import { AsyncFnReturn } from '@toktokhan-dev/universal'
 
 import { AxiosInstance } from 'axios'
 
@@ -31,9 +31,11 @@ export class S3FileUploaderApi {
     })
   }
 
-  uploadFileToS3 = async (params: {
-    file: File
-  }): Promise<{ url: string; file: File }> => {
+  uploadFileToS3 = async (
+    params: {
+      file: File
+    },
+  ): Promise<{ url: string; file: File }> => {
     const { file } = params
 
     const { url } = await this._createPresignedUrl(file.name)

@@ -41,15 +41,15 @@ dependencies:
   '@tanstack/react-query-devtools':
     specifier: ^5.27.3
     version: 5.45.0(@tanstack/react-query@5.45.0)(react@18.3.1)
-  '@toktokhan-fe/react-universal':
-    specifier: ^0.3.1
-    version: 0.3.1(react-dom@18.3.1)(scheduler@0.23.2)
-  '@toktokhan-fe/react-web':
-    specifier: ^0.3.1
-    version: 0.3.1(scheduler@0.23.2)
-  '@toktokhan-fe/universal':
-    specifier: ^1.3.1
-    version: 1.3.1
+  '@toktokhan-dev/react-universal':
+    specifier: ^0.0.1
+    version: 0.0.1(react-dom@18.3.1)(scheduler@0.23.2)
+  '@toktokhan-dev/react-web':
+    specifier: ^0.0.1
+    version: 0.0.1(scheduler@0.23.2)
+  '@toktokhan-dev/universal':
+    specifier: ^0.0.1
+    version: 0.0.1
   axios:
     specifier: ^1.3.4
     version: 1.7.2
@@ -118,31 +118,31 @@ devDependencies:
   '@testing-library/react':
     specifier: ^14.0.0
     version: 14.3.1(react-dom@18.3.1)(react@18.3.1)
-  '@toktokhan-fe/cli':
-    specifier: ^1.4.4
-    version: 1.4.4(esbuild@0.21.5)
-  '@toktokhan-fe/cli-plugin-gen-api-react-query':
-    specifier: ^0.4.1
-    version: 0.4.1(esbuild@0.21.5)(prettier@2.8.8)(typescript@5.4.5)
-  '@toktokhan-fe/cli-plugin-gen-img':
-    specifier: ^0.3.4
-    version: 0.3.4(esbuild@0.21.5)
-  '@toktokhan-fe/cli-plugin-gen-route-pages':
-    specifier: ^0.3.4
-    version: 0.3.4(esbuild@0.21.5)
-  '@toktokhan-fe/cli-plugin-gen-sitemap-next-page':
-    specifier: ^0.1.4
-    version: 0.1.4(esbuild@0.21.5)
-  '@toktokhan-fe/cli-plugin-gen-theme-chakra':
-    specifier: ^0.4.4
-    version: 0.4.4(esbuild@0.21.5)
-  '@toktokhan-fe/eslint-config':
+  '@toktokhan-dev/cli':
     specifier: ^0.0.1
-    version: 0.0.1(eslint@8.57.0)(prettier@2.8.8)(typescript@5.4.5)
-  '@toktokhan-fe/prettier-config':
+    version: 0.0.1(esbuild@0.21.5)
+  '@toktokhan-dev/cli-plugin-gen-api-react-query':
+    specifier: ^0.0.1
+    version: 0.0.1(esbuild@0.21.5)(prettier@2.8.8)(typescript@5.4.5)
+  '@toktokhan-dev/cli-plugin-gen-img':
+    specifier: ^0.0.1
+    version: 0.0.1(esbuild@0.21.5)
+  '@toktokhan-dev/cli-plugin-gen-route-pages':
+    specifier: ^0.0.1
+    version: 0.0.1(esbuild@0.21.5)
+  '@toktokhan-dev/cli-plugin-gen-sitemap-next-page':
+    specifier: ^0.0.1
+    version: 0.0.1(esbuild@0.21.5)
+  '@toktokhan-dev/cli-plugin-gen-theme-chakra':
+    specifier: ^0.0.1
+    version: 0.0.1(esbuild@0.21.5)
+  '@toktokhan-dev/eslint-config':
+    specifier: ^0.0.2
+    version: 0.0.2(eslint@8.57.0)(prettier@2.8.8)(typescript@5.4.5)
+  '@toktokhan-dev/prettier-config':
     specifier: ^0.0.1
     version: 0.0.1(prettier@2.8.8)
-  '@toktokhan-fe/ts-config':
+  '@toktokhan-dev/ts-config':
     specifier: ^0.0.1
     version: 0.0.1
   '@types/facebook-pixel':
@@ -3057,11 +3057,11 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
     dev: true
 
-  /@toktokhan-fe/cli-plugin-gen-api-react-query@0.4.1(esbuild@0.21.5)(prettier@2.8.8)(typescript@5.4.5):
-    resolution: {integrity: sha512-DqVaf11EQBen//ssGI/16i9SbWEYCMDhD1YU19++tgOHix8N/h7wWKPsGU222gZlRBw5skj1f1KCPUyC9dE+9Q==}
+  /@toktokhan-dev/cli-plugin-gen-api-react-query@0.0.1(esbuild@0.21.5)(prettier@2.8.8)(typescript@5.4.5):
+    resolution: {integrity: sha512-76GNytUxqfrJxTSm7jfeXELhg5H67a1S/dLJiUgexOzUQgGZdZDldCfS3C/8S4DsjigWNBxxjiAsad1vR3wRfA==}
     dependencies:
-      '@toktokhan-fe/cli': 1.4.4(esbuild@0.21.5)
-      '@toktokhan-fe/node': 2.0.0
+      '@toktokhan-dev/cli': 0.0.1(esbuild@0.21.5)
+      '@toktokhan-dev/node': 0.0.1
       eta: 3.4.0
       lodash: 4.17.21
       prettier-plugin-organize-imports: 3.2.4(prettier@2.8.8)(typescript@5.4.5)
@@ -3075,35 +3075,35 @@ packages:
       - typescript
     dev: true
 
-  /@toktokhan-fe/cli-plugin-gen-img@0.3.4(esbuild@0.21.5):
-    resolution: {integrity: sha512-JQCopDuDuzsn3EexCYo8wBOJWimZ4xKQuXhdZhT/MzUqr9fQPLzQ8lyUsKgdr6OvL7/EDSw1Aik49WPnKP8Uyg==}
+  /@toktokhan-dev/cli-plugin-gen-img@0.0.1(esbuild@0.21.5):
+    resolution: {integrity: sha512-ajrn0Mb9DiwiAEpOxspCP7cIx/ViECAPCOzRrZegpMwdLR3I8TnaRH6T+Aq+5zj8LctG+7PgG6NhrRYazE6z4w==}
     dependencies:
-      '@toktokhan-fe/cli': 1.4.4(esbuild@0.21.5)
-      '@toktokhan-fe/node': 2.0.0
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/cli': 0.0.1(esbuild@0.21.5)
+      '@toktokhan-dev/node': 0.0.1
+      '@toktokhan-dev/universal': 0.0.1
       eta: 3.4.0
       lodash: 4.17.21
     transitivePeerDependencies:
       - esbuild
     dev: true
 
-  /@toktokhan-fe/cli-plugin-gen-route-pages@0.3.4(esbuild@0.21.5):
-    resolution: {integrity: sha512-EFFuI5XKnX+2euMgIHAdyh2FsxWyHjO9fgcUqVbyAC0X48qPoTYB9XfVBTpJSBny/1Nyn3bhWm6/Z3lzTt21Vg==}
+  /@toktokhan-dev/cli-plugin-gen-route-pages@0.0.1(esbuild@0.21.5):
+    resolution: {integrity: sha512-QN4YiqIX/8h1+jV0cs25DekQ7RDIknIdahjpUoNYrCJbih+ea9vMrqsyWIgfbs1eFeejlY6JU7PZg7mbEI5Dpw==}
     dependencies:
-      '@toktokhan-fe/cli': 1.4.4(esbuild@0.21.5)
-      '@toktokhan-fe/node': 2.0.0
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/cli': 0.0.1(esbuild@0.21.5)
+      '@toktokhan-dev/node': 0.0.1
+      '@toktokhan-dev/universal': 0.0.1
       lodash: 4.17.21
     transitivePeerDependencies:
       - esbuild
     dev: true
 
-  /@toktokhan-fe/cli-plugin-gen-sitemap-next-page@0.1.4(esbuild@0.21.5):
-    resolution: {integrity: sha512-Xfc7TfX3BomqmfdDpKL62OkBGX6YZQxdtt0v+vCXK0ts7fit579Zf8e4MrtF3rV2F9VyY1M0aRHXSFFyJ1O4BA==}
+  /@toktokhan-dev/cli-plugin-gen-sitemap-next-page@0.0.1(esbuild@0.21.5):
+    resolution: {integrity: sha512-tSmPJY5DRh/Vs7zmnHT1XzjawfxMOC3b4Rtqi+z1DP0QuYk3RFB74vpFGMdxdPC8/B0zJkNyxVOTktlOhSeK+Q==}
     dependencies:
-      '@toktokhan-fe/cli': 1.4.4(esbuild@0.21.5)
-      '@toktokhan-fe/node': 2.0.0
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/cli': 0.0.1(esbuild@0.21.5)
+      '@toktokhan-dev/node': 0.0.1
+      '@toktokhan-dev/universal': 0.0.1
       globby: 13.2.2
       lodash: 4.17.21
       matcher: 5.0.0
@@ -3111,23 +3111,23 @@ packages:
       - esbuild
     dev: true
 
-  /@toktokhan-fe/cli-plugin-gen-theme-chakra@0.4.4(esbuild@0.21.5):
-    resolution: {integrity: sha512-ejyI/fbGPJlVbFBNPB7nb5xiYAObL+0lDPSMQApDPN6WHqI4EVj2awiVGBE/EOLrbgEeFvNX8c0SCb6lUzri9Q==}
+  /@toktokhan-dev/cli-plugin-gen-theme-chakra@0.0.1(esbuild@0.21.5):
+    resolution: {integrity: sha512-q9HC6DBGuiFugPCYPOUENgBQzCYQGpIrtqd0OyyDr7B+aevW+IYctZ/XQ5Fxchu+Fhdtsizm1lenWvBetJsHZQ==}
     dependencies:
-      '@toktokhan-fe/cli': 1.4.4(esbuild@0.21.5)
-      '@toktokhan-fe/node': 2.0.0
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/cli': 0.0.1(esbuild@0.21.5)
+      '@toktokhan-dev/node': 0.0.1
+      '@toktokhan-dev/universal': 0.0.1
       lodash: 4.17.21
     transitivePeerDependencies:
       - esbuild
     dev: true
 
-  /@toktokhan-fe/cli@1.4.4(esbuild@0.21.5):
-    resolution: {integrity: sha512-hI20bJuFWyK0wYGdLLYC2I1MMUu4RjcvMUhBWwoJ8u2K4BPScaZHMgY7+nm4VvmlB2Nr1ajxBk1CCqSRwzI1jw==}
+  /@toktokhan-dev/cli@0.0.1(esbuild@0.21.5):
+    resolution: {integrity: sha512-T6fE0DeMVEhTjC2ES7m+Vn4JM9JZtvW5mprPMElVPoI5QOcZ93ZCuj/lfvSBY++fRysCvNYYkVHORVkh1eC/3A==}
     hasBin: true
     dependencies:
-      '@toktokhan-fe/node': 2.0.0
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/node': 0.0.1
+      '@toktokhan-dev/universal': 0.0.1
       '@types/figlet': 1.5.8
       bundle-require: 4.2.1(esbuild@0.21.5)
       chalk: 5.3.0
@@ -3141,8 +3141,8 @@ packages:
       - esbuild
     dev: true
 
-  /@toktokhan-fe/eslint-config@0.0.1(eslint@8.57.0)(prettier@2.8.8)(typescript@5.4.5):
-    resolution: {integrity: sha512-RqoBLJtn6Noj76CvE1/ocIzo/6Ec/SFh1r48/P3WCmCCgfvHdOVW3rY7xSqVYcz6XCbPaEUytE8cDVnE+7sz5w==}
+  /@toktokhan-dev/eslint-config@0.0.2(eslint@8.57.0)(prettier@2.8.8)(typescript@5.4.5):
+    resolution: {integrity: sha512-z+W4/Pjn7fqX3PQNL7mOddT+Rve/DWi3HlrTruT1OiYC8SvRALx8Xrg8jZWQ9h7ygs29MJxHmYvVpdYDGO/ZCw==}
     dependencies:
       eslint-config-prettier: 9.1.0(eslint@8.57.0)
       eslint-plugin-prettier: 4.2.1(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@2.8.8)
@@ -3156,10 +3156,10 @@ packages:
       - typescript
     dev: true
 
-  /@toktokhan-fe/node@2.0.0:
-    resolution: {integrity: sha512-Mi2NY4QwBdmaAKolUBJjamvLMHKj/nVfKPRAhlSUY/PZzxf1ZbI7zBuCUID4bnekIF76VjUm/wtrHao6+RblIg==}
+  /@toktokhan-dev/node@0.0.1:
+    resolution: {integrity: sha512-MlNwzl9gjqaT8F9SpzV107Or6nmhzNtTXpPGCo+PXWOSu/AHSmN3m6nfW8kEViPk49BwmikVyDOc3/fcbNrwWg==}
     dependencies:
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/universal': 0.0.1
       boxen: 7.1.1
       chalk: 5.3.0
       eta: 3.4.0
@@ -3172,8 +3172,8 @@ packages:
       yaml: 2.4.5
     dev: true
 
-  /@toktokhan-fe/prettier-config@0.0.1(prettier@2.8.8):
-    resolution: {integrity: sha512-OoYSc7uYX3htYeBEgUM4Ut88Vt+PL3kZgCYp0mD3agha7NaA77Oi/Rp957nQ27EgCaJAXXGudCDUI8nLiW6S/A==}
+  /@toktokhan-dev/prettier-config@0.0.1(prettier@2.8.8):
+    resolution: {integrity: sha512-rnJQ0+qwjqcvDfuRmtxSn7N3pLaJGw3G4w11XV3Oek8cJECnhJf9zi5TfpkMFTdag03WaHS1vm0afD/FT7wPeg==}
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.3.0(prettier@2.8.8)
     transitivePeerDependencies:
@@ -3182,11 +3182,11 @@ packages:
       - supports-color
     dev: true
 
-  /@toktokhan-fe/react-universal@0.3.1(react-dom@18.3.1)(scheduler@0.23.2):
-    resolution: {integrity: sha512-uE6fZC6aYldnMtjEhrnDJVF3ebHTttOT36BLMwYUIoSPZqHaih/h+C48K1ZEFsaoWbrvYRkyCzchKxW9evfyVw==}
+  /@toktokhan-dev/react-universal@0.0.1(react-dom@18.3.1)(scheduler@0.23.2):
+    resolution: {integrity: sha512-EU9GVqT8HcRlTZSuZ1yzoaGvlx1UgrouVTOMTBvQwzIdMpuuvKKUsdt7HHanp5kMsVwtKrLsTZKvbZ94iSpCxA==}
     dependencies:
       '@tanstack/react-query': 4.36.1(react-dom@18.3.1)(react@18.3.1)
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/universal': 0.0.1
       axios: 1.7.2
       csstype: 3.1.3
       dayjs: 1.11.11
@@ -3200,12 +3200,12 @@ packages:
       - scheduler
     dev: false
 
-  /@toktokhan-fe/react-web@0.3.1(scheduler@0.23.2):
-    resolution: {integrity: sha512-cgTQ6Ltn5sPq11Rm3kzETYkzDBWysO32SUTtcaaFpsySz0SoPHtuEnqhrOdI1QOXXFTyaQYeQjtdemeBg5Z0HA==}
+  /@toktokhan-dev/react-web@0.0.1(scheduler@0.23.2):
+    resolution: {integrity: sha512-w9+UkDm2i8KAvUv1pf1iYRKRMTWfKZcpbFa/D/5FD0CPCzS3BxdP+ulBj6xL1nzWVLzod+T/iREkUwbGgZ6iZQ==}
     dependencies:
       '@tanstack/react-query': 4.36.1(react-dom@18.3.1)(react@18.3.1)
-      '@toktokhan-fe/react-universal': 0.3.1(react-dom@18.3.1)(scheduler@0.23.2)
-      '@toktokhan-fe/universal': 1.3.1
+      '@toktokhan-dev/react-universal': 0.0.1(react-dom@18.3.1)(scheduler@0.23.2)
+      '@toktokhan-dev/universal': 0.0.1
       dayjs: 1.11.11
       lodash: 4.17.21
       react: 18.3.1
@@ -3216,15 +3216,14 @@ packages:
       - scheduler
     dev: false
 
-  /@toktokhan-fe/ts-config@0.0.1:
-    resolution: {integrity: sha512-MKbHey4TBCfsXqZw+IMNVR4UfToNDbiVesDQekiG0yQywRXS5ky3kk62PQYnjyHctaiXsl7darcnKUWJ7+vQhA==}
+  /@toktokhan-dev/ts-config@0.0.1:
+    resolution: {integrity: sha512-D4RuPDZObWqRWmuLncRyWEglW7PwUJ8KYtZ/qa5dDbuWpvn+OKvPiTePVeLOgkspfEbeo6TIOhWhp1C81KvdwQ==}
     dev: true
 
-  /@toktokhan-fe/universal@1.3.1:
-    resolution: {integrity: sha512-r/RotHb0yevpr0GcBan48zfI0SfyEmMvIWkDf7MCUBL2rgh/+DYL1X429FFrn2uavgg7XNC8TbNRBVXZ789QeA==}
+  /@toktokhan-dev/universal@0.0.1:
+    resolution: {integrity: sha512-8SwhqIT4Y8hFI2UE+lQCwazqw3jRVT53pcvf4YD2XGlBDgpk5bIrDxWO8dUHKyVSEEy7XclbgFEqg+91wNRLoQ==}
     dependencies:
       lodash: 4.17.21
-      matcher: 5.0.0
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -3977,7 +3976,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001633
-      electron-to-chromium: 1.4.801
+      electron-to-chromium: 1.4.802
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.1)
 
@@ -4674,8 +4673,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium@1.4.801:
-    resolution: {integrity: sha512-PnlUz15ii38MZMD2/CEsAzyee8tv9vFntX5nhtd2/4tv4HqY7C5q2faUAjmkXS/UFpVooJ/5H6kayRKYWoGMXQ==}
+  /electron-to-chromium@1.4.802:
+    resolution: {integrity: sha512-TnTMUATbgNdPXVSHsxvNVSG0uEd6cSZsANjm8c9HbvflZVVn1yTRcmVXYT1Ma95/ssB/Dcd30AHweH2TE+dNpA==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -4941,6 +4940,7 @@ packages:
   /escape-string-regexp@5.0.0:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
+    dev: true
 
   /escodegen@2.1.0:
     resolution: {integrity: sha512-2NlIDTwUWJN0mRPQOdtQBzbUHvdGY2P1VXSyU83Q3xKxM7WHX2Ql8dKq782Q9TgQUNOLEzEYu9bzLNj1q88I5w==}
@@ -6903,6 +6903,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       escape-string-regexp: 5.0.0
+    dev: true
 
   /memoize-one@6.0.0:
     resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}

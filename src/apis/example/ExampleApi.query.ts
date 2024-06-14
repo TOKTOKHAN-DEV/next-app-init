@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
-import { isNotNullish } from '@toktokhan-fe/universal'
+import { isNotNullish } from '@toktokhan-dev/universal'
 
 import { Parameter } from '@/types/utility/parameter'
 

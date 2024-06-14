@@ -24,7 +24,7 @@ import {
   NaverButton,
   NaverIconButton,
   useOauthPopupListener,
-} from '@toktokhan-fe/react-web'
+} from '@toktokhan-dev/react-web'
 
 import { ENV } from '@/configs/env'
 
