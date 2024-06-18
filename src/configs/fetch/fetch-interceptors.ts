@@ -1,12 +1,13 @@
+import {
+  FetchArgs,
+  FetchHelperDefaultOptions,
+  FetchHelperType,
+  fetchHelper,
+} from '@toktokhan-dev/universal'
 import { jwtDecode } from '@toktokhan-dev/universal'
 
 import { getCookie, removeCookie, setCookie } from '@/actions/cookie'
 import { ENV } from '@/configs/env'
-import fetchHelper, {
-  FetchArgs,
-  type FetchHelper,
-  FetchHelperDefaultOptions,
-} from '@/utils/fetch/fetch-helper'
 import { calcMaxAge } from '@/utils/middleware/calc-max-age'
 import { getJwtCookieOptions } from '@/utils/middleware/get-jwt-cookie-option'
 
@@ -77,8 +78,8 @@ const handleTokenRefresh = async (
   const decodedAccess = jwtDecode(newAccess)
   const decodedRefresh = jwtDecode(newRefresh)
 
-  const accessMaxAge = calcMaxAge({ exp: decodedAccess.exp })
-  const refreshMaxAge = calcMaxAge({ exp: decodedRefresh.exp })
+  const accessMaxAge = calcMaxAge({ exp: decodedAccess?.exp })
+  const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
   await setCookie('access', newAccess, getJwtCookieOptions(accessMaxAge))
   await setCookie('refresh', newRefresh, getJwtCookieOptions(refreshMaxAge))
@@ -134,11 +135,12 @@ const responseInterceptor: (
   return response
 }
 
-export const fetchHelperInterceptors: FetchHelper = (args) =>
-  fetchHelper({
+export const fetchHelperInterceptors: FetchHelperType = (args) => {
+  return fetchHelper({
     ...args,
     interceptors: {
       request: requestInterceptor,
       response: responseInterceptor,
     },
   })
+}
