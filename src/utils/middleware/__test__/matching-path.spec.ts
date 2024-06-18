@@ -2,31 +2,35 @@
 import { matchingPath } from '../matching-path'
 
 describe('matchingPath', () => {
-  it('should return true when pathname includes one of the paths', () => {
+  it('should return true when pathname includes any of the paths', () => {
     const paths = ['/home', '/about', '/contact']
-    const pathname = '/about-us'
-    expect(matchingPath(paths, pathname)).toBe(true)
+    const pathname = '/home/dashboard'
+    const result = matchingPath(paths, pathname)
+    expect(result).toBe(true)
   })
 
   it('should return false when pathname does not include any of the paths', () => {
     const paths = ['/home', '/about', '/contact']
-    const pathname = '/services'
-    expect(matchingPath(paths, pathname)).toBe(false)
+    const pathname = '/dashboard'
+    const result = matchingPath(paths, pathname)
+    expect(result).toBe(false)
   })
 
   it('should return true when pathname exactly matches one of the paths', () => {
     const paths = ['/home', '/about', '/contact']
     const pathname = '/home'
-    expect(matchingPath(paths, pathname)).toBe(true)
+    const result = matchingPath(paths, pathname)
+    expect(result).toBe(true)
   })
 
-  it('should return false for an empty paths array', () => {
+  it('should return false when paths array is empty', () => {
     const paths: string[] = []
     const pathname = '/home'
-    expect(matchingPath(paths, pathname)).toBe(false)
+    const result = matchingPath(paths, pathname)
+    expect(result).toBe(false)
   })
 
-  it('should return false for an empty pathname', () => {
+  it('should return false when pathname is empty', () => {
     const paths = ['/home', '/about', '/contact']
     const pathname = ''
     expect(matchingPath(paths, pathname)).toBe(false)
@@ -42,5 +46,12 @@ describe('matchingPath', () => {
     const paths = ['/Home', '/About', '/Contact']
     const pathname = '/home'
     expect(matchingPath(paths, pathname)).toBe(false)
+  })
+
+  it('should handle paths with special characters correctly', () => {
+    const paths = ['/home', '/about-us', '/contact']
+    const pathname = '/about-us/team'
+    const result = matchingPath(paths, pathname)
+    expect(result).toBe(true)
   })
 })
