@@ -1,8 +1,8 @@
 'use server'
 
 import {
-  type RequestCookie,
-  type ResponseCookie,
+  RequestCookie,
+  ResponseCookie,
 } from 'next/dist/compiled/@edge-runtime/cookies'
 import { cookies } from 'next/headers'
 

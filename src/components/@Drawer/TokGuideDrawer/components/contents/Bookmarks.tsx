@@ -1,4 +1,4 @@
-import { Box, Code, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 import { Link, LinkTags, Section } from '../common/simple'
 
@@ -28,10 +28,6 @@ export const Bookmarks = () => {
                 {
                   text: 'react-hook-form',
                   href: 'https://react-hook-form.com/',
-                },
-                {
-                  text: 'axios',
-                  href: 'https://axios-http.com/kr/docs/intro',
                 },
                 {
                   text: 'react-query',

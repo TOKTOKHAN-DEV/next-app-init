@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react'
 
 import { TokGuide } from './components/TokGuide'
-import { SideBtn } from './components/SideBtn'
 
 export const TokGuideDrawer = (props: Partial<DrawerProps>) => {
   return (
