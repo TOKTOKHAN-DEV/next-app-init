@@ -1,4 +1,5 @@
 import { QueryClient } from '@tanstack/react-query'
+
 import queryClientOptions from '@/configs/react-query/query-client-options'
 
 function makeQueryClient() {

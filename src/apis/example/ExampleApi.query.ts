@@ -1,75 +1,36 @@
-import { AsyncFnReturn } from '@toktokhan-dev/universal'
+import { useQuery } from '@tanstack/react-query'
+import { isNotNullish } from '@toktokhan-dev/universal'
+import { Parameter } from '@toktokhan-dev/universal'
 
-import fetchExtended from '@/configs/fetch/fetch-extend'
+import { UseQueryParams } from '@/types/module/react-query/use-query-params'
 
-import { ContentType, HttpClient, RequestParams } from '../@http-client'
+import exampleApi from './ExampleApi'
 
-export class S3FileUploaderApi<
-  SecurityDataType = unknown,
-> extends HttpClient<SecurityDataType> {
-  private _createPresignedUrl = (variables: {
-    name: string
-    params?: RequestParams
-  }) =>
-    this.request<{ url: string }>({
-      path: `/v1/presigned_url/`,
-      method: 'POST',
-      body: variables.name,
-      type: ContentType.Json,
-      format: 'json',
-      ...variables?.params,
-    })
-
-  private _uploadFileToS3 = (variables: {
-    url: string
-    file: File
-    params?: RequestParams
-  }) =>
-    this.request<void>({
-      path: variables.url,
-      method: 'PUT',
-      body: variables.file,
-      headers: { 'Content-Type': variables.file.type },
-      ...variables?.params,
-    })
-
-  uploadFileToS3 = async (variables: {
-    file: File
-    params?: RequestParams
-  }) => {
-    const { file } = variables
-    const { url } = await this._createPresignedUrl({ name: file.name })
-    await this._uploadFileToS3({ url, file })
-    const { origin, pathname } = new URL(url)
-    return { file, url: origin + pathname }
-  }
-
-  uploadFilesToS3 = async (variables: {
-    files: File[]
-    params?: RequestParams
-  }) => {
-    const { files } = variables
-    const settled = await Promise.allSettled(
-      files.map((file) => this.uploadFileToS3({ file })),
-    )
-
-    const fulfilled = settled.filter(
-      (v) => v.status === 'fulfilled',
-    ) as PromiseFulfilledResult<AsyncFnReturn<typeof this.uploadFileToS3>>[]
-
-    const rejected = settled.filter(
-      (v) => v.status === 'rejected',
-    ) as PromiseRejectedResult[]
-
-    return {
-      fulfilled,
-      rejected,
-    }
-  }
+export const EXAMPLE_API_QUERY_KEY = {
+  GET_LIST: (params?: Parameter<typeof exampleApi.getList>) =>
+    ['example-list', params].filter(isNotNullish),
+  GET_BY_ID: (params?: Parameter<typeof exampleApi.getById>) =>
+    ['example-by-id', params].filter(isNotNullish),
 }
 
-const s3FileUploaderApi = new S3FileUploaderApi({
-  customFetch: fetchExtended,
-})
+export function useGetExampleListQuery(
+  params?: UseQueryParams<typeof exampleApi.getList>,
+) {
+  const queryKey = EXAMPLE_API_QUERY_KEY.GET_LIST(params?.variables)
+  return useQuery({
+    queryKey,
+    queryFn: () => exampleApi.getList(params?.variables),
+    ...params?.options,
+  })
+}
 
-export default s3FileUploaderApi
+export function useGetExampleByIdQuery(
+  params: UseQueryParams<typeof exampleApi.getById>,
+) {
+  const queryKey = EXAMPLE_API_QUERY_KEY.GET_BY_ID(params?.variables)
+  return useQuery({
+    queryKey,
+    queryFn: () => exampleApi.getById(params?.variables),
+    ...params?.options,
+  })
+}

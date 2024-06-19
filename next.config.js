@@ -17,13 +17,6 @@ module.exports = withBundleAnalyzer({
       fullUrl: process.env.NODE_ENV !== 'production',
     },
   },
-  webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
-  optimizePackageImports: [
-    '@chakra-ui/react',
-    '@charkra-ui/layout',
-    '@emotion/react',
-    'react-select',
-  ],
   compiler: {
     emotion: true,
     removeConsole:
@@ -99,9 +92,19 @@ module.exports = withBundleAnalyzer({
       {
         hostname: '*.s3.*.amazonaws.com',
       },
+      {
+        hostname: 'via.placeholder.com',
+      },
     ],
   },
   experimental: {
     typedRoutes: true,
+    optimizePackageImports: [
+      '@chakra-ui/react',
+      '@charkra-ui/layout',
+      '@emotion/react',
+      'react-select',
+    ],
+    webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
 })
