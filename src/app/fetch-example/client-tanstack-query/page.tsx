@@ -7,7 +7,7 @@ import { Center, Flex, Text } from '@chakra-ui/layout'
 import QueryPhotoList from '@/components/Photo/QueryPhotoList'
 import QueryTodoList from '@/components/Todo/QueryTodoList'
 
-export default function ClientTanstackQuery() {
+export default function ClientTanstackQueryPage() {
   return (
     <Center flexDir="column">
       <Text fontSize="50px" fontWeight={700}>

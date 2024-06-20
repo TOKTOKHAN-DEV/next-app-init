@@ -7,14 +7,16 @@ import Link from 'next/link'
 import { Center, Flex, Text } from '@chakra-ui/react'
 
 import { photoApi } from '@/apis/photo/PhotoApi'
+import { PhotoType } from '@/apis/photo/types/model/photo'
 import { todoApi } from '@/apis/todo/TodoApi'
 import ClientComponent from '@/components/ClientComponent'
 import ListSkeleton from '@/components/ListSkeleton'
 import FetchPhotoList from '@/components/Photo/FetchPhotoList'
+import PromiseResolveHelper from '@/components/PromiseResolveHelper'
 import RevalidateButton from '@/components/RevalidateButton'
 import FetchTodoList from '@/components/Todo/FetchTodoList'
 
-export default async function FetchWithStreaming() {
+export default async function FetchWithStreamingPage() {
   return (
     <Center flexDir="column">
       <Text fontSize="50px" fontWeight={700}>
@@ -50,13 +52,15 @@ export default async function FetchWithStreaming() {
               Photo List
             </Text>
             <Suspense fallback={<ListSkeleton />}>
-              <FetchPhotoList
-                photosPromise={photoApi.photoList({
+              <PromiseResolveHelper<PhotoType[]>
+                promise={photoApi.photoList({
                   params: {
                     cache: 'force-cache',
                   },
                 })}
-              />
+              >
+                {({ data }) => <FetchPhotoList photos={data} />}
+              </PromiseResolveHelper>
             </Suspense>
           </Flex>
         </Flex>

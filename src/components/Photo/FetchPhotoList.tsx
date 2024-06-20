@@ -1,19 +1,15 @@
-'use client'
+'use server'
 
-import { use } from 'react'
+import Image from 'next/image'
 
 import { Flex, Text } from '@chakra-ui/react'
 
 import { PhotoType } from '@/apis/photo/types/model/photo'
 
-import ImageAsNext from '../ImageAsNext'
-
 interface FetchPhotoListProps {
-  photosPromise: Promise<PhotoType[]>
+  photos: PhotoType[]
 }
-const FetchPhotoList = ({ photosPromise }: FetchPhotoListProps) => {
-  const photos = use(photosPromise)
-
+export default async function FetchPhotoList({ photos }: FetchPhotoListProps) {
   return (
     <Flex flexDir="column" gap="5px">
       {photos?.map(({ id, albumId, title, url }) => (
@@ -30,18 +26,9 @@ const FetchPhotoList = ({ photosPromise }: FetchPhotoListProps) => {
             <Text>albumId: {albumId}</Text>
             <Text>title: {title}</Text>
           </Flex>
-          <ImageAsNext
-            src={url}
-            alt="image"
-            h="60px"
-            w="60px"
-            sizes="60px"
-            isDisabledSkeleton
-          />
+          <Image src={url} alt="image" width={60} height={60} sizes="60px" />
         </Flex>
       ))}
     </Flex>
   )
 }
-
-export default FetchPhotoList
