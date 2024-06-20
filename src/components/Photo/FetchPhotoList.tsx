@@ -9,6 +9,16 @@ import { PhotoType } from '@/apis/photo/types/model/photo'
 interface FetchPhotoListProps {
   photos: PhotoType[]
 }
+/**
+ * @description
+ * Restricted Items in Server Component
+ *
+ * - Event listeners
+ * - State and Lifecycle Effects
+ * - Use of browser-only APIs
+ * - Custom hooks that depend on state, effects, or browser-only APIs
+ * - React Class components
+ */
 export default async function FetchPhotoList({ photos }: FetchPhotoListProps) {
   return (
     <Flex flexDir="column" gap="5px">
