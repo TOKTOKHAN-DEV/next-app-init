@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 
 import { Metadata, Viewport } from 'next'
 
+import { sanitize } from 'isomorphic-dompurify'
+
 import { TokGuideDrawer } from '@/components/@Drawer/TokGuideDrawer'
 import { SideBtn } from '@/components/@Drawer/TokGuideDrawer/components/SideBtn'
 import HomeLayout from '@/components/@Layout/HomeLayout'
@@ -90,14 +92,17 @@ export const metadata: Metadata = {
 }
 
 const redirectIEtoEdge = () => {
-  return {
-    __html: `
-    if(/MSIE d|Trident.*rv:/.test(navigator.userAgent)) {
+  const script = `
+    if (/MSIE d|Trident.*rv:/.test(navigator.userAgent)) {
       window.location = 'microsoft-edge:' + window.location;
       setTimeout(function() {
         window.location = 'https://go.microsoft.com/fwlink/?linkid=2135547';
       }, 1);
-    }`,
+    }
+  `
+
+  return {
+    __html: sanitize(script),
   }
 }
 
