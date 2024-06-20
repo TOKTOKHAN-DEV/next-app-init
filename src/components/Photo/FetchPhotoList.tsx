@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 
 import { PhotoType } from '@/apis/photo/types/model/photo'
 
@@ -36,7 +36,9 @@ export default async function FetchPhotoList({ photos }: FetchPhotoListProps) {
             <Text>albumId: {albumId}</Text>
             <Text>title: {title}</Text>
           </Flex>
-          <Image src={url} alt="image" width={60} height={60} sizes="60px" />
+          <Box w="60px" h="60px" pos="relative">
+            <Image src={url} alt="image" fill />
+          </Box>
         </Flex>
       ))}
     </Flex>
