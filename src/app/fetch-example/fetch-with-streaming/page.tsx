@@ -54,9 +54,6 @@ export default async function FetchWithStreaming() {
                 photosPromise={photoApi.photoList({
                   params: {
                     cache: 'force-cache',
-                    next: {
-                      tags: ['PHOTO_LIST'],
-                    },
                   },
                 })}
               />
