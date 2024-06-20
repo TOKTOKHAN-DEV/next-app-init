@@ -11,14 +11,10 @@ import ImageAsNext from '../ImageAsNext'
 // @delete:file
 // @delete:folder
 
-interface QueryPhotoListProps {
-  isSuspense?: boolean
-}
-const QueryPhotoList = ({ isSuspense }: QueryPhotoListProps) => {
+const QueryPhotoList = () => {
   const { data: photoList } = usePhotoListQuery({
     options: {
       staleTime: 1000 * 5,
-      suspense: isSuspense,
     },
   })
 
