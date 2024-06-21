@@ -5,12 +5,12 @@
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
     "dev": "next dev",
-    "temp-build": "next build",
+    "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "type-check": "tsc --skipLibCheck --noEmit",
     "lint": "yarn type-check && next lint",
     "lint:staged": "lint-staged",
     "start": "yarn build && next start",
-    "commit": "tokript commit -s ihih",
     "test": "jest --coverage --coverageReporters=text-summary",
     "test:watch": "jest --watch",
     "clean-up": "node src/scripts/remove-unnecessary.js",
@@ -20,8 +20,8 @@
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "semantic-release": "semantic-release",
     "checklist:progress": "node src/scripts/update-checklist-progress.js",
-    "analyze": "ANALYZE=true next build",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "prepare": "husky"
   },
   "dependencies": {
     "@chakra-ui/anatomy": "^2.2.2",
