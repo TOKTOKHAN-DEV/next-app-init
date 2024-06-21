@@ -9,13 +9,14 @@ import FormHelper from '@/components/FormHelper'
 import useLoginForm from '../hooks/useLoginForm'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { login } from '../actions/login'
+import { Route } from 'next'
 
 interface LoginFormProps extends BoxProps {}
 
 const LoginForm = ({ ...basisProps }: LoginFormProps) => {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const returnUrl = searchParams.get('returnUrl')
+  const returnUrl = searchParams.get('returnUrl') as Route
 
   const [isPending, startTransition] = useTransition()
 
@@ -46,12 +47,8 @@ const LoginForm = ({ ...basisProps }: LoginFormProps) => {
     //   try {
     //     const response = await login(data)
     //     if (response) {
-    //       if (returnUrl) {
-    //         router.replace(decodeURIComponent(returnUrl))
-    //       } else {
-    //         router.replace('/')
-    //       }
-    //     } else {
+    //         router.replace(returnUrl || '/')
+    //    } else {
     //       setLoginError()
     //     }
     //   } catch (error) {

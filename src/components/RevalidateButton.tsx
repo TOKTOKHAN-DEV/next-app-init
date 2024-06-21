@@ -1,3 +1,4 @@
+// @delete:file
 'use client'
 
 import { Button } from '@chakra-ui/react'
