@@ -49,7 +49,6 @@ export async function middleware(request: NextRequest) {
   //       requestCookies.set('refresh', refresh)
   //       isRefreshSuccess = true
 
-  //       // TODO: Refresh expired process
   //     } else {
   //       isRefreshError = true
   //       requestCookies.delete('access')

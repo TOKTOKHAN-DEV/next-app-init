@@ -2,6 +2,14 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const isProd = process.env.NODE_ENV === 'production'
+const removeConsole = (() => {
+  const isServer = typeof window === 'undefined'
+  const isClient = !isServer
+  if (!isProd) return false
+  if (isClient) return { exclude: ['error'] }
+  if (isServer) return false
+})()
 module.exports = withBundleAnalyzer({
   // images: {
   //   domains: ['example.com'], // remote 이미지를 next image 로 랜더링하고싶다면 도메인을 설정해주세요
@@ -18,13 +26,15 @@ module.exports = withBundleAnalyzer({
     },
   },
   compiler: {
-    emotion: true,
-    removeConsole:
-      process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
+    removeConsole,
   },
   modularizeImports: {
     'lodash-es': {
       transform: 'lodash-es/{{member}}',
+      preventFullImport: true,
+    },
+    'lodash/fp': {
+      transform: 'lodash/fp/{{member}}',
       preventFullImport: true,
     },
   },
