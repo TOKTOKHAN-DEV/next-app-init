@@ -22,7 +22,7 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   logging: {
     fetches: {
-      fullUrl: process.env.NODE_ENV !== 'production',
+      fullUrl: !isProd,
     },
   },
   compiler: {
