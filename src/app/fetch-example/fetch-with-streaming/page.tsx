@@ -2,6 +2,7 @@
 // @delete:folder
 import { Suspense } from 'react'
 
+import { revalidateTag } from 'next/cache'
 import Link from 'next/link'
 
 import { Center, Flex, Text } from '@chakra-ui/react'
@@ -17,6 +18,11 @@ import RevalidateButton from '@/components/RevalidateButton'
 import FetchTodoList from '@/components/Todo/FetchTodoList'
 
 export default async function FetchWithStreamingPage() {
+  async function revalidateTodo() {
+    'use server'
+    revalidateTag('TODO_LIST')
+  }
+
   return (
     <Center flexDir="column">
       <Text fontSize="50px" fontWeight={700}>
@@ -35,7 +41,7 @@ export default async function FetchWithStreamingPage() {
               <Text fontSize="30px" fontWeight={500}>
                 Todo List
               </Text>
-              <RevalidateButton />
+              <RevalidateButton revalidate={revalidateTodo} />
             </Flex>
             <Suspense fallback={<ListSkeleton />}>
               <FetchTodoList
