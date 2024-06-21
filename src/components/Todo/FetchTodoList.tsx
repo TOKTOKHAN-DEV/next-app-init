@@ -10,6 +10,7 @@ interface FetchTodoListProps {
   todosPromise: Promise<TodoType[]>
 }
 const FetchTodoList = ({ todosPromise }: FetchTodoListProps) => {
+  // Streaming data from the server to the client
   const todos = use(todosPromise)
   return (
     <Flex flexDir="column" gap="5px">
