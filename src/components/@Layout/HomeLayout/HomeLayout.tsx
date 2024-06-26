@@ -89,7 +89,14 @@ const HomeLayout = (
       >
         {header}
       </GridItem>
-      <GridItem area={'main'} bg={'background.primary'} {...containerProps}>
+      <GridItem
+        as={'main'}
+        area={'main'}
+        w={'100%'}
+        minW={'100%'}
+        bg={'background.primary'}
+        {...containerProps}
+      >
         {content}
       </GridItem>
       <GridItem
