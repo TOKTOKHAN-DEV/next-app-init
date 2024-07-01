@@ -12,6 +12,7 @@ import ToggleColorModeButton from '@/components/ToggleColorModeButton'
 import { ENV } from '@/configs/env'
 import AppProvider from '@/providers/AppProvider'
 
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import '../../public/fonts/pretendard/css/pretendardvariable-dynamic-subset.css'
 
 /**
@@ -110,21 +111,20 @@ const redirectIEtoEdge = () => {
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts
  */
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
   return (
     <html lang="ko">
       <head>
         <script dangerouslySetInnerHTML={redirectIEtoEdge()} />
-        {/* Global site tag (gtag.js) - Google Analytics */}
-        {/* <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
-          ></script> */}
-        {/* <script dangerouslySetInnerHTML={this.setGoogleAnalytics()} /> */}
+        {/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}
       </head>
       <body>
         <AppProvider>
-          <HomeLayout content={<>{children}</>} />
+          <HomeLayout content={children} />
           <ToggleColorModeButton />
           <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
         </AppProvider>

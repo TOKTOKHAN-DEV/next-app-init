@@ -6,19 +6,19 @@ import {
 } from '@toktokhan-dev/universal'
 import { jwtDecode } from '@toktokhan-dev/universal'
 
-import { getCookie, removeCookie, setCookie } from '@/actions/cookie'
 import { ENV } from '@/configs/env'
+import { accessStorage } from '@/stores/cookie/access'
+import { refreshStorage } from '@/stores/cookie/refresh'
 import { calcMaxAge } from '@/utils/middleware/calc-max-age'
 import { getJwtCookieOptions } from '@/utils/middleware/get-jwt-cookie-option'
 
 const setAuthorizationHeader = async () => {
-  let access: string | undefined
+  let access: string | undefined | null
 
   if (typeof window !== 'undefined') {
-    access = await getCookie('access').then((v) => v?.value)
+    access = accessStorage.get()
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { cookies } = require('next/headers')
+    const { cookies } = await import('next/headers')
     access = cookies().get('access')?.value
   }
 
@@ -46,12 +46,11 @@ const requestInterceptor: (
   ]
 }
 
-const handleUnAuthorized = async () => {
-  await removeCookie('access')
-  await removeCookie('refresh')
-  if (typeof window !== 'undefined') {
-    window.location.replace('/')
-  }
+const handleUnAuthorized = () => {
+  accessStorage.remove()
+  refreshStorage.remove()
+
+  window.location.replace('/')
 }
 
 const handleTokenRefresh = async (
@@ -67,8 +66,8 @@ const handleTokenRefresh = async (
   })
 
   if (!refreshResponse.ok) {
-    await removeCookie('access')
-    await removeCookie('refresh')
+    accessStorage.remove()
+    refreshStorage.remove()
     window.location.replace('/')
     throw new Error('Failed to refresh token')
   }
@@ -81,8 +80,8 @@ const handleTokenRefresh = async (
   const accessMaxAge = calcMaxAge({ exp: decodedAccess?.exp })
   const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
-  await setCookie('access', newAccess, getJwtCookieOptions(accessMaxAge))
-  await setCookie('refresh', newRefresh, getJwtCookieOptions(refreshMaxAge))
+  accessStorage.set(newAccess, getJwtCookieOptions(accessMaxAge))
+  accessStorage.set(newRefresh, getJwtCookieOptions(refreshMaxAge))
 
   return newAccess
 }
@@ -92,10 +91,10 @@ const handleExpiredToken = async (
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ): Promise<Response> => {
   const [url, requestInit] = requestArgs
-  const refresh = await getCookie('refresh').then((v) => v?.value)
+  const refresh = refreshStorage.get()
 
   if (!refresh) {
-    await removeCookie('access')
+    accessStorage.remove()
     window.location.replace('/')
     throw new Error('No refresh token available')
   }
@@ -122,16 +121,18 @@ const responseInterceptor: (
   requestArgs: FetchArgs,
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ) => Promise<Response> = async (response, requestArgs, fetch) => {
-  const { status } = response
-  const isUnAuthorized = status === 401
-  const isExpiredToken = status === 444
+  if (typeof window !== 'undefined') {
+    const { status } = response
+    const isUnAuthorized = status === 401
+    const isExpiredToken = status === 444
 
-  if (isUnAuthorized) {
-    await handleUnAuthorized()
-  } else if (isExpiredToken && typeof window !== 'undefined') {
-    return handleExpiredToken(requestArgs, fetch)
+    if (isUnAuthorized) {
+      handleUnAuthorized()
+    }
+    if (isExpiredToken) {
+      return handleExpiredToken(requestArgs, fetch)
+    }
   }
-
   return response
 }
 

@@ -79,14 +79,14 @@ export async function middleware(request: NextRequest) {
   //     const decodedAccess = jwtDecode(refreshedReqAccess)
   //     const decodedRefresh = jwtDecode(refreshedReqRefresh)
 
-  //     const accessMaxAge = calcMaxAge({exp: decodedAccess?.exp})
-  //     const refreshMaxAge = calcMaxAge({exp: decodedRefresh?.exp})
+  // const accessMaxAge = calcMaxAge({ exp: decodedAccess?.exp })
+  // const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
-  //     responseCookies.set(
-  //       'access',
-  //       refreshedReqAccess,
-  //       getJwtCookieOptions(accessMaxAge),
-  //     )
+  // responseCookies.set(
+  //   'access',
+  //   refreshedReqAccess,
+  //   getJwtCookieOptions(accessMaxAge),
+  // )
   //     responseCookies.set(
   //       'refresh',
   //       refreshedReqRefresh,

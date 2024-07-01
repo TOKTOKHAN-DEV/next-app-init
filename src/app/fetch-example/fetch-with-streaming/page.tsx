@@ -23,6 +23,10 @@ export default async function FetchWithStreamingPage() {
     revalidateTag('TODO_LIST')
   }
 
+  // const d = await createCookieHandler('access')?.get()
+
+  // console.log({ d })
+
   return (
     <Center flexDir="column">
       <Text fontSize="50px" fontWeight={700}>

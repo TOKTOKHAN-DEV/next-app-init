@@ -2,14 +2,15 @@
 
 import { useTransition } from 'react'
 
+import { Route } from 'next'
+import { useRouter, useSearchParams } from 'next/navigation'
+
 import { Box, BoxProps, Button, Input } from '@chakra-ui/react'
 
 import FormHelper from '@/components/FormHelper'
 
-import useLoginForm from '../hooks/useLoginForm'
-import { useRouter, useSearchParams } from 'next/navigation'
 import { login } from '../actions/login'
-import { Route } from 'next'
+import useLoginForm from '../hooks/useLoginForm'
 
 interface LoginFormProps extends BoxProps {}
 
@@ -43,18 +44,18 @@ const LoginForm = ({ ...basisProps }: LoginFormProps) => {
    * @see https://react.dev/reference/react/startTransition
    */
   const onSubmit = handleSubmit((data) => {
-    // startTransition(async () => {
-    //   try {
-    //     const response = await login(data)
-    //     if (response) {
-    //         router.replace(returnUrl || '/')
-    //    } else {
-    //       setLoginError()
-    //     }
-    //   } catch (error) {
-    //     setLoginError()
-    //   }
-    // })
+    startTransition(async () => {
+      // try {
+      //   const response = await login(data)
+      //   if (response) {
+      //     router.replace(returnUrl || '/')
+      //   } else {
+      //     setLoginError()
+      //   }
+      // } catch (error) {
+      //   setLoginError()
+      // }
+    })
   })
 
   return (

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http:/localhost:3000/</loc>
+    <loc>http://localhost:3000/</loc>
+  </url>
+  <url>
+    <loc>http:/localhost:3000/fetch-example</loc>
   </url>
   <url>
     <loc>http:/localhost:3000/join</loc>
@@ -14,5 +17,14 @@
   </url>
   <url>
     <loc>http:/localhost:3000/board/sitemap.xml</loc>
+  </url>
+  <url>
+    <loc>http:/localhost:3000/fetch-example/client-tanstack-query</loc>
+  </url>
+  <url>
+    <loc>http:/localhost:3000/fetch-example/fetch-with-streaming</loc>
+  </url>
+  <url>
+    <loc>http:/localhost:3000/social/callback</loc>
   </url>
 </urlset>
