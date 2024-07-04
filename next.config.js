@@ -38,18 +38,24 @@ module.exports = withBundleAnalyzer({
       preventFullImport: true,
     },
   },
-  async headers() {
+  async redirects() {
     return [
       {
-        headers: [
+        source: '/:path((?!ie11_warning.html$).*)',
+        has: [
           {
-            key: 'Cache-Control',
-            value: 'public, no-cache, max-age=0, must-revalidate',
+            type: 'header',
+            key: 'User-Agent',
+            value: '(.*Trident.*)',
           },
         ],
-
-        source: '/:path*',
+        permanent: false,
+        destination: '/ie_warning.html',
       },
+    ]
+  },
+  async headers() {
+    return [
       {
         source: '/fonts/pretendard/(.*)',
         headers: [
