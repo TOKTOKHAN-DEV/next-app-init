@@ -1,8 +1,6 @@
 import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
-import { Cookies } from 'react-cookie'
-
-export type CookieOptions = Parameters<Cookies['set']>[2]
+import { CookieOptions } from '@toktokhan-dev/react-web'
 
 /**
  *

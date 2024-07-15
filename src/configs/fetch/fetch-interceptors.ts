@@ -106,6 +106,7 @@ const handleExpiredToken = async (
       headers: {
         ...requestInit?.headers,
         Authorization: `Bearer ${newAccess}`,
+        'Content-Type': 'application/json',
       },
     }
 

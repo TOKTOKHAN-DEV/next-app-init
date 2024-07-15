@@ -2,6 +2,7 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+
 const isProd = process.env.NODE_ENV === 'production'
 const removeConsole = (() => {
   const isServer = typeof window === 'undefined'
@@ -37,6 +38,15 @@ module.exports = withBundleAnalyzer({
       transform: 'lodash/fp/{{member}}',
       preventFullImport: true,
     },
+  },
+  experimental: {
+    typedRoutes: true,
+    optimizePackageImports: [
+      '@chakra-ui/react',
+      '@chakra-ui/layout',
+      '@emotion/react',
+    ],
+    webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
   async redirects() {
     return [
@@ -112,15 +122,5 @@ module.exports = withBundleAnalyzer({
         hostname: 'via.placeholder.com',
       },
     ],
-  },
-  experimental: {
-    typedRoutes: true,
-    optimizePackageImports: [
-      '@chakra-ui/react',
-      '@charkra-ui/layout',
-      '@emotion/react',
-      'react-select',
-    ],
-    webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
 })
