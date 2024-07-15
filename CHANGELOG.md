@@ -1,5 +1,14 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.2
+
+### Patch Changes
+
+- edd2f1e: add tokript commit
+- e966806: - @toktokhan-dev/\* 의 package들을 업데이트 했습니다.
+  - HomeLayout 마크업 및 main width 추가
+- 4f04a02: add gitignore
+
 ## 0.0.1
 
 ### Patch Changes
