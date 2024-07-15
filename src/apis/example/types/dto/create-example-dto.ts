@@ -1,3 +1,3 @@
-import { ExampleModel } from '../model/example';
+import { ExampleModel } from '../model/example'
 
-export type CreateExampleDto = ExampleModel;
+export type CreateExampleDto = ExampleModel

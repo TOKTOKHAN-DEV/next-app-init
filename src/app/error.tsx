@@ -12,9 +12,11 @@ import '../../public/fonts/pretendard/css/pretendardvariable-dynamic-subset.css'
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/error-handling
  */
-export default function GlobalError(
-  { error, reset }: { error: Error & { digest?: string }; reset: () => void },
-) {
+interface GlobalErrorProps {
+  error: Error & { digest?: string }
+  reset: () => void
+}
+export default function GlobalError({ error, reset }: GlobalErrorProps) {
   const router = useRouter()
   const handleReset = () => {
     reset()

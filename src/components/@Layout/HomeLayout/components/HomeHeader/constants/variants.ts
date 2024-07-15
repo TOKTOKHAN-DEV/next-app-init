@@ -1,13 +1,13 @@
-import { ChakraProps } from '@chakra-ui/react';
+import { ChakraProps } from '@chakra-ui/react'
 
-export type HomeHeaderVariantType = 'dark' | 'light' | 'transparent';
+export type HomeHeaderVariantType = 'dark' | 'light' | 'transparent'
 export const HOME_HEADER_VARIANTS: Record<
   HomeHeaderVariantType,
   {
-    header: ChakraProps;
-    drawer: ChakraProps;
-    pointColor: ChakraProps['color'];
-    subColor: ChakraProps['color'];
+    header: ChakraProps
+    drawer: ChakraProps
+    pointColor: ChakraProps['color']
+    subColor: ChakraProps['color']
   }
 > = {
   dark: {
@@ -28,4 +28,4 @@ export const HOME_HEADER_VARIANTS: Record<
     pointColor: 'black',
     subColor: 'gray.400',
   },
-};
+}

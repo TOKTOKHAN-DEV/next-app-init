@@ -1,52 +1,54 @@
 import { AsyncFnReturn } from '@toktokhan-dev/universal'
 
-import { AxiosInstance } from 'axios'
+import fetchExtended from '@/configs/fetch/fetch-extend'
 
-import instance from '@/configs/axios/instance'
+import { ContentType, HttpClient, RequestParams } from '../@http-client'
 
-export class S3FileUploaderApi {
-  axios: AxiosInstance = instance
-  constructor(axios?: AxiosInstance) {
-    if (axios) this.axios = axios
-  }
-
-  private _createPresignedUrl = async (
-    name: string,
-  ): Promise<{ url: string }> => {
-    const { data } = await this.axios({
+export class S3FileUploaderApi<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
+  private _createPresignedUrl = (variables: {
+    name: string
+    params?: RequestParams
+  }) =>
+    this.request<{ url: string }>({
+      path: `/v1/presigned_url/`,
       method: 'POST',
-      url: `/v1/presigned_url/`,
-      data: { name },
+      body: variables.name,
+      type: ContentType.Json,
+      format: 'json',
+      ...variables?.params,
     })
-    return data
-  }
 
-  private _uploadFileToS3 = async (params: { url: string; file: File }) => {
-    const { url, file } = params
-    await this.axios({
+  private _uploadFileToS3 = (variables: {
+    url: string
+    file: File
+    params?: RequestParams
+  }) =>
+    this.request<void>({
+      path: variables.url,
       method: 'PUT',
-      url,
-      data: file,
-      headers: { 'Content-Type': file.type },
+      body: variables.file,
+      headers: { 'Content-Type': variables.file.type },
+      ...variables?.params,
     })
-  }
 
-  uploadFileToS3 = async (
-    params: {
-      file: File
-    },
-  ): Promise<{ url: string; file: File }> => {
-    const { file } = params
-
-    const { url } = await this._createPresignedUrl(file.name)
+  uploadFileToS3 = async (variables: {
+    file: File
+    params?: RequestParams
+  }) => {
+    const { file } = variables
+    const { url } = await this._createPresignedUrl({ name: file.name })
     await this._uploadFileToS3({ url, file })
     const { origin, pathname } = new URL(url)
-
     return { file, url: origin + pathname }
   }
 
-  uploadFilesToS3 = async (params: { files: File[] }) => {
-    const { files } = params
+  uploadFilesToS3 = async (variables: {
+    files: File[]
+    params?: RequestParams
+  }) => {
+    const { files } = variables
     const settled = await Promise.allSettled(
       files.map((file) => this.uploadFileToS3({ file })),
     )
@@ -66,6 +68,8 @@ export class S3FileUploaderApi {
   }
 }
 
-const s3FileUploaderApi = new S3FileUploaderApi()
+const s3FileUploaderApi = new S3FileUploaderApi({
+  customFetch: fetchExtended,
+})
 
 export default s3FileUploaderApi

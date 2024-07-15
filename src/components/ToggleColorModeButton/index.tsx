@@ -1,1 +1,1 @@
-export { default } from './ToggleColorModeButton';
+export { default } from './ToggleColorModeButton'

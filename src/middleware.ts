@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+// import { jwtDecode } from '@toktokhan-dev/universal'
+// import { ENV } from './configs/env'
 // import { calcMaxAge } from './utils/middleware/calc-max-age'
 // import { getJwtCookieOptions } from './utils/middleware/get-jwt-cookie-option'
 import { matchingPath } from './utils/middleware/matching-path'
-// import { jwtDecode } from '@toktokhan-dev/universal'
-// import { ENV } from './configs/env'
 
 const PATHS = {
   AUTH: ['mypage'],
@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   const { nextUrl, cookies: requestCookies, url } = request
   const { pathname } = nextUrl
 
-  // const access = requestCookies.get('access')?.value
+  const access = requestCookies.get('access')?.value
   const refresh = requestCookies.get('refresh')?.value
 
   // const decodedAccess = access && jwtDecode(access).exp
@@ -47,8 +47,6 @@ export async function middleware(request: NextRequest) {
   //       requestCookies.set('access', access)
   //       requestCookies.set('refresh', refresh)
   //       isRefreshSuccess = true
-
-  //       // TODO: Refresh expired process
   //     } else {
   //       isRefreshError = true
   //       requestCookies.delete('access')
@@ -63,7 +61,10 @@ export async function middleware(request: NextRequest) {
   //   }
   // }
 
-  const response = NextResponse.next({ request })
+  const response = NextResponse.next({
+    request,
+  })
+
   // const { cookies: responseCookies } = response
 
   // if (isRefreshError) {
@@ -76,16 +77,13 @@ export async function middleware(request: NextRequest) {
   //   const refreshedReqRefresh = requestCookies.get('refresh')?.value
 
   //   if (refreshedReqAccess && refreshedReqRefresh) {
-  //     const decodedAccess = jwtDecode(refreshedReqAccess)
   //     const decodedRefresh = jwtDecode(refreshedReqRefresh)
-
-  //     const accessMaxAge = calcMaxAge({exp: decodedAccess?.exp})
-  //     const refreshMaxAge = calcMaxAge({exp: decodedRefresh?.exp})
+  //     const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
   //     responseCookies.set(
   //       'access',
   //       refreshedReqAccess,
-  //       getJwtCookieOptions(accessMaxAge),
+  //       getJwtCookieOptions(refreshMaxAge),
   //     )
   //     responseCookies.set(
   //       'refresh',
@@ -99,11 +97,13 @@ export async function middleware(request: NextRequest) {
   //   }
   // }
 
-  if (!refresh && matchingPath(PATHS.AUTH, pathname)) {
+  const isLogin = !!access && !!refresh
+
+  if (!isLogin && matchingPath(PATHS.AUTH, pathname)) {
     return NextResponse.redirect(new URL(`/login?returnUrl=${pathname}`, url))
   }
 
-  if (refresh && matchingPath(PATHS.UN_AUTH, pathname)) {
+  if (isLogin && matchingPath(PATHS.UN_AUTH, pathname)) {
     return NextResponse.redirect(new URL('/', url))
   }
 
@@ -112,6 +112,9 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|sitemap.json|sitemap.xml|manifest.json|icons|videos|fonts|images|favicon.ico).*)',
+    {
+      source:
+        '/((?!api|_next/static|_next/image|sitemap.xml|robots.txt|manifest.json|icons|videos|fonts|images|favicon.ico).*)',
+    },
   ],
 }

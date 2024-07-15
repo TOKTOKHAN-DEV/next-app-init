@@ -2,6 +2,15 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+
+const isProd = process.env.NODE_ENV === 'production'
+const removeConsole = (() => {
+  const isServer = typeof window === 'undefined'
+  const isClient = !isServer
+  if (!isProd) return false
+  if (isClient) return { exclude: ['error'] }
+  if (isServer) return false
+})()
 module.exports = withBundleAnalyzer({
   // images: {
   //   domains: ['example.com'], // remote 이미지를 next image 로 랜더링하고싶다면 도메인을 설정해주세요
@@ -14,46 +23,49 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   logging: {
     fetches: {
-      fullUrl: process.env.NODE_ENV !== 'production',
+      fullUrl: !isProd,
     },
   },
-  webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
-  optimizePackageImports: [
-    '@chakra-ui/react',
-    '@charkra-ui/layout',
-    '@emotion/react',
-    'react-select',
-  ],
   compiler: {
-    emotion: true,
-    removeConsole:
-      process.env.NODE_ENV === 'production'
-        ? { exclude: ['error'] }
-        : process.env.NODE_ENV === 'development'
-        ? false
-        : { exclude: ['error'] },
+    removeConsole,
   },
   modularizeImports: {
     'lodash-es': {
       transform: 'lodash-es/{{member}}',
       preventFullImport: true,
     },
+    'lodash/fp': {
+      transform: 'lodash/fp/{{member}}',
+      preventFullImport: true,
+    },
   },
-  webpack: (config, { isServer }) => {
-    return config
+  experimental: {
+    typedRoutes: true,
+    optimizePackageImports: [
+      '@chakra-ui/react',
+      '@chakra-ui/layout',
+      '@emotion/react',
+    ],
+    webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path((?!ie11_warning.html$).*)',
+        has: [
+          {
+            type: 'header',
+            key: 'User-Agent',
+            value: '(.*Trident.*)',
+          },
+        ],
+        permanent: false,
+        destination: '/ie_warning.html',
+      },
+    ]
   },
   async headers() {
     return [
-      {
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, no-cache, max-age=0, must-revalidate',
-          },
-        ],
-
-        source: '/:path*',
-      },
       {
         source: '/fonts/pretendard/(.*)',
         headers: [
@@ -106,9 +118,9 @@ module.exports = withBundleAnalyzer({
       {
         hostname: '*.s3.*.amazonaws.com',
       },
+      {
+        hostname: 'via.placeholder.com',
+      },
     ],
-  },
-  experimental: {
-    typedRoutes: true,
   },
 })

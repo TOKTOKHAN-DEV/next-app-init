@@ -8,16 +8,16 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerProps,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 interface DrawerBasisProps extends Omit<DrawerProps, 'children'> {
-  header?: string | JSX.Element;
-  body?: string | JSX.Element;
-  footer?: string | JSX.Element;
+  header?: string | JSX.Element
+  body?: string | JSX.Element
+  footer?: string | JSX.Element
 
-  headerProps?: ChakraProps;
-  bodyProps?: ChakraProps;
-  footerProps?: ChakraProps;
+  headerProps?: ChakraProps
+  bodyProps?: ChakraProps
+  footerProps?: ChakraProps
 }
 
 export default function DrawerBasis({
@@ -46,5 +46,5 @@ export default function DrawerBasis({
         </DrawerContent>
       </Drawer>
     </>
-  );
+  )
 }

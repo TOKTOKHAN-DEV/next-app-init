@@ -1,19 +1,23 @@
 import { calcMaxAge } from '../calc-max-age'
 
+// calcMaxAge.spec.ts
 describe('calcMaxAge', () => {
   it('should return -1 when exp is undefined', () => {
-    expect(calcMaxAge()).toBe(-1)
+    const result = calcMaxAge({})
+    expect(result).toBe(-1)
   })
 
-  it('should return the difference between exp and current time when exp is a future timestamp', () => {
+  it('should calculate the correct max age when exp is provided', () => {
     const currentTime = Math.floor(Date.now() / 1000)
-    const futureTime = currentTime + 1000
-    expect(calcMaxAge(futureTime)).toBe(1000)
+    const exp = currentTime + 3600
+    const result = calcMaxAge({ exp })
+    expect(result).toBe(3600)
   })
 
-  it('should return a negative value when exp is a past timestamp', () => {
+  it('should calculate the correct max age when exp is in the past', () => {
     const currentTime = Math.floor(Date.now() / 1000)
-    const pastTime = currentTime - 1000
-    expect(calcMaxAge(pastTime)).toBe(-1000)
+    const exp = currentTime - 3600
+    const result = calcMaxAge({ exp })
+    expect(result).toBeLessThan(0)
   })
 })

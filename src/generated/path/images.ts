@@ -29,5 +29,4 @@ export const MY_IMAGES = {
   ICONS_SVG_FILTER: { src: 'icons/svg/filter.svg', alt: 'filter' },
   ICONS_SVG_MENU: { src: 'icons/svg/menu.svg', alt: 'menu' },
   IMAGES_NEW_OG: { src: 'images/new_og.png', alt: 'new-og' },
-  VERCEL: { src: 'vercel.svg', alt: 'vercel' },
 }

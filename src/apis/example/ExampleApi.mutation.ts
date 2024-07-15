@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query'
+import { Parameter, isNotNullish } from '@toktokhan-dev/universal'
 
+import { UseMutationParams } from '@/types/module/react-query/use-mutation-params'
 
 import exampleApi from './ExampleApi'
-import { Parameter, isNotNullish } from '@toktokhan-dev/universal'
-import {UseMutationParams} from '@/types/module/react-query/use-mutation-params'
 
 export const EXAMPLE_API_MUTATION_KEY = {
   CREATE: (params?: Parameter<typeof exampleApi.create>) =>
@@ -17,34 +17,17 @@ export const EXAMPLE_API_MUTATION_KEY = {
 export const useCreateExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.create>,
 ) => {
-  const mutationKey = EXAMPLE_API_MUTATION_KEY.CREATE()
-  return useMutation({
-    mutationKey,
-    mutationFn: exampleApi.create,
-    ...params?.options,
-  })
+  return useMutation({ mutationFn: exampleApi.create, ...params?.options })
 }
 
 export const useUpdateExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.update>,
 ) => {
-  const mutationKey = EXAMPLE_API_MUTATION_KEY.UPDATE()
-
-  return useMutation({
-    mutationKey,
-    mutationFn: exampleApi.update,
-    ...params?.options,
-  })
+  return useMutation({ mutationFn: exampleApi.update, ...params?.options })
 }
 
 export const useDeleteExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.delete>,
 ) => {
-  const mutationKey = EXAMPLE_API_MUTATION_KEY.DELETE()
-
-  return useMutation({
-    mutationKey,
-    mutationFn: exampleApi.delete,
-    ...params?.options,
-  })
+  return useMutation({ mutationFn: exampleApi.delete, ...params?.options })
 }

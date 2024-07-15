@@ -83,7 +83,7 @@ _→ 체크리스트 추가
 - [ ] swagger를 전달 받았는가?
 - [ ] useQuery, useInfiniteQuery를 구분하여 적절한 용도로 사용하였는가? **`Tokript`**
       → `gen:source`
-- [ ] Axios 설정 **`Advanced`**
+- [ ] fetch 설정 **`Advanced`**
 - [ ] React-query 설정 **`Advanced`**
 - [ ] 에러 핸들링 처리가 되었는가? **`Advanced`**
 

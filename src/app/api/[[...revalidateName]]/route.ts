@@ -16,9 +16,9 @@ async function handleValidRequest(
   id: string | null,
 ) {
   const revalidateTargetName =
-    typeof revalidateName === 'string'
-      ? revalidateName
-      : revalidateName.join('/')
+    typeof revalidateName === 'string' ? revalidateName : (
+      revalidateName.join('/')
+    )
 
   if (id) {
     revalidateTag(`${revalidateTargetName}${id}`)

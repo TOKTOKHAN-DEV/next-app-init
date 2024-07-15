@@ -10,6 +10,7 @@ import ToggleColorModeButton from '@/components/ToggleColorModeButton'
 import { ENV } from '@/configs/env'
 import AppProvider from '@/providers/AppProvider'
 
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import '../../public/fonts/pretendard/css/pretendardvariable-dynamic-subset.css'
 
 /**
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
-    locale: 'ko-KR',
+    locale: 'ko',
     siteName: '똑똑한 개발자',
     title: {
       default: '똑똑한 개발자',
@@ -89,37 +90,21 @@ export const metadata: Metadata = {
   },
 }
 
-const redirectIEtoEdge = () => {
-  return {
-    __html: `
-    if(/MSIE d|Trident.*rv:/.test(navigator.userAgent)) {
-      window.location = 'microsoft-edge:' + window.location;
-      setTimeout(function() {
-        window.location = 'https://go.microsoft.com/fwlink/?linkid=2135547';
-      }, 1);
-    }`,
-  }
-}
-
 /**
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts
  */
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
   return (
     <html lang="ko">
-      <head>
-        <script dangerouslySetInnerHTML={redirectIEtoEdge()} />
-        {/* Global site tag (gtag.js) - Google Analytics */}
-        {/* <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
-          ></script> */}
-        {/* <script dangerouslySetInnerHTML={this.setGoogleAnalytics()} /> */}
-      </head>
+      <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
       <body>
         <AppProvider>
-          <HomeLayout content={<>{children}</>} />
+          <HomeLayout content={children} />
           <ToggleColorModeButton />
           <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
         </AppProvider>

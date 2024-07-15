@@ -29,9 +29,8 @@ export async function login(data: LoginFormDataType) {
   //     const { access, refresh } = res
   //     const decodedAccess = jwtDecode(access)
   //     const decodedRefresh = jwtDecode(refresh)
-  //     const accessMaxAge = calcMaxAge({ exp: decodedAccess?.exp })
   //     const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
-  //     cookies().set('access', access, getJwtCookieOptions(accessMaxAge))
+  //     cookies().set('access', access, getJwtCookieOptions(refreshMaxAge))
   //     cookies().set('refresh', refresh, getJwtCookieOptions(refreshMaxAge))
   //   }
   //   return response.ok

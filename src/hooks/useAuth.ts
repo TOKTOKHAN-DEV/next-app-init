@@ -1,12 +1,14 @@
-import { useTokenStorage } from '@/stores/local/token'
+import { useAccessStorage } from '@/stores/cookie/access'
+import { useRefreshStorage } from '@/stores/cookie/refresh'
 
 import { useClient } from './useClient'
 
 export const useAuth = () => {
-  const token = useTokenStorage()
+  const access = useAccessStorage()
+  const refresh = useRefreshStorage()
   const isClient = useClient()
 
-  const isLogin: boolean | null = isClient ? !!token?.access : null
+  const isLogin: boolean | null = isClient ? !!access && !!refresh : null
 
-  return { isLogin, token }
+  return { isLogin, refresh }
 }

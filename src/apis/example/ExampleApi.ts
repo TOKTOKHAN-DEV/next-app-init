@@ -1,75 +1,70 @@
-import { AxiosInstance } from 'axios';
+import fetchExtended from '@/configs/fetch/fetch-extend'
 
-import instance from '@/configs/axios/instance';
-import { Paginated } from '@/types/utility/paginated';
-import { WithPaginationParams } from '@/types/utility/with-pagination-params';
+import { ContentType, HttpClient, RequestParams } from '../@http-client'
+import { CreateExampleDto } from './types/dto/create-example-dto'
+import { GetExampleDto } from './types/dto/get-example-dto'
+import { UpdateExampleDto } from './types/dto/update-example-dto'
+import { ExampleModel } from './types/model/example'
 
-import { CreateExampleDto } from './types/dto/create-example-dto';
-import { GetExampleDto } from './types/dto/get-example-dto';
-import { UpdateExampleDto } from './types/dto/update-example-dto';
-import { ExampleModel } from './types/model/example';
-
-export class ExampleApi {
-  axios: AxiosInstance = instance;
-  constructor(axios?: AxiosInstance) {
-    if (axios) this.axios = axios;
-  }
-
-  getList = async (params?: GetExampleDto): Promise<ExampleModel[]> => {
-    const { data } = await this.axios({
+export class ExampleApi<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
+  getList = (variables?: { query?: GetExampleDto; params?: RequestParams }) =>
+    this.request<ExampleModel[]>({
+      path: `/v1/example/`,
       method: 'GET',
-      url: `/v1/example`,
-      params,
-    });
-    return data;
-  };
+      query: variables?.query,
+      secure: true,
+      format: 'json',
+      ...variables?.params,
+    })
 
-  getListPaginated = async (
-    req?: WithPaginationParams<GetExampleDto>,
-  ): Promise<Paginated<ExampleModel[]>> => {
-    const { data } = await this.axios({
+  getById = (variables: { id: string; params?: RequestParams }) =>
+    this.request<ExampleModel>({
+      path: `/v1/example/${variables.id}`,
       method: 'GET',
-      url: `/v1/example`,
-      params: req,
-    });
-    return data;
-  };
+      secure: true,
+      format: 'json',
+      ...variables?.params,
+    })
 
-  getById = async (id: string): Promise<ExampleModel> => {
-    const { data } = await this.axios({
-      method: 'GET',
-      url: `/v1/example/${id}`,
-    });
-    return data;
-  };
-
-  create = async (req: CreateExampleDto): Promise<ExampleModel> => {
-    const { data } = await this.axios({
+  create = (variables: { data: CreateExampleDto; params?: RequestParams }) =>
+    this.request<ExampleModel>({
+      path: `/v1/example/`,
       method: 'POST',
-      url: `/v1/example`,
-      data: req,
-    });
-    return data;
-  };
+      body: variables.data,
+      secure: true,
+      type: ContentType.Json,
+      format: 'json',
+      ...variables?.params,
+    })
 
-  update = async (req: UpdateExampleDto): Promise<ExampleModel> => {
-    const { data } = await this.axios({
+  update = (variables: {
+    id: string
+    data: UpdateExampleDto
+    params?: RequestParams
+  }) =>
+    this.request<ExampleModel>({
+      path: `/v1/example/${variables.id}`,
       method: 'PUT',
-      url: `/v1/example/${req.id}`,
-      data: req,
-    });
-    return data;
-  };
+      body: variables.data,
+      secure: true,
+      type: ContentType.Json,
+      format: 'json',
+      ...variables?.params,
+    })
 
-  delete = async (id: string): Promise<void> => {
-    const { data } = await this.axios({
+  delete = (variables: { id: string; params?: RequestParams }) =>
+    this.request<void>({
+      path: `/v1/example/${variables.id}`,
       method: 'DELETE',
-      url: `/v1/example/${id}`,
-    });
-    return data;
-  };
+      secure: true,
+      ...variables?.params,
+    })
 }
 
-const exampleApi = new ExampleApi();
+const exampleApi = new ExampleApi({
+  customFetch: fetchExtended,
+})
 
-export default exampleApi;
+export default exampleApi

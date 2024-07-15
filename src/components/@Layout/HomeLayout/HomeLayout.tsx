@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import {
   ContainerProps,
@@ -16,9 +16,9 @@ import HomeFooter from './components/HomeFooter'
 import HomeHeader from './components/HomeHeader'
 
 interface HomeLayoutProps {
-  header?: JSX.Element
-  footer?: JSX.Element
-  content?: JSX.Element
+  header?: ReactNode
+  footer?: ReactNode
+  content?: ReactNode
   containerProps?: ContainerProps
 }
 const bounceAnimation = keyframes`
@@ -27,23 +27,22 @@ const bounceAnimation = keyframes`
   80% {  transform: translateY(-5px); }
   100% {  transform: translateY(0px); }
 `
-const HomeLayout = (
-  {
-    //
-    header = <HomeHeader />,
-    footer = <HomeFooter />,
-    containerProps,
-    content,
-  }: HomeLayoutProps,
-) => {
+const HomeLayout = ({
+  //
+  header = <HomeHeader />,
+  footer = <HomeFooter />,
+  containerProps,
+  content,
+}: HomeLayoutProps) => {
   const [isScroll, setIsScroll] = useState(false)
 
   const handleScroll = useCallback(() => {
     setIsScroll(window.scrollY > 66)
   }, [])
 
-  const scrollConfig: GridItemProps = isScroll
-    ? {
+  const scrollConfig: GridItemProps =
+    isScroll ?
+      {
         top: `-10px`,
         h: `calc(${LAYOUT.HEADER.HEIGHT} + 10px)`,
         boxShadow: 'card',

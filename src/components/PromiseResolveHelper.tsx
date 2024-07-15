@@ -1,18 +1,23 @@
 import { ReactNode } from 'react'
 
-type ChildrenWithDataType<T> = (data: T) => ReactNode
+type AwaitResolveRenderFunction<T> = (props: { data: T }) => ReactNode
 
 interface PromiseResolveHelperProps<T> {
-  data: Promise<Response>
-  children: ReactNode | ChildrenWithDataType<T>
+  promise: Promise<T>
+  children: ReactNode | AwaitResolveRenderFunction<T>
 }
 
-export default async function PromiseResolveHelper<T>(
-  { data, children }: PromiseResolveHelperProps<T>,
-) {
-  const resolvedData = await data.then((res) => res.json())
+export default async function PromiseResolveHelper<T>({
+  promise,
+  children,
+}: PromiseResolveHelperProps<T>) {
+  const resolvedData = await promise
 
   return (
-    <>{typeof children === 'function' ? children(resolvedData) : children}</>
+    <>
+      {typeof children === 'function' ?
+        children({ data: resolvedData })
+      : children}
+    </>
   )
 }
