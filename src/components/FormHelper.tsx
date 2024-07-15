@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 import {
   FormControl,
@@ -9,19 +9,19 @@ import {
   FormLabel,
   FormLabelProps,
   TextProps,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 interface FormHelperProps extends FormControlProps {
-  helperText?: ReactNode;
-  errorText?: ReactNode;
-  successText?: ReactNode;
-  label?: string;
-  children: ReactNode | ReactNode[];
+  helperText?: ReactNode
+  errorText?: ReactNode
+  successText?: ReactNode
+  label?: string
+  children: ReactNode | ReactNode[]
 
-  labelProps?: FormLabelProps;
-  successTextProps?: TextProps;
-  helperTextProps?: TextProps;
-  errorTextProps?: FormErrorMessageProps;
+  labelProps?: FormLabelProps
+  successTextProps?: TextProps
+  helperTextProps?: TextProps
+  errorTextProps?: FormErrorMessageProps
 }
 
 /**
@@ -48,9 +48,9 @@ const FormHelper = ({
 
   ...basisProps
 }: FormHelperProps) => {
-  const isShowErrorText = !!errorText;
-  const isShowSuccessText = !!successText && !isShowErrorText;
-  const isShowHelper = !!helperText && !isShowErrorText && !isShowErrorText;
+  const isShowErrorText = !!errorText
+  const isShowSuccessText = !!successText && !isShowErrorText
+  const isShowHelper = !!helperText && !isShowErrorText && !isShowErrorText
 
   return (
     <FormControl isInvalid={!!errorText} {...basisProps}>
@@ -72,7 +72,7 @@ const FormHelper = ({
         <FormHelperText {...helperTextProps}>{helperText}</FormHelperText>
       )}
     </FormControl>
-  );
-};
+  )
+}
 
-export default FormHelper;
+export default FormHelper

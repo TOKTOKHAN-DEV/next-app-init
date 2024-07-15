@@ -1,4 +1,4 @@
-import { DeclaredFontsType } from './fonts/types/declared-fonts-type';
+import { DeclaredFontsType } from './fonts/types/declared-fonts-type'
 
 /**
  * @issues
@@ -17,7 +17,7 @@ import { DeclaredFontsType } from './fonts/types/declared-fonts-type';
 const declaredNextFontsMock: DeclaredFontsType = {
   Akronim: 'sans-serif',
   Pretendard: 'sans-serif',
-};
+}
 
 const typography = {
   fonts: declaredNextFontsMock,
@@ -32,6 +32,6 @@ const typography = {
     extrabold: 800,
     black: 900,
   },
-};
+}
 
-export default typography;
+export default typography

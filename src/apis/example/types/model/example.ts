@@ -1,4 +1,4 @@
 export type ExampleModel = {
-  id: number;
-  example: string;
-};
+  id: number
+  example: string
+}

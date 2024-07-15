@@ -36,4 +36,4 @@ export const OUTER_LINKS = {
     REACT_QUERY:
       'https://toktokhan.notion.site/Network-React-Query-c82789b3d21241b28413edb86b1c73d1',
   },
-} as const;
+} as const

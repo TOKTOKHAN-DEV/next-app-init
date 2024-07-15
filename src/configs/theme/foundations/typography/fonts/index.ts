@@ -1,7 +1,7 @@
-import nextFonts from './next-fonts';
+import nextFonts from './next-fonts'
 
 const fonts = {
   ...nextFonts,
-};
+}
 
-export default fonts;
+export default fonts

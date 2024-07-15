@@ -9,6 +9,9 @@ import { useTodoListQuery } from '@/apis/todo/TodoApi.query'
 // @delete:file
 // @delete:folder
 
+/**
+ * @description useQuery와 suspense를 함께 사용하면 서버에서 요청을 시작하므로 isLoading 상태로 loading 처리 해야합니다.
+ * */
 const QueryTodoList = () => {
   const { data: todos } = useTodoListQuery({
     options: {

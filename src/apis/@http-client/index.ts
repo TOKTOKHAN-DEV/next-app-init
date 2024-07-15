@@ -95,9 +95,9 @@ export class HttpClient<SecurityDataType = unknown> {
     )
     return keys
       .map((key) =>
-        Array.isArray(query[key])
-          ? this.addArrayQueryParam(query, key)
-          : this.addQueryParam(query, key),
+        Array.isArray(query[key]) ?
+          this.addArrayQueryParam(query, key)
+        : this.addQueryParam(query, key),
       )
       .join('&')
   }
@@ -109,23 +109,25 @@ export class HttpClient<SecurityDataType = unknown> {
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === 'object' || typeof input === 'string')
-        ? JSON.stringify(input)
-        : input,
+      (
+        input !== null &&
+        (typeof input === 'object' || typeof input === 'string')
+      ) ?
+        JSON.stringify(input)
+      : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== 'string'
-        ? JSON.stringify(input)
-        : input,
+      input !== null && typeof input !== 'string' ?
+        JSON.stringify(input)
+      : input,
     [ContentType.FormData]: (input: any) =>
       Object.keys(input || {}).reduce((formData, key) => {
         const property = input[key]
         formData.append(
           key,
-          property instanceof Blob
-            ? property
-            : typeof property === 'object' && property !== null
-            ? JSON.stringify(property)
-            : `${property}`,
+          property instanceof Blob ? property
+          : typeof property === 'object' && property !== null ?
+            JSON.stringify(property)
+          : `${property}`,
         )
         return formData
       }, new FormData()),
@@ -202,26 +204,27 @@ export class HttpClient<SecurityDataType = unknown> {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
-          ...(type && type !== ContentType.FormData
-            ? { 'Content-Type': type }
-            : {}),
+          ...(type && type !== ContentType.FormData ?
+            { 'Content-Type': type }
+          : {}),
         },
-        signal: cancelToken
-          ? this.createAbortSignal(cancelToken)
+        signal:
+          cancelToken ?
+            this.createAbortSignal(cancelToken)
           : requestParams.signal,
         body:
-          typeof body === 'undefined' || body === null
-            ? null
-            : payloadFormatter(body),
+          typeof body === 'undefined' || body === null ?
+            null
+          : payloadFormatter(body),
       },
     ).then(async (response) => {
       const r = response as HttpResponse<T, E>
       r.data = null as unknown as T
       r.error = null as unknown as E
 
-      const data = !responseFormat
-        ? r
-        : await response[responseFormat]()
+      const data =
+        !responseFormat ? r : (
+          await response[responseFormat]()
             .then((data) => {
               if (r.ok) {
                 r.data = data
@@ -234,6 +237,7 @@ export class HttpClient<SecurityDataType = unknown> {
               r.error = e
               return r
             })
+        )
 
       if (cancelToken) {
         this.abortControllers.delete(cancelToken)

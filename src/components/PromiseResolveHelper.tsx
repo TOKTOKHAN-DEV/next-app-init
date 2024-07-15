@@ -15,9 +15,9 @@ export default async function PromiseResolveHelper<T>({
 
   return (
     <>
-      {typeof children === 'function'
-        ? children({ data: resolvedData })
-        : children}
+      {typeof children === 'function' ?
+        children({ data: resolvedData })
+      : children}
     </>
   )
 }

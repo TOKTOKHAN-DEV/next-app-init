@@ -1,8 +1,9 @@
 'use client'
+
 import { useEffect, useState } from 'react'
+
 import LinkCallback from './LinkCallback'
 import PopupCallback from './PopupCallback'
-
 
 export default function SocialCallback() {
   const [isPopup, setIsPopup] = useState(true)
@@ -14,4 +15,3 @@ export default function SocialCallback() {
 
   return isPopup ? <PopupCallback /> : <LinkCallback />
 }
-

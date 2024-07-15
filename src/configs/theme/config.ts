@@ -1,4 +1,4 @@
-import { ThemeConfig } from '@chakra-ui/react';
+import { ThemeConfig } from '@chakra-ui/react'
 
 /**
  * System color mode를 사용하고 싶을 경우 아래와 같이 설정해주세요.
@@ -9,6 +9,6 @@ import { ThemeConfig } from '@chakra-ui/react';
 const config: ThemeConfig = {
   initialColorMode: 'light',
   useSystemColorMode: false,
-};
+}
 
-export default config;
+export default config

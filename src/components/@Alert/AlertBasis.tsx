@@ -28,23 +28,21 @@ interface AlertBasisProps
   onConfirm?: () => void
 }
 
-export default function AlertBasis(
-  {
-    header,
-    body,
-    footer,
+export default function AlertBasis({
+  header,
+  body,
+  footer,
 
-    headerProps,
-    bodyProps,
-    footerProps,
+  headerProps,
+  bodyProps,
+  footerProps,
 
-    confirmText = '확인',
-    cancelText = '취소',
+  confirmText = '확인',
+  cancelText = '취소',
 
-    onConfirm,
-    ...props
-  }: AlertBasisProps,
-) {
+  onConfirm,
+  ...props
+}: AlertBasisProps) {
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   return (

@@ -1,8 +1,8 @@
-import { Button, Text } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react'
 
 interface ToggleColorModeButtonViewProps {
-  colorMode: 'dark' | 'light';
-  toggleColorMode: () => void;
+  colorMode: 'dark' | 'light'
+  toggleColorMode: () => void
 }
 
 export const ToggleColorModeButtonView = ({
@@ -21,7 +21,9 @@ export const ToggleColorModeButtonView = ({
       borderRadius="full"
       p="0"
     >
-      {colorMode === 'light' ? <Text>DARK</Text> : <Text>LIGHT</Text>}
+      {colorMode === 'light' ?
+        <Text>DARK</Text>
+      : <Text>LIGHT</Text>}
     </Button>
-  );
-};
+  )
+}
