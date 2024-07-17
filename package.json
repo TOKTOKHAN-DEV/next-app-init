@@ -98,5 +98,10 @@
     "win64",
     "linux"
   ],
-  "engineStrict": true
+  "engineStrict": true,
+  "pnpm": {
+    "patchedDependencies": {
+      "lodash@4.17.21": "patches/lodash@4.17.21.patch"
+    }
+  }
 }
