@@ -19,7 +19,7 @@ export const TokGuide = () => {
       <Text textStyle="pre-heading-01">Tok Guide</Text>
 
       <Text mt="24px">
-        환영합니다. 해당 보일러템플릿은 똑똑한 개발자에서 제공하는 여러 모듈로
+        환영합니다. 해당 보일러템플릿은 똑똑한개발자에서 제공하는 여러 모듈로
         이루어져 있습니다.
       </Text>
       <Tabs mt="24px">
