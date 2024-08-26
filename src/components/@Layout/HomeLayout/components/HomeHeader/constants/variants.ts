@@ -11,21 +11,21 @@ export const HOME_HEADER_VARIANTS: Record<
   }
 > = {
   dark: {
-    header: { bg: 'black' },
-    drawer: { bg: 'white' },
-    pointColor: 'white',
-    subColor: 'primary',
+    header: { bg: 'background.basic.1' },
+    drawer: { bg: 'background.basic.1' },
+    pointColor: 'content.1',
+    subColor: 'brand.secondary.500',
   },
   light: {
-    header: { bg: 'primary' },
-    drawer: { bg: 'white' },
-    pointColor: 'white',
-    subColor: 'secondary',
+    header: { bg: 'background.basic.1' },
+    drawer: { bg: 'background.basic.1' },
+    pointColor: 'content.1',
+    subColor: 'brand.secondary.500',
   },
   transparent: {
     header: { bg: 'transparent' },
-    drawer: { bg: 'white' },
-    pointColor: 'black',
-    subColor: 'gray.400',
+    drawer: { bg: 'background.basic.1' },
+    pointColor: 'content.1',
+    subColor: 'brand.secondary.500',
   },
 }

@@ -21,7 +21,7 @@ export const TokGuideDrawer = (props: Partial<DrawerProps>) => {
       {...props}
     >
       <DrawerOverlay />
-      <DrawerContent bg="background.primary">
+      <DrawerContent bg="background.basic.1">
         <DrawerCloseButton w="40px" h="40px" />
         <DrawerBody>
           <TokGuide />

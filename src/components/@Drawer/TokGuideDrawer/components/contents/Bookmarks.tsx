@@ -30,6 +30,10 @@ export const Bookmarks = () => {
                   href: 'https://react-hook-form.com/',
                 },
                 {
+                  text: 'axios',
+                  href: 'https://axios-http.com/kr/docs/intro',
+                },
+                {
                   text: 'react-query',
                   href: 'https://tanstack.com/query/latest/docs/framework/react/overview',
                 },
@@ -57,6 +61,18 @@ export const Bookmarks = () => {
                   text: '@toktokhan-dev/react-web',
                   href: 'https://toktokhan-dev-docs.vercel.app/docs/react-web',
                 },
+                {
+                  text: '@toktokhan-dev/chakra',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/chakra',
+                },
+                {
+                  text: '@toktokhan-dev/zustand-with-setter',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/zustand-with-setter',
+                },
+                {
+                  text: '@toktokhan-dev/zustand-create-store-context',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/zustand-create-store-context',
+                },
               ]}
             />
           </>
@@ -74,35 +90,31 @@ export const Bookmarks = () => {
               data={[
                 {
                   text: 'convention',
-                  href: '',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/category/convention',
                 },
                 {
                   text: 'git-flow',
                   href: '',
                 },
                 {
-                  text: 'toktokhan-codereview',
-                  href: 'https://github.com/TOKTOKHAN-DEV/fe-code-review/pulls?q=is%3Apr+is%3Aclosed',
+                  text: 'toktoken',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/toktoken/Introduction',
                 },
                 {
-                  text: 'fp-guide',
-                  href: '',
+                  text: 'tokit',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokit/Overview',
                 },
                 {
                   text: 'social-login',
-                  href: '',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/auth/Social_Login/Overview',
                 },
                 {
-                  text: 'payment',
-                  href: '',
+                  text: 'refresh-token',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/auth/Refresh',
                 },
                 {
-                  text: 'web-storage',
-                  href: '',
-                },
-                {
-                  text: 'state-management',
-                  href: '',
+                  text: 'state-management:zustand',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/category/store-zustand-guide',
                 },
               ]}
             />
@@ -143,8 +155,8 @@ export const Bookmarks = () => {
                   href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-route-next-page',
                 },
                 {
-                  text: 'gen:icon',
-                  href: '',
+                  text: 'gen:icon-chakra',
+                  href: 'https://toktokhan-dev-docs.vercel.app/docs/docs/tokript/Offical%20Plugins/gen-icon-chakra',
                 },
               ]}
             />

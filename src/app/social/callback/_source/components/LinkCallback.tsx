@@ -6,18 +6,28 @@ import { useOauthLinkCallback } from '@toktokhan-dev/react-web'
 
 import Splash from '@/components/Splash'
 
+import { OauthCallback } from '../types'
+
 const LinkCallback = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const returnUrl = searchParams.get('returnUrl') as Route
 
-  const result = useOauthLinkCallback({
+  const result = useOauthLinkCallback<OauthCallback>({
     onSuccess: (res) => {
-      console.log('res', res)
-      // mutate({ token: data?.token, socialType: data?.socialType })
+      console.log('succeed to login', res)
+      // mutateAsync({
+      //   data: {
+      //     code: res.code,
+      //     type: res.state.type,
+      //   },
+      // }).then((res) =>
+      // save token to client storage
+      //
     },
-    onFail: () => {
-      console.log('failed to login')
+    onFail: (res) => {
+      console.log('failed to login', res)
+      // router.push(res.returnUrl || '/')
     },
   })
 

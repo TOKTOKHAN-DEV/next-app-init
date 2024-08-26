@@ -71,6 +71,7 @@ const HomeLayout = ({
       minH={'100vh'}
       pos={'relative'}
       gridAutoColumns={'1fr'}
+      bg={'background.basic.1'}
       gridTemplateRows={`${LAYOUT.HEADER.HEIGHT} 1fr auto`}
       templateAreas={`"header" "main" "footer"`}
     >
@@ -82,7 +83,6 @@ const HomeLayout = ({
         w={'100%'}
         display="flex"
         justifyContent={'center'}
-        bg={'background.primary'}
         pt={isScroll ? '10px' : '0'}
         {...scrollConfig}
       >
@@ -93,19 +93,11 @@ const HomeLayout = ({
         area={'main'}
         w={'100%'}
         minW={'100%'}
-        bg={'background.primary'}
         {...containerProps}
       >
         {content}
       </GridItem>
-      <GridItem
-        area={'footer'}
-        as={'footer'}
-        h={'100%'}
-        w={'100%'}
-        py={'30px'}
-        bg={'background.primary'}
-      >
+      <GridItem area={'footer'} as={'footer'} h={'100%'} w={'100%'} py={'30px'}>
         {footer}
       </GridItem>
     </Grid>

@@ -10,9 +10,13 @@ const HomeHeaderDrawer = ({ bodyProps, ...props }: HomeHeaderDrawerProps) => {
   return (
     <DrawerBasis //
       header={'header'}
-      body={<Text> body</Text>}
-      footer={<Text> footer</Text>}
-      bodyProps={bodyProps}
+      body={<Text>body</Text>}
+      footer={<Text>footer</Text>}
+      styles={{
+        header: { bg: 'background.basic.1' },
+        content: { bg: 'background.basic.1' },
+        body: { ...bodyProps },
+      }}
       {...props}
     />
   )

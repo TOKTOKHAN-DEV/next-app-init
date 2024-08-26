@@ -6,17 +6,12 @@ import { Center, Text } from '@chakra-ui/layout'
  */
 export default function HomePage() {
   return (
-    <Center
-      h={'100%'}
-      color={'text.primary'}
-      borderRadius={'8px'}
-      flexDir={'column'}
-    >
-      <Text color="brand.400" textStyle={['pre-heading-01', 'pre-display-05']}>
-        toktokhan-dev
+    <Center h={'100%'} borderRadius={'8px'} flexDir={'column'}>
+      <Text color="primary.3" textStyle={'pre-heading-01'}>
+        TOKTOKHAN.DEV
       </Text>
-      <Text textStyle={['pre-heading-05', 'pre-heading-03']}>
-        Next app template
+      <Text color={'content.1'} textStyle={'pre-heading-02'}>
+        Next App Template
       </Text>
     </Center>
   )

@@ -2,17 +2,21 @@ import { useOauthPopupCallback } from '@toktokhan-dev/react-web'
 
 import Splash from '@/components/Splash'
 
+import { OauthCallback } from '../types'
+
 const PopupCallback = () => {
-  useOauthPopupCallback({
+  useOauthPopupCallback<OauthCallback>({
     onSuccess: (res) => {
-      res?.closePopup()
-      // mutate({ token: data?.token, socialType: data?.socialType })
+      console.log('succeed to login', res)
+      // res?.closePopup({
+      //   code: 'extra data',
+      // })
     },
-    onFail: () => {
-      console.log('failed to login')
+    onFail: (res) => {
+      console.log('failed to login', res)
+      // res?.closePopup()
     },
   })
-
   return <Splash />
 }
 

@@ -1,12 +1,13 @@
 'use client'
 
-import { Flex, IconButton, Image } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/next-js'
+import { Flex, IconButton } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 
-import { MenuIcon } from 'generated/icons/MyIcons'
+import { LogoIcon, MenuIcon } from 'generated/icons/MyIcons'
 
 import { LAYOUT } from '@/constants/layout'
-import { MY_IMAGES } from '@/images'
+import { ROUTES } from '@/generated/path/routes'
 
 import HomeHeaderDrawer from './components/HomeHeaderDrawer'
 import {
@@ -36,13 +37,9 @@ const HomeHeader = ({ variant = 'light' }: HomeHeaderProps) => {
         h={LAYOUT.HEADER.HEIGHT}
         {...cssByVariant.header}
       >
-        <Image //
-          alt={MY_IMAGES.ICONS_LOGO.alt}
-          src={MY_IMAGES.ICONS_LOGO.src}
-          w="74px"
-          cursor="pointer"
-        />
-        <Image alt="menu" src="/images/header/menu.png" w="24px" h="24px" />
+        <Link variant={'unstyled'} href={ROUTES.MAIN}>
+          <LogoIcon boxSize={'74px'} color={'brand.primary.500'} />
+        </Link>
         <IconButton //
           size={'xs'}
           color={cssByVariant.pointColor}

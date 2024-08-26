@@ -10,7 +10,9 @@
  **/
 
 export const colorSchema = {
-  'grey.white': '#ffffff',
+  'common.white': '#ffffff',
+  'common.black': '#000000',
+  'grey.50': '#fafafa',
   'grey.100': '#f5f5f5',
   'grey.200': '#ececec',
   'grey.300': '#d9d9d9',
@@ -21,17 +23,25 @@ export const colorSchema = {
   'grey.800': '#333333',
   'grey.900': '#171717',
   'green.50': '#e0ffeb',
+  'green.100': '#bef4d0',
+  'green.200': '#7ee29f',
   'green.300': '#4bce77',
   'green.400': '#2abb5a',
   'green.500': '#22a04c',
   'green.600': '#1f8441',
   'green.700': '#216e3b',
+  'green.800': '#174f2a',
+  'green.900': '#16281c',
   'yellow.50': '#fef7d7',
+  'yellow.100': '#fcf1b5',
   'yellow.200': '#fae161',
   'yellow.300': '#f9d414',
+  'yellow.400': '#efb806',
   'yellow.500': '#d7a204',
   'yellow.600': '#a67d03',
   'yellow.700': '#896601',
+  'yellow.800': '#644c02',
+  'yellow.900': '#322601',
   'blue.50': '#e9f2ff',
   'blue.100': '#cce0ff',
   'blue.200': '#84b8ff',
@@ -40,333 +50,287 @@ export const colorSchema = {
   'blue.500': '#1d7afc',
   'blue.600': '#0c66e4',
   'blue.700': '#0055cc',
-  'blue.800': '#09326c',
+  'blue.800': '#0c418d',
+  'blue.900': '#1c2b41',
   'red.50': '#fff1f0',
+  'red.100': '#ffd5d2',
+  'red.200': '#fd9891',
   'red.300': '#f87168',
+  'red.400': '#f15b50',
   'red.500': '#e2483d',
   'red.600': '#c9372c',
-  'red.700': '#c9372c',
-  'grey.transparent.500': '#00000080',
+  'red.700': '#98322b',
+  'red.800': '#5d1f1a',
+  'red.900': '#510e16',
+  'pink.50': '#fff0f1',
+  'pink.100': '#fdd0d5',
   'pink.200': '#f995a0',
   'pink.300': '#f76476',
+  'pink.400': '#ec5063',
   'pink.500': '#d94456',
+  'pink.600': '#ce273b',
+  'pink.700': '#bc1528',
+  'pink.800': '#841522',
+  'pink.900': '#660019',
   'violet.50': '#f3f0ff',
+  'violet.100': '#dfd8fd',
+  'violet.200': '#b8acf6',
   'violet.300': '#9f8fef',
   'violet.400': '#8f7ee7',
+  'violet.500': '#8270db',
   'violet.600': '#6e5dc6',
+  'violet.700': '#5e4db2',
+  'violet.800': '#42377c',
+  'violet.900': '#272339',
+  'brand.primary.50': '#eff7fe',
+  'brand.primary.100': '#d8e6fd',
+  'brand.primary.200': '#b2ccfc',
+  'brand.primary.300': '#8aaef7',
+  'brand.primary.400': '#6b93ef',
+  'brand.primary.500': '#3d6be5',
+  'brand.primary.600': '#2c51c4',
+  'brand.primary.700': '#1e3ba4',
+  'brand.primary.800': '#132884',
+  'brand.primary.900': '#0b1b6d',
+  'white.transparent.50': '#ffffffD',
+  'white.transparent.100': '#ffffff1A',
+  'white.transparent.200': '#ffffff33',
+  'white.transparent.300': '#ffffff4D',
+  'white.transparent.400': '#ffffff66',
   'white.transparent.500': '#ffffff80',
+  'white.transparent.600': '#ffffff99',
+  'white.transparent.700': '#ffffffB2',
+  'white.transparent.800': '#ffffffCC',
+  'white.transparent.900': '#ffffffE5',
+  'grey.transparent.50': '#000000D',
+  'grey.transparent.100': '#0000001A',
+  'grey.transparent.200': '#00000033',
+  'grey.transparent.300': '#0000004D',
+  'grey.transparent.400': '#00000066',
+  'grey.transparent.500': '#00000080',
+  'grey.transparent.600': '#00000099',
+  'grey.transparent.700': '#000000B2',
+  'grey.transparent.800': '#000000CC',
+  'grey.transparent.900': '#000000E5',
+  'brand.secondary.50': '#fefbec',
+  'brand.secondary.100': '#fef1cf',
+  'brand.secondary.200': '#fedf9f',
+  'brand.secondary.300': '#fec86f',
+  'brand.secondary.400': '#fdb24c',
+  'brand.secondary.500': '#fc8e11',
+  'brand.secondary.600': '#d86f0c',
+  'brand.secondary.700': '#b55408',
+  'brand.secondary.800': '#923c05',
+  'brand.secondary.900': '#782b03',
 }
 
 export const colors = {
-  'support.success': {
-    default: colorSchema['green.400'],
-  },
-  'support.success.accent': {
-    default: colorSchema['green.700'],
-    _dark: colorSchema['green.500'],
-  },
-  'support.success.subtle': {
-    default: colorSchema['green.50'],
-    _dark: colorSchema['green.700'],
-  },
-  'support.warning': {
-    default: colorSchema['yellow.300'],
-    _dark: colorSchema['yellow.200'],
-  },
-  'support.warning.accent': {
-    default: colorSchema['yellow.700'],
-    _dark: colorSchema['yellow.300'],
-  },
-  'support.warning.subtle': {
-    default: colorSchema['yellow.50'],
-    _dark: colorSchema['yellow.600'],
-  },
-  'support.error': {
-    default: colorSchema['red.500'],
-    _dark: colorSchema['red.300'],
-  },
-  'support.error.accent': {
-    default: colorSchema['red.600'],
-    _dark: colorSchema['red.500'],
-  },
-  'support.error.subtle': {
-    default: colorSchema['red.50'],
-    _dark: colorSchema['red.700'],
-  },
-  'background.overlay': {
-    default: colorSchema['grey.transparent.500'],
-    _dark: colorSchema['white.transparent.500'],
-  },
-  'text.primary': {
-    default: colorSchema['grey.900'],
-    _dark: colorSchema['grey.white'],
-  },
-  'text.secondary': {
-    default: colorSchema['grey.600'],
-    _dark: colorSchema['grey.200'],
-  },
-  'text.tertiary': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.400'],
-  },
-  'text.primary.inverse': {
-    default: colorSchema['grey.white'],
-    _dark: colorSchema['grey.800'],
-  },
-  'text.secondary.inverse': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.700'],
-  },
-  'text.tertiary.inverse': {
-    default: colorSchema['grey.600'],
-    _dark: colorSchema['grey.600'],
-  },
-  'background.primary': {
-    default: colorSchema['grey.white'],
-    _dark: colorSchema['grey.800'],
-  },
-  'background.primary.hover': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.700'],
-  },
-  'background.primary.active': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.600'],
-  },
-  'background.primary.selected': {
-    default: colorSchema['blue.50'],
-    _dark: colorSchema['blue.500'],
-  },
-  'background.secondary': {
-    default: colorSchema['grey.100'],
-    _dark: colorSchema['grey.600'],
-  },
-  'background.secondary.hover': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.500'],
-  },
-  'background.secondary.active': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.400'],
-  },
-  'background.secondary.selected': {
-    default: colorSchema['blue.50'],
-    _dark: colorSchema['blue.500'],
-  },
-  'border.primary': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.600'],
-  },
-  'border.secondary': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.700'],
-  },
-  'border.selected': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.400'],
-  },
-  'border.active': {
-    default: colorSchema['grey.800'],
-    _dark: colorSchema['grey.white'],
-  },
-  'field.solid': {
-    default: colorSchema['grey.100'],
-    _dark: colorSchema['grey.600'],
-  },
-  'field.line': {
-    default: colorSchema['grey.white'],
-    _dark: colorSchema['grey.800'],
-  },
-  'field.disabled': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.700'],
-  },
-  'button.primary': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.400'],
-  },
-  'button.primary.hover': {
-    default: colorSchema['blue.700'],
-    _dark: colorSchema['blue.300'],
-  },
-  'button.primary.active': {
-    default: colorSchema['blue.800'],
-    _dark: colorSchema['blue.200'],
-  },
-  'button.secondary': {
-    default: colorSchema['grey.100'],
-    _dark: colorSchema['grey.white'],
-  },
-  'button.secondary.hover': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.100'],
-  },
-  'button.secondary.active': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.200'],
-  },
-  'button.disalbled': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.800'],
-  },
-  'text.disabled': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.600'],
-  },
-  'icon.primary': {
-    default: colorSchema['grey.900'],
-    _dark: colorSchema['grey.white'],
-  },
-  'icon.secondary': {
-    default: colorSchema['grey.600'],
-    _dark: colorSchema['grey.200'],
-  },
-  'icon.disabled.on': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.600'],
-  },
-  'background.brand': {
-    default: colorSchema['blue.50'],
-    _dark: colorSchema['blue.500'],
-  },
-  'support.interactive.pink': {
-    default: colorSchema['pink.300'],
-    _dark: colorSchema['pink.200'],
-  },
-  'support.interactive.purple': {
-    default: colorSchema['violet.400'],
-    _dark: colorSchema['violet.300'],
-  },
-  'background.inverse': {
-    default: colorSchema['grey.800'],
-    _dark: colorSchema['grey.white'],
-  },
-  'background.inverse.hover': {
-    default: colorSchema['grey.600'],
-    _dark: colorSchema['grey.100'],
-  },
-  'background.inverse.active': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.200'],
-  },
-  'background.brand.hover': {
-    default: colorSchema['blue.200'],
-    _dark: colorSchema['blue.600'],
-  },
-  'background.brand.active': {
-    default: colorSchema['blue.300'],
-    _dark: colorSchema['blue.700'],
-  },
-  'background.brand.inverse': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.50'],
-  },
-  'text.quaternary': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.500'],
-  },
-  'icon.tertiary': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.300'],
-  },
-  'button.tertiary': {
-    default: colorSchema['grey.white'],
-    _dark: colorSchema['grey.800'],
-  },
-  'button.tertiary.hover': {
-    default: colorSchema['grey.100'],
-    _dark: colorSchema['grey.600'],
-  },
-  'button.tertiary.active': {
-    default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.500'],
-  },
-  'icon.primary.inverse': {
-    default: colorSchema['grey.white'],
-    _dark: colorSchema['grey.800'],
-  },
-  'icon.secondary.inverse': {
-    default: colorSchema['grey.300'],
-    _dark: colorSchema['grey.600'],
-  },
-  'support.interactive.blue': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.400'],
-  },
-  'badge.pink': {
-    default: colorSchema['pink.500'],
-    _dark: colorSchema['pink.300'],
-  },
-  'badge.pink.subtle': {
-    default: colorSchema['red.50'],
-    _dark: colorSchema['red.50'],
-  },
-  'badge.yellow': {
-    default: colorSchema['yellow.700'],
-    _dark: colorSchema['yellow.500'],
-  },
-  'badge.yellow.subtle': {
+  'accent.yellow.1': {
     default: colorSchema['yellow.50'],
     _dark: colorSchema['yellow.50'],
   },
-  'badge.green': {
-    default: colorSchema['green.600'],
+  'accent.yellow.2': {
+    default: colorSchema['yellow.300'],
+    _dark: colorSchema['yellow.300'],
+  },
+  'accent.green.2': {
+    default: colorSchema['green.400'],
     _dark: colorSchema['green.400'],
   },
-  'badge.green.subtle': {
+  'accent.red.2': {
+    default: colorSchema['red.500'],
+    _dark: colorSchema['red.500'],
+  },
+  'accent.pink.1': {
+    default: colorSchema['red.50'],
+    _dark: colorSchema['red.50'],
+  },
+  'accent.green.1': {
     default: colorSchema['green.50'],
     _dark: colorSchema['green.50'],
   },
-  'badge.blue': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.300'],
-  },
-  'badge.blue.subtle': {
-    default: colorSchema['blue.50'],
-    _dark: colorSchema['blue.50'],
-  },
-  'badge.violet': {
-    default: colorSchema['violet.600'],
-    _dark: colorSchema['violet.600'],
-  },
-  'badge.violet.subtle': {
+  'accent.violet.1': {
     default: colorSchema['violet.50'],
     _dark: colorSchema['violet.50'],
   },
-  'background.brand.inverse.hover': {
-    default: colorSchema['blue.700'],
-    _dark: colorSchema['blue.100'],
+  'accent.red.1': {
+    default: colorSchema['red.50'],
+    _dark: colorSchema['red.50'],
   },
-  'background.brand.inverse.active': {
-    default: colorSchema['blue.800'],
-    _dark: colorSchema['blue.200'],
+  'primary.1': {
+    default: colorSchema['brand.primary.50'],
+    _dark: colorSchema['brand.primary.50'],
   },
-  'text.disabled.inverse': {
-    default: colorSchema['grey.700'],
-    _dark: colorSchema['grey.200'],
+  'primary.2': {
+    default: colorSchema['brand.primary.100'],
+    _dark: colorSchema['brand.primary.100'],
   },
-  'badge.grey': {
+  'primary.3': {
+    default: colorSchema['brand.primary.500'],
+    _dark: colorSchema['brand.primary.500'],
+  },
+  'primary.4': {
+    default: colorSchema['brand.primary.600'],
+    _dark: colorSchema['brand.primary.600'],
+  },
+  'primary.5': {
+    default: colorSchema['brand.primary.700'],
+    _dark: colorSchema['brand.primary.700'],
+  },
+  'secondary.1': {
+    default: colorSchema['brand.secondary.100'],
+    _dark: colorSchema['brand.secondary.100'],
+  },
+  'secondary.2': {
+    default: colorSchema['brand.secondary.400'],
+    _dark: colorSchema['brand.secondary.400'],
+  },
+  'secondary.3': {
+    default: colorSchema['brand.secondary.500'],
+    _dark: colorSchema['brand.secondary.500'],
+  },
+  'secondary.4': {
+    default: colorSchema['brand.secondary.600'],
+    _dark: colorSchema['brand.secondary.600'],
+  },
+  'secondary.5': {
+    default: colorSchema['brand.secondary.700'],
+    _dark: colorSchema['brand.secondary.700'],
+  },
+  'background.inverse.1': {
+    default: colorSchema['grey.900'],
+    _dark: colorSchema['grey.900'],
+  },
+  'background.inverse.2': {
     default: colorSchema['grey.800'],
     _dark: colorSchema['grey.800'],
   },
-  'badge.gre.subtle': {
+  'background.inverse.3': {
+    default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.700'],
+  },
+  'background.inverse.4': {
+    default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.600'],
+  },
+  'background.basic.1': {
+    default: colorSchema['common.white'],
+    _dark: colorSchema['grey.900'],
+  },
+  'background.basic.2': {
+    default: colorSchema['grey.50'],
+    _dark: colorSchema['grey.800'],
+  },
+  'background.basic.3': {
+    default: colorSchema['grey.100'],
+    _dark: colorSchema['grey.700'],
+  },
+  'background.basic.4': {
     default: colorSchema['grey.200'],
-    _dark: colorSchema['grey.200'],
+    _dark: colorSchema['grey.600'],
   },
-  'border.brand': {
-    default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.400'],
+  'content.1': {
+    default: colorSchema['grey.900'],
+    _dark: colorSchema['common.white'],
   },
-  'text.disabled.on': {
-    default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.400'],
+  'content.2': {
+    default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.100'],
   },
-  'icon.disabled': {
+  'content.3': {
+    default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.300'],
+  },
+  'content.4': {
+    default: colorSchema['grey.500'],
+    _dark: colorSchema['grey.500'],
+  },
+  'content.8': {
+    default: colorSchema['common.white'],
+    _dark: colorSchema['grey.900'],
+  },
+  'content.6': {
     default: colorSchema['grey.300'],
     _dark: colorSchema['grey.700'],
   },
-  'support.info': {
+  'content.5': {
+    default: colorSchema['grey.400'],
+    _dark: colorSchema['grey.600'],
+  },
+  'border.basic.1': {
+    default: colorSchema['grey.200'],
+    _dark: colorSchema['grey.700'],
+  },
+  'border.basic.2': {
+    default: colorSchema['grey.300'],
+    _dark: colorSchema['grey.400'],
+  },
+  'border.basic.3': {
+    default: colorSchema['grey.900'],
+    _dark: colorSchema['grey.300'],
+  },
+  'border.inverse.1': {
+    default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.700'],
+  },
+  'border.inverse.2': {
+    default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.600'],
+  },
+  'border.inverse.3': {
+    default: colorSchema['grey.50'],
+    _dark: colorSchema['grey.50'],
+  },
+  'accent.blue.1': {
+    default: colorSchema['blue.50'],
+    _dark: colorSchema['blue.50'],
+  },
+  'accent.blue.2': {
     default: colorSchema['blue.500'],
-    _dark: colorSchema['blue.400'],
+    _dark: colorSchema['blue.500'],
+  },
+  'accent.pink.2': {
+    default: colorSchema['pink.400'],
+    _dark: colorSchema['pink.400'],
+  },
+  'accent.violet.2': {
+    default: colorSchema['violet.400'],
+    _dark: colorSchema['violet.400'],
+  },
+  'transperent.basic.1': {
+    default: colorSchema['grey.transparent.200'],
+    _dark: colorSchema['grey.transparent.200'],
+  },
+  'transperent.inverse.1': {
+    default: colorSchema['white.transparent.200'],
+    _dark: colorSchema['white.transparent.200'],
+  },
+  'transperent.basic.2': {
+    default: colorSchema['grey.transparent.500'],
+    _dark: colorSchema['grey.transparent.500'],
+  },
+  'transperent.basic.3': {
+    default: colorSchema['grey.transparent.600'],
+    _dark: colorSchema['grey.transparent.600'],
+  },
+  'transperent.basic.4': {
+    default: colorSchema['grey.transparent.800'],
+    _dark: colorSchema['grey.transparent.800'],
+  },
+  'transperent.inverse.3': {
+    default: colorSchema['white.transparent.600'],
+    _dark: colorSchema['white.transparent.600'],
+  },
+  'transperent.inverse.2': {
+    default: colorSchema['white.transparent.500'],
+    _dark: colorSchema['white.transparent.500'],
+  },
+  'transperent.inverse.4': {
+    default: colorSchema['white.transparent.800'],
+    _dark: colorSchema['white.transparent.800'],
+  },
+  'content.7': {
+    default: colorSchema['grey.200'],
+    _dark: colorSchema['grey.800'],
   },
 }

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Metadata, Viewport } from 'next'
+import { cookies } from 'next/headers'
 
 import { TokGuideDrawer } from '@/components/@Drawer/TokGuideDrawer'
 import { SideBtn } from '@/components/@Drawer/TokGuideDrawer/components/SideBtn'
@@ -9,6 +10,7 @@ import { OpenBtn } from '@/components/OpenBtn'
 import ToggleColorModeButton from '@/components/ToggleColorModeButton'
 import { ENV } from '@/configs/env'
 import AppProvider from '@/providers/AppProvider'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 
 // import { GoogleAnalytics } from "@next/third-parties/google";
 import '../../public/fonts/pretendard/css/pretendardvariable-dynamic-subset.css'
@@ -29,12 +31,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   ...(ENV.DOMAIN && { metadataBase: new URL(ENV.DOMAIN) }),
   title: {
-    default: '똑똑한 개발자',
-    template: `%s | 똑똑한 개발자`,
+    default: '똑똑한개발자',
+    template: `%s | 똑똑한개발자`,
   },
   description: '디지털프로덕트의 TOKTOK한 경험',
-  applicationName: '똑똑한 개발자',
-  keywords: ['똑똑한 개발자', '디지털프로덕트의 TOKTOK한 경험', '...'],
+  applicationName: '똑똑한개발자',
+  keywords: ['똑똑한개발자', '디지털프로덕트의 TOKTOK한 경험', '...'],
   icons: [
     { rel: 'apple-touch-icon', url: '/icons/120.png', sizes: '120x120' },
     { rel: 'apple-touch-icon', url: '/icons/152.png', sizes: '152x152' },
@@ -56,10 +58,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko',
-    siteName: '똑똑한 개발자',
+    siteName: '똑똑한개발자',
     title: {
-      default: '똑똑한 개발자',
-      template: `똑똑한 개발자 | %s`,
+      default: '똑똑한개발자',
+      template: `똑똑한개발자 | %s`,
     },
     description: '디지털프로덕트의 TOKTOK한 경험',
     images: [
@@ -76,7 +78,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     images: `/images/new_og.png`,
-    title: '똑똑한 개발자',
+    title: '똑똑한개발자',
     description: '디지털프로덕트의 TOKTOK한 경험',
     site: '@site',
   },
@@ -99,14 +101,17 @@ export default async function RootLayout({
 }: {
   children: ReactNode
 }) {
+  const colorMode = cookies().get('chakra-ui-color-mode')
   return (
     <html lang="ko">
       <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
       <body>
         <AppProvider>
-          <HomeLayout content={children} />
-          <ToggleColorModeButton />
-          <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
+          <ThemeProvider colorMode={colorMode?.value}>
+            <HomeLayout content={children} />
+            <ToggleColorModeButton />
+            <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
+          </ThemeProvider>
         </AppProvider>
       </body>
     </html>

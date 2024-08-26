@@ -43,8 +43,27 @@ jobs:
         run: pnpm install
 
       - name: Create Release Pull Request
+        id: changesets
         uses: changesets/action@v1
         with:
           publish: pnpm changeset tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get PR number from comment
+        id: pr
+        run: echo "::set-output name=pull_request_number::$(echo '${{ github.event.head_commit.message }}' | awk -F"[\#)]" '{print $2}' | awk 'match($0, /[0-9]+/) {print substr($0, RSTART, RLENGTH)}')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+
+      - name: Slack notification
+        if: steps.changesets.outputs.published == 'true'
+        run: npx tsx ./.scripts/slack.ts ${{ steps.pr.outputs.pull_request_number }} next-app-init '${{steps.changesets.outputs.publishedPackages}}'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true
