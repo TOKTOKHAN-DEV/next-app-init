@@ -9,6 +9,7 @@ import HomeLayout from '@/components/@Layout/HomeLayout'
 import { OpenBtn } from '@/components/OpenBtn'
 import ToggleColorModeButton from '@/components/ToggleColorModeButton'
 import { ENV } from '@/configs/env'
+import { COOKIE_KEYS } from '@/constants/cookie-keys'
 import AppProvider from '@/providers/AppProvider'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 
@@ -101,13 +102,14 @@ export default async function RootLayout({
 }: {
   children: ReactNode
 }) {
-  const colorMode = cookies().get('chakra-ui-color-mode')
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
-      <body>
+      <body suppressHydrationWarning>
         <AppProvider>
-          <ThemeProvider colorMode={colorMode?.value}>
+          <ThemeProvider
+            colorMode={cookies().get(COOKIE_KEYS.COLOR_MODE)?.value}
+          >
             <HomeLayout content={children} />
             <ToggleColorModeButton />
             <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
