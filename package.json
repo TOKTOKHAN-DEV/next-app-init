@@ -39,6 +39,7 @@
     "@toktokhan-dev/react-universal": "^0.0.10",
     "@toktokhan-dev/react-web": "^0.0.21",
     "@toktokhan-dev/universal": "^0.0.8",
+    "@toktokhan-dev/zustand-react": "^0.0.3",
     "chakra-react-select": "^4.8.0",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.2.10",
@@ -52,8 +53,8 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
-    "use-context-selector": "^2.0.0",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",

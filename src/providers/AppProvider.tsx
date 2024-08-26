@@ -9,7 +9,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import getQueryClient from '@/configs/react-query/get-query-client'
 import theme from '@/configs/theme'
-import { GlobalContextProvider } from '@/stores/global/state'
+import { GlobalStoreProvider } from '@/stores/global/store'
 
 const coveredTheme = {
   ...theme,
@@ -26,7 +26,7 @@ function AppProvider({ children }: PropsWithChildren) {
     <QueryClientProvider client={queryClient}>
       <CacheProvider>
         <ChakraProvider resetCSS theme={coveredTheme}>
-          <GlobalContextProvider>{children}</GlobalContextProvider>
+          <GlobalStoreProvider>{children}</GlobalStoreProvider>
         </ChakraProvider>
       </CacheProvider>
       <ReactQueryDevtools initialIsOpen={false} />

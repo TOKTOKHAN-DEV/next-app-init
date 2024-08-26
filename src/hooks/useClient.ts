@@ -1,17 +1,14 @@
 import { useEffect } from 'react'
 
-import { useGlobalContext } from '@/stores/global/state'
+import { useGlobalStore } from '@/stores/global/store'
 
 export const useClient = () => {
-  const isClient = useGlobalContext((ctx) => ctx.state.isClient)
-  const dispatch = useGlobalContext((ctx) => ctx.dispatch)
+  const isClient = useGlobalStore((store) => store.isClient)
+  const set = useGlobalStore((store) => store.set)
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_IS_CLIENT',
-      payload: true,
-    })
-  }, [dispatch])
+    set('isClient', true)
+  }, [set])
 
   return isClient
 }

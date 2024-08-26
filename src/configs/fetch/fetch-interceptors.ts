@@ -7,8 +7,8 @@ import {
 import { jwtDecode } from '@toktokhan-dev/universal'
 
 import { ENV } from '@/configs/env'
-import { accessStorage } from '@/stores/cookie/access'
-import { refreshStorage } from '@/stores/cookie/refresh'
+import { COOKIE_KEYS } from '@/constants/cookie-keys'
+import { clientCookie } from '@/stores/cookie/store'
 import { calcMaxAge } from '@/utils/middleware/calc-max-age'
 import { getJwtCookieOptions } from '@/utils/middleware/get-jwt-cookie-option'
 
@@ -16,7 +16,7 @@ const setAuthorizationHeader = async () => {
   let access: string | undefined | null
 
   if (typeof window !== 'undefined') {
-    access = accessStorage.get()
+    access = clientCookie.get(COOKIE_KEYS.AUTH.ACCESS)
   } else {
     const { cookies } = await import('next/headers')
     access = cookies().get('access')?.value
@@ -47,9 +47,8 @@ const requestInterceptor: (
 }
 
 const handleUnAuthorized = () => {
-  accessStorage.remove()
-  refreshStorage.remove()
-
+  clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
+  clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH)
   window.location.replace('/')
 }
 
@@ -66,8 +65,8 @@ const handleTokenRefresh = async (
   })
 
   if (!refreshResponse.ok) {
-    accessStorage.remove()
-    refreshStorage.remove()
+    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
+    clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH)
     window.location.replace('/')
     throw new Error('Failed to refresh token')
   }
@@ -80,8 +79,16 @@ const handleTokenRefresh = async (
   const accessMaxAge = calcMaxAge({ exp: decodedAccess?.exp })
   const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
-  accessStorage.set(newAccess, getJwtCookieOptions(accessMaxAge))
-  accessStorage.set(newRefresh, getJwtCookieOptions(refreshMaxAge))
+  clientCookie.set(
+    COOKIE_KEYS.AUTH.ACCESS,
+    newAccess,
+    getJwtCookieOptions(accessMaxAge),
+  )
+  clientCookie.set(
+    COOKIE_KEYS.AUTH.REFRESH,
+    newRefresh,
+    getJwtCookieOptions(refreshMaxAge),
+  )
 
   return newAccess
 }
@@ -91,10 +98,10 @@ const handleExpiredToken = async (
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ): Promise<Response> => {
   const [url, requestInit] = requestArgs
-  const refresh = refreshStorage.get()
+  const refresh = clientCookie.get(COOKIE_KEYS.AUTH.REFRESH)
 
   if (!refresh) {
-    accessStorage.remove()
+    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
     window.location.replace('/')
     throw new Error('No refresh token available')
   }

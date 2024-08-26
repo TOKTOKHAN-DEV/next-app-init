@@ -58,6 +58,9 @@ importers:
       '@toktokhan-dev/universal':
         specifier: ^0.0.8
         version: 0.0.8
+      '@toktokhan-dev/zustand-react':
+        specifier: ^0.0.3
+        version: 0.0.3
       chakra-react-select:
         specifier: ^4.8.0
         version: 4.8.0(mypuue22ncpbw4cddaqe3nncfq)
@@ -97,12 +100,12 @@ importers:
       react-hook-form:
         specifier: ^7.52.0
         version: 7.52.0(react@18.3.1)
-      use-context-selector:
-        specifier: ^2.0.0
-        version: 2.0.0(react@18.3.1)(scheduler@0.23.2)
       yup:
         specifier: ^1.4.0
         version: 1.4.0
+      zustand:
+        specifier: ^4.5.5
+        version: 4.5.5(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1)
     devDependencies:
       '@chakra-ui/cli':
         specifier: ^2.4.1
@@ -1632,6 +1635,15 @@ packages:
 
   '@toktokhan-dev/universal@0.0.8':
     resolution: {integrity: sha512-inVLu/TesmSsRwbHqTYf/VG6b52zxB6Cr/MMq0y+d8n+1NKssnlqLXWvSMjpT1319traBHueoJa5Bh4TorfKhA==}
+
+  '@toktokhan-dev/zustand-create-store-context@0.0.5':
+    resolution: {integrity: sha512-WQKE+w30FeAUf0x3Pv2rYf0atRDtenEni/F+lrkztkPB2MljnLSwV0PZwNc6xCpaPP7adjMuV/mOzem3MKvILA==}
+
+  '@toktokhan-dev/zustand-react@0.0.3':
+    resolution: {integrity: sha512-tiBwPpVJDl8yIU7k78N7prYVZSGc8B9NphWSST+hX0kdLHGWg1orPD5SFqvKOU0odQGzBE6JQBC1a1T1hsz3Bw==}
+
+  '@toktokhan-dev/zustand-with-setter@0.0.6':
+    resolution: {integrity: sha512-kSL24JaKOkCIeEzkO/J5M9yZ9iYS8OaOeZTWeI3LpQ1B1dZV5tvuE4z8gpSVUNaqW4srVwI1KY5D9IgYBiMwFg==}
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -4583,12 +4595,6 @@ packages:
       react-native:
         optional: true
 
-  use-context-selector@2.0.0:
-    resolution: {integrity: sha512-owfuSmUNd3eNp3J9CdDl0kMgfidV+MkDvHPpvthN5ThqM+ibMccNE0k+Iq7TWC6JPFvGZqanqiGCuQx6DyV24g==}
-    peerDependencies:
-      react: '>=18.0.0'
-      scheduler: '>=0.19.0'
-
   use-isomorphic-layout-effect@1.1.2:
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
@@ -4819,6 +4825,21 @@ packages:
 
   yup@1.4.0:
     resolution: {integrity: sha512-wPbgkJRCqIf+OHyiTBQoJiP5PFuAXaWiJK6AmYkzQAh5/c2K9hzSApBZG5wV9KoKSePF7sAxmNSvh/13YHkFDg==}
+
+  zustand@4.5.5:
+    resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
 
 snapshots:
 
@@ -6721,6 +6742,21 @@ snapshots:
 
   '@toktokhan-dev/universal@0.0.8':
     dependencies:
+      lodash: 4.17.21(patch_hash=nr57ebquzv42iqfy5rzs3pj7sy)
+
+  '@toktokhan-dev/zustand-create-store-context@0.0.5':
+    dependencies:
+      '@toktokhan-dev/universal': 0.0.8
+      lodash: 4.17.21(patch_hash=nr57ebquzv42iqfy5rzs3pj7sy)
+
+  '@toktokhan-dev/zustand-react@0.0.3':
+    dependencies:
+      '@toktokhan-dev/zustand-create-store-context': 0.0.5
+      '@toktokhan-dev/zustand-with-setter': 0.0.6
+
+  '@toktokhan-dev/zustand-with-setter@0.0.6':
+    dependencies:
+      '@toktokhan-dev/universal': 0.0.8
       lodash: 4.17.21(patch_hash=nr57ebquzv42iqfy5rzs3pj7sy)
 
   '@tootallnate/once@2.0.0': {}
@@ -10116,11 +10152,6 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  use-context-selector@2.0.0(react@18.3.1)(scheduler@0.23.2):
-    dependencies:
-      react: 18.3.1
-      scheduler: 0.23.2
-
   use-isomorphic-layout-effect@1.1.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -10369,3 +10400,11 @@ snapshots:
       tiny-case: 1.0.3
       toposort: 2.0.2
       type-fest: 2.19.0
+
+  zustand@4.5.5(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1):
+    dependencies:
+      use-sync-external-store: 1.2.2(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      immer: 10.1.1
+      react: 18.3.1
