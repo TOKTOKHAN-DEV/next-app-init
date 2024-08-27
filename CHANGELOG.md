@@ -1,5 +1,229 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.3
+
+### Patch Changes
+
+- 5487e2a: fix type
+
+  자잘한 타입이 수정되었습니다.
+
+- da6edb8: patch package lodash
+
+  lodash 모듈이 내부적으로 new Function 을 사용중이라 edge runtime 에서 실행이 되지 않는 이슈를 수정했습니다.
+
+  pnpm patch 를 사용하여 lodash package 의 `Function("return this")` 코드를 `globalThis` 를 사용하도록 변경했습니다.
+
+  #### 참고
+
+  - [pnpm patch](https://pnpm.io/cli/patch)
+  - [lodash github issue](https://github.com/lodash/lodash/issues/5525)
+  - [Nextjs: edge-dynamic-code-evaluation](https://nextjs.org/docs/messages/edge-dynamic-code-evaluation)
+
+- 40ced79: improve cookie, font
+
+  ### Cookie 관련 개선 사항
+
+  - useClientCookie 를 제거했습니다. 클라이언트 에서 cookie 의 수정이 필요할땐 server action 을 통해서 수정해야합니다.
+
+    - 랜더링에 영향이 없는 경우는 client cookie 를 사용해서 수정하는것을 권장합니다.
+
+  - cookie 관련 랜더링 케이스의 경우는, 서버 컴포넌트에서 쿠키를 하위 컴포넌트들에게 전달하는 방식으로 해결하는것을 권장합니다.
+
+  ### Font 관련 개선 사항
+
+  - css 대응을 위해 chakra font type 을 느슨하게 수정했습니다.
+
+- 44478ee: update-s3-flow
+
+  ## s3-file-uploader 모듈 변경사항
+
+  똑똑한 개발자의 서버 s3 구현사항이 달라짐에 따라, s3-file-upload 모듈이 수정되었습니다.
+
+  ### Server & Client Flow 상 변경점
+
+  1. backend server 로 부터 받는 presigned-url api 응답 schema 가 달라졌습니다. query param 으로 전달되던 값이 response body 의 fields 로 변경되었습니다.
+
+  #### 기존
+
+  ```json
+  {
+    "url": "https://s3.ap-northeast-2.amazonaws.com/toktokhan-dev/Key=...&SomeField=..."
+  }
+  ```
+
+  #### 변경
+
+  ```json
+  {
+    "url": "https://s3.ap-northeast-2.amazonaws.com/toktokhan-dev/Key=...",
+    "fields": {
+      "key": "...",
+      "SomeField": "..."
+    }
+  }
+  ```
+
+  2. s3 로 upload 시 요청 method 와 reqeuest type 이 변경되었습니다.
+
+  #### 기존
+
+  - method: `PUT`
+  - request-type: `File Object`
+
+  ```ts
+  const { url , fields } = await presignedUrlApi.createPresignedUrl({...});
+
+  fetch(url, {
+    method: 'PUT',
+    body: file
+  });
+
+  ```
+
+  #### 변경
+
+  - method: `POST`
+  - request-type: `FormData`
+
+  변경된 요청 방법은 presigned-url 의 응답으로 받아온 fields 와 File, Content-Type 을 포함하는 `FormData` 로 만들어서 전달합니다.
+
+  ```ts
+
+  const { url , fields } = await presignedUrlApi.createPresignedUrl({...});
+
+  const formData = new FormData();
+
+  Object.entries(fields).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+
+  formData.append('file', file);
+  formData.append('Content-Type', file.type);
+
+  fetch(url, {
+    method: 'POST',
+    body: formData
+  });
+
+  ```
+
+  ### Client S3FileUploader 모듈 변경점
+
+  #### 기존
+
+  기존에는 presigned url 을 프로젝트 서버로 요청해 생성후에, s3 에 파일을 업로드 하는 플로우를 한번에 처리하기위해 아래와 같은 모듈이 있었습니다.
+
+  ```ts
+  class S3FileUploader {
+      private _createPresignedUrl () {...}
+      private _uploadFileToS3 () {...}
+
+      async uploadFile (file: File) {
+          const { url, fields } = await this._createPresignedUrl();
+          await this._uploadFileToS3(url, fields, file);
+      }
+
+      async uploadFiles (file: File[]) {
+          const { url, fields } = await this._createPresignedUrl();
+          const result =  Promise.allSattled(file.map(uplaodFileToS3));
+          return {
+              fulfilled: result.filter(r => r.status === 'fulfilled'),
+              rejected: result.filter(r => r.status === 'rejected')
+          }
+      }
+  }
+  ```
+
+  #### 변경
+
+  위의 방식은 gen:api 를 통해 생성된 모듈을 사용하지 못한다는 단점이 있고, File 객체의 형식이 다른 react-native 를 포함해 프로젝트마다 달라 질 수 있는 구현 사항에 따라,
+  S3FileUploaderApi 모듈을 직접 수정하게 될 여지가 있다는 단점이 있었습니다.
+
+  따라서 아래처럼, 사용되는 함수를 주입받아 flow 만 처리하는 모듈이 새롭게 만들어 졌고, S3FileUplader 모듈은 오직 s3 에 파일을 업로드 하는 역할만을 수행하도록 변경되었습니다.
+
+  ```ts
+  // S3FileUpladerApi.ts
+  class S3FileUploaderApi {
+      async uploadFileToS3 ({ url, formData }) {...}
+  }
+  // S3FileUploaderApi.query.ts
+  export const { uploadFile, uploadFiles } = createS3UploadFlow({
+    // 아래 부분은 프로젝트 상황에 맞게 직접 작성합니다.
+    prepareUpload: async (file: File) => {
+      const { name, type } = file
+      // gen:api 로 생성된  presigned url 을 생성하는 api 를 직접 import 해서 사용합니다.
+      const { fields, url } = await presignedUrlApi.presignedUrlCreate({ name, type })
+      const formData = new FormData()
+
+      Object.entries(fields).forEach(([k, v]) => formData.append(k, v))
+      formData.append('Content-Type', file.type)
+      formData.append('file', file)
+
+      return {
+        url,
+        formData,
+        fields,
+        file,
+      }
+    },
+    // 아래 부분은 프로젝트 상황에 맞게 직접 작성합니다.
+    uploadFileToS3: async ({ url, formData, file, fields }) => {
+      await s3FileUploaderApi.uploadFileToS3({ url, formData })
+      ...
+    },
+  })
+
+  const useS3FileUploadMutate = (...) => useMutation({ mutationFn: uploadFile })
+  ```
+
+- 2a70ddd: improve FormHelper
+
+  #### FormHelper Component 개선사항
+
+  - prop 네이밍 개선
+    - style 관련 prop 을 그룹화
+    - message 관련 prop 을 그룹화
+
+  #### etc
+
+  - 안쓰는 web-storage module 제거
+
+- 8713eb6: update state-manager to zustand
+
+  ### 전역/지역/스토리지 상태 관리 라이브러리가 변경되었습니다.
+
+  Nextjs 와 같은 SSR 환경에선, 서버에서의 상태변경이 일어날 경우 각기 다른 클라이언트에서 서버상태를 공유하게 되는 이슈가 생길 수 있기 때문에, zustand 를 context 와 함께 사용하는 것을 권장합니다.
+  [zustand-with-Next.js] https://zustand.docs.pmnd.rs/guides/nextjs
+
+  자세한 예시와 사용법은 템플릿의 TokGuide drawer 의 `state` tab
+  또는 [TOKDOCS 문서](https://toktokhan-dev-docs.vercel.app/docs/zustand/overview) 를 참고해주세요.
+
+  TokGuide example path: `src/components/@Drawer/TokGuideDrawer/components/contents/State/State.tsx`
+
+  ### 상태관리 라이브러리가 변경됨에 따라, cookie 또한 SyncedCookie 에서 React-Cookie 로 변경되었습니다.
+
+  클라이언트 에서의 쿠키관리는 `react-cookie` 를 사용하고, 서버에선 `next-cookie` 를 사용합니다.
+
+  - 관리 파일
+    - 공용 Key: `src/constants/cookie-keys.ts`
+    - 클라이언트: `src/stores/cookie/store.ts`
+    - 서버: `src/actions/cookie.ts`
+
+- b36c716: - @toktokhan-dev/\* 패키지 업데이트
+  - update tok-cli-config
+  - social login
+  - publc images, icons 경로 수정
+  - chakra next link 사용
+  - update token.json
+  - colorMode for ssr
+  - Pretendard Variable fontFamily 등록
+  - slack notification (admin)
+  - 똑똑한 개발자 > 똑똑한개발자
+- faf193f: update version of pacakges: `@toktokhan-dev/*`
+
+  `@toktokhan-dev/*` 패키지의 버전을 업데이트 했습니다.
+
 ## 0.0.2
 
 ### Patch Changes
