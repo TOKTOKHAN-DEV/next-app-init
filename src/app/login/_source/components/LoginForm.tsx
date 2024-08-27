@@ -63,7 +63,9 @@ const LoginForm = ({ ...basisProps }: LoginFormProps) => {
       <FormHelper
         mb="24px"
         label="회원 아이디"
-        errorText={errors.id?.message}
+        message={{
+          error: errors.id?.message,
+        }}
         isRequired
       >
         <Input
@@ -74,7 +76,9 @@ const LoginForm = ({ ...basisProps }: LoginFormProps) => {
       </FormHelper>
       <FormHelper
         label="비밀번호"
-        errorText={errors.password?.message}
+        message={{
+          error: errors.password?.message,
+        }}
         isRequired
       >
         <Input

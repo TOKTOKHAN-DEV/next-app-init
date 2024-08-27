@@ -12,16 +12,21 @@ import {
 } from '@chakra-ui/react'
 
 interface FormHelperProps extends FormControlProps {
-  helperText?: ReactNode
-  errorText?: ReactNode
-  successText?: ReactNode
   label?: string
   children: ReactNode | ReactNode[]
 
-  labelProps?: FormLabelProps
-  successTextProps?: TextProps
-  helperTextProps?: TextProps
-  errorTextProps?: FormErrorMessageProps
+  message?: {
+    help?: string
+    error?: string
+    success?: string
+  }
+
+  styles?: {
+    label?: FormLabelProps
+    help?: TextProps
+    error?: FormErrorMessageProps
+    success?: TextProps
+  }
 }
 
 /**
@@ -35,41 +40,62 @@ interface FormHelperProps extends FormControlProps {
  * */
 const FormHelper = ({
   //
-  helperText,
-  errorText,
-  successText,
   children,
   label,
 
-  labelProps,
-  successTextProps,
-  helperTextProps,
-  errorTextProps,
+  message,
+  styles,
 
   ...basisProps
 }: FormHelperProps) => {
-  const isShowErrorText = !!errorText
-  const isShowSuccessText = !!successText && !isShowErrorText
-  const isShowHelper = !!helperText && !isShowErrorText && !isShowErrorText
+  const isShowErrorText = !!message?.error
+  const isShowSuccessText = !!message?.success && !isShowErrorText
+  const isShowHelperText =
+    !!message?.help && !isShowErrorText && !isShowSuccessText
 
   return (
-    <FormControl isInvalid={!!errorText} {...basisProps}>
+    <FormControl isInvalid={isShowErrorText} {...basisProps}>
       {!!label && (
-        <FormLabel fontWeight="bold" mb="20px" {...labelProps}>
+        <FormLabel
+          textStyle="pre-body-05"
+          color="content.3"
+          fontWeight={600}
+          mb="8px"
+          {...styles?.label}
+        >
           {label}
         </FormLabel>
       )}
       {children}
       {isShowErrorText && (
-        <FormErrorMessage {...errorTextProps}>{errorText}</FormErrorMessage>
+        <FormErrorMessage
+          textStyle="pre-cation-02"
+          color="accent.red.2"
+          mt="8px"
+          {...styles?.error}
+        >
+          {message?.error}
+        </FormErrorMessage>
       )}
       {isShowSuccessText && (
-        <FormHelperText color="content.1" {...successTextProps}>
-          {successText}
+        <FormHelperText
+          textStyle="pre-cation-02"
+          color="accent.green.2"
+          mt="8px"
+          {...styles?.success}
+        >
+          {message?.success}
         </FormHelperText>
       )}
-      {isShowHelper && (
-        <FormHelperText {...helperTextProps}>{helperText}</FormHelperText>
+      {isShowHelperText && (
+        <FormHelperText
+          textStyle="pre-cation-02"
+          color="content.4"
+          mt="8px"
+          {...styles?.help}
+        >
+          {message?.help}
+        </FormHelperText>
       )}
     </FormControl>
   )
