@@ -2,6 +2,8 @@ import { useCallback } from 'react'
 
 import { Cookies, useCookies } from 'react-cookie'
 
+import { getCookie } from '@/actions/cookie'
+
 export type CookieSetOptions = Parameters<Cookies['set']>[1]
 
 export const COOKIE_DEFAULT_SET_OPTIONS: CookieSetOptions = {
@@ -14,7 +16,8 @@ export const clientCookie = new Cookies(null, COOKIE_DEFAULT_SET_OPTIONS)
 
 export const useClientCookie = (key: string) => {
   const [values, _setCookie, _removeCookie] = useCookies([key])
-  const value = values[key]
+  const isClient = typeof window !== 'undefined'
+  const value = isClient ? values[key] : getCookie(key)
 
   const setCookie = useCallback(
     (value: string, options?: CookieSetOptions) => {
