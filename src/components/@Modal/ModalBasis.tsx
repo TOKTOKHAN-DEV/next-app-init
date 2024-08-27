@@ -1,11 +1,13 @@
 import {
-  ChakraProps,
   Modal,
   ModalBody,
+  ModalBodyProps,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
+  ModalFooterProps,
   ModalHeader,
+  ModalHeaderProps,
   ModalOverlay,
   ModalProps,
 } from '@chakra-ui/react'
@@ -15,9 +17,9 @@ interface ModalBasisProps extends Omit<ModalProps, 'children'> {
   body?: string | JSX.Element
   footer?: string | JSX.Element
 
-  headerProps?: ChakraProps
-  bodyProps?: ChakraProps
-  footerProps?: ChakraProps
+  headerProps?: ModalHeaderProps
+  bodyProps?: ModalBodyProps
+  footerProps?: ModalFooterProps
 }
 
 export default function ModalBasis({

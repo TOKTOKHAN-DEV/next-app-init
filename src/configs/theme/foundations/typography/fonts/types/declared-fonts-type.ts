@@ -1,3 +1,5 @@
-import fonts from '..';
+import fonts from '..'
 
-export type DeclaredFontsType = typeof fonts;
+export type DeclaredFontsType = typeof fonts & {
+  [key in string]: string
+}

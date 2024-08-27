@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers'
+
 import { Center, Text } from '@chakra-ui/layout'
 
 /**

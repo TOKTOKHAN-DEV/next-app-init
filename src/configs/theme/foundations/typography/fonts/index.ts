@@ -2,9 +2,8 @@ import nextFonts from './next-fonts'
 
 const fonts = {
   ...nextFonts,
-  'Pretendard Variable': nextFonts.Pretendard,
-  heading: nextFonts.Pretendard,
-  body: nextFonts.Pretendard,
+  heading: 'Pretendard Varaible',
+  body: 'Pretendard Varaible',
 }
 
 export default fonts
