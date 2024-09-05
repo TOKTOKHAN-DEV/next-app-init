@@ -59,7 +59,7 @@ const notes = [
   1. tokit (권장)
     최신 버전으로 다운로드해주세요.
   2. <https://github.com/TOKTOKHAN-DEV/${templateName}| ${templateName} repository> 에서 직접 클론
-    이 경우, .changeset/*, .github/*, .scripts/* 경로를 삭제 해주신 후 작업해주세요.
+    이 경우, .changeset/*, .github/*, .scripts/* 경로와 package.json 에 설치된 @changesets/changelog-github, @changesets/cli 패키지를 삭제해 주신 후 작업해주세요.
 \`\`\``,
     },
   },
