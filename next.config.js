@@ -48,22 +48,6 @@ module.exports = withBundleAnalyzer({
     ],
     webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
-  async redirects() {
-    return [
-      {
-        source: '/:path((?!ie11_warning.html$).*)',
-        has: [
-          {
-            type: 'header',
-            key: 'User-Agent',
-            value: '(.*Trident.*)',
-          },
-        ],
-        permanent: false,
-        destination: '/ie_warning.html',
-      },
-    ]
-  },
   async headers() {
     return [
       {
