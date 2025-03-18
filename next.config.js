@@ -40,7 +40,6 @@ module.exports = withBundleAnalyzer({
     },
   },
   experimental: {
-    typedRoutes: true,
     optimizePackageImports: [
       '@chakra-ui/react',
       '@chakra-ui/layout',
