@@ -9,12 +9,12 @@ import HomeLayout from '@/components/@Layout/HomeLayout'
 import { OpenBtn } from '@/components/OpenBtn'
 import ToggleColorModeButton from '@/components/ToggleColorModeButton'
 import { ENV } from '@/configs/env'
+import { pretendard } from '@/configs/theme/foundations/typography/fonts/next-fonts/local-fonts'
 import { COOKIE_KEYS } from '@/constants/cookie-keys'
 import AppProvider from '@/providers/AppProvider'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import '../../public/fonts/pretendard/css/pretendardvariable-dynamic-subset.css'
 
 /**
  *
@@ -83,9 +83,6 @@ export const metadata: Metadata = {
     description: '디지털프로덕트의 TOKTOK한 경험',
     site: '@site',
   },
-  appleWebApp: {
-    capable: true,
-  },
   formatDetection: {
     telephone: false,
     address: false,
@@ -103,7 +100,11 @@ export default async function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html
+      lang="ko"
+      suppressHydrationWarning
+      className={`${pretendard.variable}`}
+    >
       <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
       <body suppressHydrationWarning>
         <AppProvider>
