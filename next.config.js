@@ -101,9 +101,6 @@ module.exports = withBundleAnalyzer({
       {
         hostname: '*.s3.*.amazonaws.com',
       },
-      {
-        hostname: 'via.placeholder.com',
-      },
     ],
   },
 })
