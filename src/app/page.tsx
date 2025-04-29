@@ -1,4 +1,4 @@
-import { Center, Text } from '@chakra-ui/layout'
+import { Center, Text } from '@chakra-ui/react'
 
 /**
  *
@@ -7,7 +7,7 @@ import { Center, Text } from '@chakra-ui/layout'
 export default function HomePage() {
   return (
     <Center h={'100%'} borderRadius={'8px'} flexDir={'column'}>
-      <Text color="primary.3" textStyle={'pre-heading-01'}>
+      <Text color={'primary.3'} textStyle={'pre-heading-01'}>
         TOKTOKHAN.DEV
       </Text>
       <Text color={'content.1'} textStyle={'pre-heading-02'}>

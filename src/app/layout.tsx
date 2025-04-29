@@ -1,18 +1,14 @@
-import { ReactNode } from 'react'
-
 import { Metadata, Viewport } from 'next'
-import { cookies } from 'next/headers'
 
-import { TokGuideDrawer } from '@/components/@Drawer/TokGuideDrawer'
-import { SideBtn } from '@/components/@Drawer/TokGuideDrawer/components/SideBtn'
-import HomeLayout from '@/components/@Layout/HomeLayout'
-import { OpenBtn } from '@/components/OpenBtn'
-import ToggleColorModeButton from '@/components/ToggleColorModeButton'
+import { TokGuide } from '@/app/_source/components/tok-guide'
+import { TokGuideTriggerButton } from '@/app/_source/components/tok-guide-trigger-button'
+import { DrawerBasis as TokGuideDrawer } from '@/components/@drawer/drawer-basis'
+import { PageLayout } from '@/components/@layout/page-layout'
+import { ColorModeButton } from '@/components/ui/color-mode'
+import { Provider as ThemeProvider } from '@/components/ui/provider'
 import { ENV } from '@/configs/env'
-import { pretendard } from '@/configs/theme/foundations/typography/fonts/next-fonts/local-fonts'
-import { COOKIE_KEYS } from '@/constants/cookie-keys'
-import AppProvider from '@/providers/AppProvider'
-import { ThemeProvider } from '@/providers/ThemeProvider'
+import { pretendard } from '@/generated/fonts/next-fonts'
+import { AppProvider } from '@/providers/app-provider'
 
 // import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -29,6 +25,7 @@ export const viewport: Viewport = {
  *
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
+
 export const metadata: Metadata = {
   ...(ENV.DOMAIN && { metadataBase: new URL(ENV.DOMAIN) }),
   title: {
@@ -94,26 +91,30 @@ export const metadata: Metadata = {
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts
  */
-export default async function RootLayout({
+
+export default function RootLayout({
   children,
 }: {
-  children: ReactNode
+  children: React.ReactNode
 }) {
   return (
     <html
       lang="ko"
-      suppressHydrationWarning
       className={`${pretendard.variable}`}
+      suppressHydrationWarning
     >
       <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
-      <body suppressHydrationWarning>
+      <body>
         <AppProvider>
-          <ThemeProvider
-            colorMode={cookies().get(COOKIE_KEYS.COLOR_MODE)?.value}
-          >
-            <HomeLayout content={children} />
-            <ToggleColorModeButton />
-            <OpenBtn target={<TokGuideDrawer />} button={<SideBtn />} />
+          <ThemeProvider>
+            <PageLayout>
+              {children}
+              <ColorModeButton />
+              <TokGuideDrawer
+                trigger={<TokGuideTriggerButton />}
+                content={<TokGuide />}
+              />
+            </PageLayout>
           </ThemeProvider>
         </AppProvider>
       </body>

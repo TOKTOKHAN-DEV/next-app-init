@@ -13,16 +13,16 @@ import { calcMaxAge } from '@/utils/middleware/calc-max-age'
 import { getJwtCookieOptions } from '@/utils/middleware/get-jwt-cookie-option'
 
 const setAuthorizationHeader = async () => {
-  let access: string | undefined | null
+  let accessToken: string | undefined | null
 
   if (typeof window !== 'undefined') {
-    access = clientCookie.get(COOKIE_KEYS.AUTH.ACCESS)
+    accessToken = clientCookie.get(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
   } else {
     const { cookies } = await import('next/headers')
-    access = cookies().get('access')?.value
+    accessToken = cookies().get(COOKIE_KEYS.AUTH.ACCESS_TOKEN)?.value
   }
 
-  return access ? `Bearer ${access}` : undefined
+  return accessToken ? `Bearer ${accessToken}` : undefined
 }
 
 const requestInterceptor: (
@@ -47,13 +47,13 @@ const requestInterceptor: (
 }
 
 const handleUnAuthorized = () => {
-  clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
-  clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH)
+  clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
+  clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
   window.location.replace('/')
 }
 
 const handleTokenRefresh = async (
-  refresh: string,
+  refreshToken: string,
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ) => {
   const refreshResponse = await fetch(`${ENV.API_BASE_URL}/v1/user/refresh/`, {
@@ -61,12 +61,12 @@ const handleTokenRefresh = async (
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ refresh }),
+    body: JSON.stringify({ refreshToken }),
   })
 
   if (!refreshResponse.ok) {
-    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
-    clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH)
+    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
+    clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
     window.location.replace('/')
     throw new Error('Failed to refresh token')
   }
@@ -80,12 +80,12 @@ const handleTokenRefresh = async (
   const refreshMaxAge = calcMaxAge({ exp: decodedRefresh?.exp })
 
   clientCookie.set(
-    COOKIE_KEYS.AUTH.ACCESS,
+    COOKIE_KEYS.AUTH.ACCESS_TOKEN,
     newAccess,
     getJwtCookieOptions(accessMaxAge),
   )
   clientCookie.set(
-    COOKIE_KEYS.AUTH.REFRESH,
+    COOKIE_KEYS.AUTH.REFRESH_TOKEN,
     newRefresh,
     getJwtCookieOptions(refreshMaxAge),
   )
@@ -98,21 +98,21 @@ const handleExpiredToken = async (
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ): Promise<Response> => {
   const [url, requestInit] = requestArgs
-  const refresh = clientCookie.get(COOKIE_KEYS.AUTH.REFRESH)
+  const refreshToken = clientCookie.get(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
 
-  if (!refresh) {
-    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS)
+  if (!refreshToken) {
+    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
     window.location.replace('/')
     throw new Error('No refresh token available')
   }
 
   try {
-    const newAccess = await handleTokenRefresh(refresh, fetch)
+    const newAccessToken = await handleTokenRefresh(refreshToken, fetch)
     const modifiedRequestInit = {
       ...requestInit,
       headers: {
         ...requestInit?.headers,
-        Authorization: `Bearer ${newAccess}`,
+        Authorization: `Bearer ${newAccessToken}`,
         'Content-Type': 'application/json',
       },
     }
@@ -137,8 +137,9 @@ const responseInterceptor: (
     if (isUnAuthorized) {
       handleUnAuthorized()
     }
+
     if (isExpiredToken) {
-      return handleExpiredToken(requestArgs, fetch)
+      handleExpiredToken(requestArgs, fetch)
     }
   }
   return response

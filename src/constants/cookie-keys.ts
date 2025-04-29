@@ -1,7 +1,7 @@
 export const COOKIE_KEYS = {
   AUTH: {
-    ACCESS: 'access_token',
-    REFRESH: 'refresh_token',
+    ACCESS_TOKEN: 'accessToken',
+    REFRESH_TOKEN: 'refreshToken',
   },
   COUNT: 'count',
   COLOR_MODE: 'chakra-ui-color-mode',

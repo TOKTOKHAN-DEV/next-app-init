@@ -1,4 +1,4 @@
-import fetchExtended from '@/configs/fetch/fetch-extend'
+import { fetchExtended } from '@/configs/fetch/fetch-extend'
 
 import { ContentType, HttpClient, RequestParams } from '../@http-client'
 import { CreateExampleDto } from './types/dto/create-example-dto'

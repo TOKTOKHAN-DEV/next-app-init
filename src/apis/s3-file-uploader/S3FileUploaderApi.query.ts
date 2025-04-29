@@ -5,7 +5,7 @@ import {
   createS3UploadFlow,
 } from '@toktokhan-dev/universal'
 
-import fetchExtended from '@/configs/fetch/fetch-extend'
+import { fetchExtended } from '@/configs/fetch/fetch-extend'
 // import { presignedUrlApi } from '@/generated/apis/PresignedUrl/PresignedUrl.query'
 import { UseMutationParams } from '@/types/module/react-query/use-mutation-params'
 

@@ -5,8 +5,7 @@ export const pretendard = localFont({
   display: 'swap',
   preload: true,
   fallback: [
-    'Pretendard JP Variable',
-    'Pretendard JP',
+    'Pretendard Variable',
     'Pretendard',
     '-apple-system',
     'BlinkMacSystemFont',
