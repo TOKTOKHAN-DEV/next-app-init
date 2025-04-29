@@ -21,6 +21,7 @@
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "semantic-release": "semantic-release",
     "checklist:progress": "node src/scripts/update-checklist-progress.js",
+    "changeset": "changeset",
     "prepare": "husky"
   },
   "dependencies": {
@@ -50,6 +51,8 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "3.2.3",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.5",
     "@next/bundle-analyzer": "^14.2.4",
     "@next/eslint-plugin-next": "^14.2.4",
     "@testing-library/jest-dom": "^6.4.6",
@@ -85,7 +88,7 @@
     "node": ">= 20.0.0",
     "npm": ">= 7.10.0",
     "yarn": ">= 1.22.17",
-    "pnpm": ">= 8.15.9"
+    "pnpm": ">= 9.1.0"
   },
   "os": [
     "darwin",
