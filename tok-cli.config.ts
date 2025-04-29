@@ -37,9 +37,11 @@ const config: RootConfig<{
         md: 'desktop',
       },
     },
+    version: 'v3',
   },
   'gen:icon': {
     input: 'public/icons',
+    version: 'v3',
   },
 }
 export default config

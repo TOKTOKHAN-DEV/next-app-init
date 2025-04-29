@@ -40,11 +40,7 @@ module.exports = withBundleAnalyzer({
     },
   },
   experimental: {
-    optimizePackageImports: [
-      '@chakra-ui/react',
-      '@chakra-ui/layout',
-      '@emotion/react',
-    ],
+    optimizePackageImports: ['@chakra-ui/react', '@emotion/react'],
     webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
   async headers() {
