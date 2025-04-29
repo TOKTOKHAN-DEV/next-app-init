@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query'
 /**
  * @category Hooks
  */
-export const useInvalidateQuires = () => {
+export const useInvalidateQueries = () => {
   const queryClient = useQueryClient()
 
   const invalidate = useCallback(
