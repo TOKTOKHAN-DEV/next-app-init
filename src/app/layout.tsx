@@ -111,6 +111,7 @@ export default function RootLayout({
               {children}
               <ColorModeButton />
               <TokGuideDrawer
+                size="md"
                 trigger={<TokGuideTriggerButton />}
                 content={<TokGuide />}
               />

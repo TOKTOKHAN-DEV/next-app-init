@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Flex, IconButton, Text } from '@chakra-ui/react'
 
-import { DrawerBasis } from '@/components/@drawer/drawer-basis'
+import { DrawerBasis as PageLayoutDrawer } from '@/components/@drawer/drawer-basis'
 import { LAYOUT } from '@/constants/layout'
 import { LogoIcon, MenuIcon } from '@/generated/icons/MyIcons'
 import { ROUTES } from '@/generated/path/routes'
@@ -27,7 +27,8 @@ export const PageLayoutHeader = () => {
           <LogoIcon boxSize={'74px'} color={'brand.primary.500'} />
         </Link>
 
-        <DrawerBasis
+        <PageLayoutDrawer
+          size="md"
           trigger={
             <IconButton aria-label="menu">
               <MenuIcon boxSize={'24px'} />
