@@ -1,5 +1,11 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.5
+
+### Patch Changes
+
+- [`631f993`](https://github.com/TOKTOKHAN-DEV/next-app-init/commit/631f99303b19ddbdd067de848f45790ef58e524b) Thanks [@Eunkyung-Son](https://github.com/Eunkyung-Son)! - chakra-ui v3 및 @toktokhan-dev/\* 패키지 업데이트
+
 ## 0.0.4
 
 ### Patch Changes
