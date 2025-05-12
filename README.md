@@ -1,4 +1,4 @@
-# Next.js starter2 [![](https://img.shields.io/badge/node-v19+-blue)](https://nodejs.org/en/) [![](https://img.shields.io/badge/yarn-v1.22+-green.svg)](https://yarnpkg.com/)
+# Next.js starter2 [![](https://img.shields.io/badge/node-v19+-blue)](https://nodejs.org/en/) [![](https://img.shields.io/badge/pnpm-v1.22+-green.svg)](https://pnpmpkg.com/)
 
 똑똑한개발자에서 진행하는 프로젝트의 스타터 프로젝트 next-init 2.0입니다.
 
@@ -8,12 +8,12 @@ Use this template 버튼을 활용해서 프로젝트의 repository를 생성해
 
 # Scripts
 
-프로젝트 시작 스크립트 부터, 업무를 위한 유용한 스크립트에 대한 설명입니다. 패키지 매니져는 yarn 을 사용합니다.
+프로젝트 시작 스크립트 부터, 업무를 위한 유용한 스크립트에 대한 설명입니다. 패키지 매니져는 pnpm 을 사용합니다.
 
 ### 개발 모드 시작하기
 
 ```
-yarn run dev
+pnpm run dev
 ```
 
 ### 프로덕션 모드 시작하기
@@ -25,7 +25,7 @@ yarn run dev
 - NODE_ENV 환경 변수 "production"
 
 ```
-yarn run start
+pnpm run start
 ```
 
 ### Build
@@ -34,7 +34,7 @@ yarn run start
 빌드 에러를 조기에 확인할수 있습니다.
 
 ```
-yarn run build
+pnpm run build
 ```
 
 ### Commit
@@ -42,7 +42,7 @@ yarn run build
 똑똑한개발자에는 커밋 컨벤션이 존재합니다. 해당 컨벤션에 맞게 커밋메시지 작성을 도와주는 스크립트 입니다.
 
 ```
-yarn run commit
+pnpm run commit
 ```
 
 ### Lint
@@ -51,11 +51,11 @@ lint 와 prettier 설정에 기반하여 파일을 검사합니다.
 lint:staged 경우 lint-stage 설정에 기반하여 스테이징된 파일만 검사합니다.
 
 ```
-yarn run lint
+pnpm run lint
 ```
 
 ```
-yarn run lint:staged
+pnpm run lint:staged
 ```
 
 ### Format
@@ -63,7 +63,7 @@ yarn run lint:staged
 prettier 설정에 기반하여 파일수정합니다.
 
 ```
-yarn run format
+pnpm run format
 ```
 
 ### Clean-Up
@@ -73,7 +73,7 @@ yarn run format
 - 주석 종류: @delete:line, @delete:file, @delete:folder
 
 ```
-yarn run clean-up
+pnpm run clean-up
 ```
 
 ### Generate
@@ -86,11 +86,11 @@ custom color 와 같은 테마 적용시 자동완성을 위하여 사용을 권
 생성된 파일은 theme:open 으로 확인이 가능합니다.
 
 ```
-yarn run theme
+pnpm run theme
 ```
 
 ```
-yarn run theme:open
+pnpm run theme:open
 ```
 
 > theme:open 은 code 커멘드가 실행환경에 설치 되어 있어야 합니다.
@@ -108,7 +108,7 @@ yarn run theme:open
 page, dynamic-page, api 에 대한 탬플릿을 생성해 줍니다.
 
 ```
-yarn run gen:source
+pnpm run gen:source
 ```
 
 #### Api
@@ -116,7 +116,7 @@ yarn run gen:source
 swagger 를 조회하여 api 함수와 schema type, react-query 의 query,mutation 을 생성해 줍니다.
 
 ```
-yarn run gen:api
+pnpm run gen:api
 ```
 
 #### Icon
@@ -124,7 +124,7 @@ yarn run gen:api
 asset 폴더를 조회하여 svg 파일을 사용가능한 chakra-icon 컴포넌트로 생성해줍니다.
 
 ```
-yarn run gen:icon
+pnpm run gen:icon
 ```
 
 > color props 로 제어를 해야한다면, svg 파일의 fill 이나 stroke 의 컬러를 "currentColor" 로 변경후 실행 해주세요
@@ -134,7 +134,7 @@ yarn run gen:icon
 asset 폴더를 조회하여 img 파일경로를 담은 Object 를 생성해줍니다.
 
 ```
-yarn run gen:img
+pnpm run gen:img
 ```
 
 #### Font
@@ -142,7 +142,7 @@ yarn run gen:img
 asset 폴더를 조회하여 font 파일을 next-local 폰트로 생성해줍니다.
 
 ```
-yarn run gen:font
+pnpm run gen:font
 ```
 
 #### Icon
@@ -150,7 +150,7 @@ yarn run gen:font
 asset 폴더를 조회하여 svg 파일을 사용가능한 chakra-icon 컴포넌트로 생성해줍니다.
 
 ```
-yarn run gen:icon
+pnpm run gen:icon
 ```
 
 #### Route
@@ -158,7 +158,7 @@ yarn run gen:icon
 pages 폴더를 조회하여 route 경로를 담은 오프젝트를 생성해줍니다.
 
 ```
-yarn run gen:route
+pnpm run gen:route
 ```
 
 #### Webp
@@ -166,7 +166,7 @@ yarn run gen:route
 asset 폴더를 조회하여, png, jpg 확장자를 webp 로 변환해 줍니다. 변환하여 사용하기전에, next/image 사용을 고민해주세요. 다른 확장자를 사용하더라도 자동으로 webp 변환 해줍니다.
 
 ```
-yarn run convert:webp
+pnpm run convert:webp
 ```
 
 ### Test
@@ -174,11 +174,11 @@ yarn run convert:webp
 src 폴더 안에 있는 모든 {filename}.test.ts 을 테스트 합니다. 와치 모드에 경우 항상 실행되어, 변경사항을 즉시 감지 하고, 변경사항이 있는 테스트만 테스트 합니다.
 
 ```
-yarn run test
+pnpm run test
 ```
 
 ```
-yarn run test:watch
+pnpm run test:watch
 ```
 
 # Git Hooks, Life Cycle Script
@@ -210,7 +210,7 @@ chakra theme 타입 정의를 생성합니다.
 package.json 에서 관리합니다.
 
 ```
-yarn run theme
+pnpm run theme
 ```
 
 ### prepare

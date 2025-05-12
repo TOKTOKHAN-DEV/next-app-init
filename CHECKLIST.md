@@ -10,7 +10,7 @@
 - path: src/scripts/update-checklist-progress.js
 
 ```(bash)
-yarn run checklist:progress
+pnpm run checklist:progress
 ```
 
 #### Progress
