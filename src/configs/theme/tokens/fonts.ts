@@ -1,12 +1,13 @@
 import { defineTokens } from '@chakra-ui/react'
 
-import { pretendard } from '@/generated/fonts/next-fonts'
-
 export const fonts = defineTokens.fonts({
   heading: {
-    value: pretendard.style.fontFamily,
+    value: 'var(--font-pretendard)',
   },
   body: {
-    value: pretendard.style.fontFamily,
+    value: 'var(--font-pretendard)',
+  },
+  'Pretendard Variable': {
+    value: 'var(--font-pretendard)',
   },
 })
