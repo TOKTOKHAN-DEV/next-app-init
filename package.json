@@ -34,6 +34,7 @@
     "@toktokhan-dev/react-web": "^0.0.23",
     "@toktokhan-dev/universal": "^0.0.8",
     "@toktokhan-dev/zustand-react": "^0.0.3",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "chakra-react-select": "6.0.0",
     "dayjs": "^1.11.11",
     "immer": "^10.1.1",
