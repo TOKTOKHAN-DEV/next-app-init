@@ -1,6 +1,6 @@
 {
   "name": "@toktokhan-dev/next-app-init",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple project that shows the usage of Next.js with TypeScript",
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
