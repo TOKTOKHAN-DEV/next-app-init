@@ -1,5 +1,19 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.6
+
+### Patch Changes
+
+- [`1f5ff10`](https://github.com/TOKTOKHAN-DEV/next-app-init/commit/1f5ff100d35da6f94c61542c4c840284971d508a) Thanks [@Panxoat](https://github.com/Panxoat)! - package.json 수정: pnpm theme && next dev
+
+- [`0877f0f`](https://github.com/TOKTOKHAN-DEV/next-app-init/commit/0877f0f639e3d939315563463e6f30e8b2a67cad) Thanks [@Panxoat](https://github.com/Panxoat)! - ### 1. Design Token 최신화
+  - Colors
+  - Typography
+
+  ### 2. 의존성 추가
+  - @trivago/prettier-plugin-sort-imports
+    - gen:theme 실행시 필요함
+
 ## 0.0.5
 
 ### Patch Changes
@@ -27,7 +41,6 @@
   pnpm patch 를 사용하여 lodash package 의 `Function("return this")` 코드를 `globalThis` 를 사용하도록 변경했습니다.
 
   #### 참고
-
   - [pnpm patch](https://pnpm.io/cli/patch)
   - [lodash github issue](https://github.com/lodash/lodash/issues/5525)
   - [Nextjs: edge-dynamic-code-evaluation](https://nextjs.org/docs/messages/edge-dynamic-code-evaluation)
@@ -35,15 +48,12 @@
 - 40ced79: improve cookie, font
 
   ### Cookie 관련 개선 사항
-
   - useClientCookie 를 제거했습니다. 클라이언트 에서 cookie 의 수정이 필요할땐 server action 을 통해서 수정해야합니다.
-
     - 랜더링에 영향이 없는 경우는 client cookie 를 사용해서 수정하는것을 권장합니다.
 
   - cookie 관련 랜더링 케이스의 경우는, 서버 컴포넌트에서 쿠키를 하위 컴포넌트들에게 전달하는 방식으로 해결하는것을 권장합니다.
 
   ### Font 관련 개선 사항
-
   - css 대응을 위해 chakra font type 을 느슨하게 수정했습니다.
 
 - 44478ee: update-s3-flow
@@ -53,7 +63,6 @@
   똑똑한 개발자의 서버 s3 구현사항이 달라짐에 따라, s3-file-upload 모듈이 수정되었습니다.
 
   ### Server & Client Flow 상 변경점
-
   1. backend server 로 부터 받는 presigned-url api 응답 schema 가 달라졌습니다. query param 으로 전달되던 값이 response body 의 fields 로 변경되었습니다.
 
   #### 기존
@@ -79,7 +88,6 @@
   2. s3 로 upload 시 요청 method 와 reqeuest type 이 변경되었습니다.
 
   #### 기존
-
   - method: `PUT`
   - request-type: `File Object`
 
@@ -94,7 +102,6 @@
   ```
 
   #### 변경
-
   - method: `POST`
   - request-type: `FormData`
 
@@ -192,13 +199,11 @@
 - 2a70ddd: improve FormHelper
 
   #### FormHelper Component 개선사항
-
   - prop 네이밍 개선
     - style 관련 prop 을 그룹화
     - message 관련 prop 을 그룹화
 
   #### etc
-
   - 안쓰는 web-storage module 제거
 
 - 8713eb6: update state-manager to zustand
@@ -216,7 +221,6 @@
   ### 상태관리 라이브러리가 변경됨에 따라, cookie 또한 SyncedCookie 에서 React-Cookie 로 변경되었습니다.
 
   클라이언트 에서의 쿠키관리는 `react-cookie` 를 사용하고, 서버에선 `next-cookie` 를 사용합니다.
-
   - 관리 파일
     - 공용 Key: `src/constants/cookie-keys.ts`
     - 클라이언트: `src/stores/cookie/store.ts`
