@@ -39,5 +39,3 @@ yarn-error.log*
 #build info
 tsconfig.tsbuildinfo
 .eslintcache
-
-pnpm-lock.yaml
