@@ -1,5 +1,11 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.7
+
+### Patch Changes
+
+- [`292540c`](https://github.com/TOKTOKHAN-DEV/next-app-init/commit/292540c4ce972202a5e6901bca9afafc45a4ac40) Thanks [@Panxoat](https://github.com/Panxoat)! - .gitignore pnpm-lock.yaml 제외
+
 ## 0.0.6
 
 ### Patch Changes
