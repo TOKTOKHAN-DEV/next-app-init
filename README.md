@@ -1,4 +1,4 @@
-# Next.js starter (App Router) [![](https://img.shields.io/badge/node-v20+-blue)](https://nodejs.org/en/) [![](https://img.shields.io/badge/pnpm-v8.15+-green.svg)](https://pnpmpkg.com/)
+# Next.js starter (App Router) [![](https://img.shields.io/badge/node-v20+-blue)](https://nodejs.org/en/) [![](https://img.shields.io/badge/pnpm-v9.14+-green.svg)](https://pnpmpkg.com/)
 
 > **🔧 개발자 전용 가이드**  
 > **프로젝트 완료 시 다음 작업을 수행하세요:**
