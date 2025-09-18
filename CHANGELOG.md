@@ -1,5 +1,11 @@
 ## [1.2.1](https://github.com/TOKTOKHAN-DEV/next-init-2.0/compare/v1.2.0...v1.2.1) (2024-03-08)
 
+## 0.0.8
+
+### Patch Changes
+
+- [`01c2e9a`](https://github.com/TOKTOKHAN-DEV/next-app-init/commit/01c2e9aa9817122dff256ef2bd22dffe9c9227d0) Thanks [@Eunkyung-Son](https://github.com/Eunkyung-Son)! - UPDATE README.md
+
 ## 0.0.7
 
 ### Patch Changes
