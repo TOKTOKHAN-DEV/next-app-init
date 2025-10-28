@@ -113,7 +113,7 @@ export const textStyles = {
       textDecoration: 'none',
       fontWeight: 700,
       fontSize: {
-        base: '16px',
+        base: '18px',
         sm: '18px',
         md: '18px',
       },
@@ -141,7 +141,7 @@ export const textStyles = {
       textDecoration: 'none',
       fontWeight: 600,
       fontSize: {
-        base: '16px',
+        base: '18px',
         sm: '18px',
         md: '18px',
       },
@@ -153,9 +153,9 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: {
-        base: '16px',
+        base: '18px',
         sm: '18px',
         md: '18px',
       },
@@ -167,11 +167,11 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
-      fontWeight: 600,
+      fontWeight: 400,
       fontSize: {
-        base: '16px',
-        sm: '16px',
-        md: '16px',
+        base: '18px',
+        sm: '18px',
+        md: '18px',
       },
       lineHeight: 1.6,
       letterSpacing: '-0.02em',
@@ -181,7 +181,7 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
-      fontWeight: 400,
+      fontWeight: 600,
       fontSize: {
         base: '16px',
         sm: '16px',
@@ -195,6 +195,34 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
+      fontWeight: 500,
+      fontSize: {
+        base: '16px',
+        sm: '16px',
+        md: '16px',
+      },
+      lineHeight: 1.6,
+      letterSpacing: '-0.02em',
+    },
+  },
+  'pre-body-6': {
+    value: {
+      fontFamily: 'Pretendard Variable',
+      textDecoration: 'none',
+      fontWeight: 400,
+      fontSize: {
+        base: '16px',
+        sm: '16px',
+        md: '16px',
+      },
+      lineHeight: 1.6,
+      letterSpacing: '-0.02em',
+    },
+  },
+  'pre-body-7': {
+    value: {
+      fontFamily: 'Pretendard Variable',
+      textDecoration: 'none',
       fontWeight: 600,
       fontSize: {
         base: '14px',
@@ -205,7 +233,21 @@ export const textStyles = {
       letterSpacing: '-0.02em',
     },
   },
-  'pre-body-6': {
+  'pre-body-8': {
+    value: {
+      fontFamily: 'Pretendard Variable',
+      textDecoration: 'none',
+      fontWeight: 500,
+      fontSize: {
+        base: '14px',
+        sm: '14px',
+        md: '14px',
+      },
+      lineHeight: 1.6,
+      letterSpacing: '-0.02em',
+    },
+  },
+  'pre-body-9': {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
@@ -237,7 +279,7 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: {
         base: '12px',
         sm: '12px',
@@ -265,7 +307,7 @@ export const textStyles = {
     value: {
       fontFamily: 'Pretendard Variable',
       textDecoration: 'none',
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: {
         base: '10px',
         sm: '10px',

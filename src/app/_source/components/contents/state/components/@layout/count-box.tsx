@@ -24,7 +24,7 @@ export const CountBox = ({
     >
       <VStack gap={'0px'}>
         <Text textStyle={'pre-body-01'}>COUNT BOX</Text>
-        <Button variant={'plain'} size={'sm'} onClick={onReset}>
+        <Button variant={'ghost'} size={'sm'} onClick={onReset}>
           Reset
         </Button>
       </VStack>
