@@ -166,8 +166,19 @@ export const buttonRecipe = defineRecipe({
       plain: {
         color: 'colorPalette.fg',
       },
+      unstyled: {
+        bg: 'transparent',
+        color: 'colorPalette.fg',
+        _hover: {
+          bg: 'colorPalette.subtle',
+        },
+        _expanded: {
+          bg: 'colorPalette.subtle',
+        },
+      },
     },
   },
+
   defaultVariants: {
     size: 'md',
     variant: 'solid',

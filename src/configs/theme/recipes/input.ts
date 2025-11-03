@@ -7,87 +7,144 @@ export const inputRecipe = defineRecipe({
     minWidth: '0',
     outline: '0',
     position: 'relative',
-    appearance: 'none',
     textAlign: 'start',
-    borderRadius: 'l2',
     _disabled: {
       layerStyle: 'disabled',
     },
-    height: 'var(--input-height)',
-    minW: 'var(--input-height)',
-    '--focus-color': 'colors.colorPalette.focusRing',
-    '--error-color': 'colors.border.error',
-    _invalid: {
-      focusRingColor: 'var(--error-color)',
-      borderColor: 'var(--error-color)',
+    _placeholder: {
+      textStyle: 'pre-body-6',
+      color: 'grey.5',
     },
+    textStyle: 'pre-body-6',
+    color: 'grey.8',
+    lineHeight: 'normal !important',
   },
   variants: {
-    size: {
-      '2xs': {
-        textStyle: 'xs',
-        px: '2',
-        '--input-height': 'sizes.7',
-      },
-      xs: {
-        textStyle: 'xs',
-        px: '2',
-        '--input-height': 'sizes.8',
-      },
-      sm: {
-        textStyle: 'sm',
-        px: '2.5',
-        '--input-height': 'sizes.9',
-      },
-      md: {
-        textStyle: 'sm',
-        px: '3',
-        '--input-height': 'sizes.10',
-      },
-      lg: {
-        textStyle: 'md',
-        px: '4',
-        '--input-height': 'sizes.11',
-      },
-      xl: {
-        textStyle: 'md',
-        px: '4.5',
-        '--input-height': 'sizes.12',
-      },
-      '2xl': {
-        textStyle: 'lg',
-        px: '5',
-        '--input-height': 'sizes.16',
-      },
-    },
     variant: {
-      outline: {
-        bg: 'transparent',
-        borderWidth: '1px',
-        borderColor: 'border',
-        focusVisibleRing: 'inside',
-      },
       subtle: {
         borderWidth: '1px',
         borderColor: 'transparent',
-        bg: 'bg.muted',
-        focusVisibleRing: 'inside',
+        bg: 'grey.1',
+        _focusVisible: {
+          bg: 'primary.1',
+          borderColor: 'primary.4',
+        },
+        _invalid: {
+          borderColor: 'accent.red2',
+          bg: 'accent.red1',
+        },
+        _readOnly: {
+          bg: 'grey.1',
+          pointerEvents: 'none',
+        },
+        _disabled: {
+          bg: 'grey.1',
+          _placeholder: {
+            color: 'grey.5',
+          },
+        },
       },
+      outline: {
+        bg: 'transparent',
+        borderWidth: '1px',
+        borderColor: 'grey.2',
+        _focusVisible: {
+          borderColor: 'primary.4',
+        },
+        _invalid: {
+          borderColor: 'accent.red2',
+        },
+        _readOnly: {
+          borderColor: 'grey.1',
+        },
+        _disabled: {
+          borderColor: 'grey.2',
+          _placeholder: {
+            color: 'grey.5',
+          },
+        },
+      },
+
       flushed: {
         bg: 'transparent',
         borderBottomWidth: '1px',
-        borderBottomColor: 'border',
+        borderBottomColor: 'grey.2',
         borderRadius: '0',
-        px: '0',
         _focusVisible: {
-          borderColor: 'var(--focus-color)',
-          boxShadow: '0px 1px 0px 0px var(--focus-color)',
+          borderColor: 'primary.4',
+        },
+        _invalid: {
+          borderColor: 'accent.red2',
+        },
+        _readOnly: {
+          borderColor: 'grey.1',
+        },
+        _disabled: {
+          borderColor: 'grey.2',
+          _placeholder: {
+            color: 'grey.5',
+          },
+        },
+      },
+    },
+    size: {
+      sm: {
+        pl: '8px',
+        borderRadius: '6px',
+        minH: '32px',
+        textStyle: 'pre-caption-2',
+        _placeholder: {
+          textStyle: 'pre-caption-2',
+        },
+      },
+      md: {
+        pl: '10px',
+        borderRadius: '8px',
+        minH: '40px',
+        textStyle: 'pre-body-6',
+        _placeholder: {
+          textStyle: 'pre-body-6',
+        },
+      },
+      lg: {
+        pl: '12px',
+        borderRadius: '10px',
+        minH: '48px',
+        textStyle: 'pre-body-6',
+        _placeholder: {
+          textStyle: 'pre-body-6',
         },
       },
     },
   },
+  compoundVariants: [
+    {
+      variant: 'flushed',
+      size: 'sm',
+      css: {
+        pl: '0px',
+        minH: '32px',
+      },
+    },
+    {
+      variant: 'flushed',
+      size: 'md',
+      css: {
+        pl: '0px',
+        minH: '40px',
+      },
+    },
+    {
+      variant: 'flushed',
+      size: 'lg',
+      css: {
+        pl: '0px',
+        minH: '48px',
+      },
+    },
+  ],
   defaultVariants: {
-    size: 'md',
-    variant: 'outline',
+    size: 'lg',
+    variant: 'subtle',
   },
 })

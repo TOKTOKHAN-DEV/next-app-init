@@ -14,7 +14,7 @@ export const PageLayoutHeader = () => {
     <>
       <Flex //
         as="header"
-        px={{ base: '16px', md: '80px' }}
+        p={{ base: '16px', md: '20px' }}
         alignItems="center"
         justifyContent="space-between"
         position="fixed"
