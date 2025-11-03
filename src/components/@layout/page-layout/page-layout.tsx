@@ -51,9 +51,6 @@ export const PageLayout = ({
       >
         {children}
       </GridItem>
-      <GridItem area={'footer'} as={'footer'} h={'100%'} w={'100%'} py={'30px'}>
-        {footer}
-      </GridItem>
     </Grid>
   )
 }
