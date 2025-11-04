@@ -15,38 +15,33 @@ export const fieldSlotRecipe = defineSlotRecipe({
   ],
   base: {
     requiredIndicator: {
-      color: 'fg.error',
+      color: 'primary.4',
       lineHeight: '1',
     },
     root: {
       display: 'flex',
-      width: '100%',
+      width: 'full',
       position: 'relative',
-      gap: '1.5',
+      gap: '4px',
     },
     label: {
       display: 'flex',
       alignItems: 'center',
       textAlign: 'start',
-      textStyle: 'sm',
-      fontWeight: 'medium',
-      gap: '1',
+      textStyle: 'pre-body-7',
+      color: 'grey.7',
       userSelect: 'none',
       _disabled: {
         opacity: '0.5',
       },
     },
     errorText: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      fontWeight: 'medium',
-      gap: '1',
-      color: 'fg.error',
-      textStyle: 'xs',
+      color: 'accent.red2',
+      textStyle: 'pre-caption-2',
     },
     helperText: {
-      color: 'fg.muted',
-      textStyle: 'xs',
+      color: 'grey.6',
+      textStyle: 'pre-caption-2',
     },
   },
   variants: {

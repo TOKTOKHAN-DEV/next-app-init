@@ -109,7 +109,7 @@ export default function RootLayout({
           <ThemeProvider>
             <PageLayout>
               {children}
-              <ColorModeButton />
+              {/* <ColorModeButton /> */}
               <TokGuideDrawer
                 size="md"
                 trigger={<TokGuideTriggerButton />}

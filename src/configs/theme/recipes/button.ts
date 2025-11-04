@@ -1,4 +1,190 @@
 import { defineRecipe } from '@chakra-ui/react'
+// theme/utils/makeCompoundVariants.ts
+import { RecipeCompoundVariant } from '@chakra-ui/react'
+
+type ColorPalette = 'primary' | 'grey' | 'red'
+type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'unstyled'
+
+const makeCompoundVariants = (
+  colorPalettes: ColorPalette[],
+  variants: ButtonVariant[],
+): RecipeCompoundVariant<{
+  variant: ButtonVariant
+  colorPalette: ColorPalette
+}>[] => {
+  return colorPalettes
+    .flatMap((scheme) =>
+      variants.map((variant) => {
+        if (variant === 'solid') {
+          if (scheme === 'red') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: `accent.${scheme}.2`,
+                color: 'white',
+                _hover: {
+                  bg: `accent.${scheme}.3`,
+                },
+              },
+            }
+          }
+
+          if (scheme === 'grey') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: `${scheme}.2`,
+                color: 'grey.8',
+                _hover: {
+                  bg: `${scheme}.3`,
+                },
+                _active: {
+                  bg: `${scheme}.3`,
+                },
+                _disabled: {
+                  opacity: '0.4',
+                },
+              },
+            }
+          }
+
+          return {
+            variant,
+            colorPalette: scheme,
+            css: {
+              bg: `${scheme}.4`,
+              color: 'white',
+              _hover: {
+                bg: `${scheme}.5`,
+              },
+              _active: {
+                bg: `${scheme}.4`,
+              },
+              _disabled: {
+                opacity: '0.4',
+              },
+            },
+          }
+        }
+
+        if (variant === 'outline') {
+          if (scheme === 'red') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: 'transparent',
+                color: `accent.${scheme}.2`,
+                borderColor: `accent.${scheme}.2`,
+                _hover: {
+                  color: `accent.${scheme}.3`,
+                  borderColor: `accent.${scheme}.3`,
+                },
+              },
+            }
+          }
+
+          if (scheme === 'grey') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: 'white',
+                color: `${scheme}.8`,
+                borderColor: `${scheme}.2`,
+                _hover: {
+                  backgroundColor: `${scheme}.1`,
+                },
+                _disabled: {
+                  opacity: '0.4',
+                },
+              },
+            }
+          }
+
+          return {
+            variant,
+            colorPalette: scheme,
+            css: {
+              bg: 'transparent',
+              color: `${scheme}.4`,
+              borderColor: `${scheme}.4`,
+              _hover: {
+                color: `${scheme}.5`,
+                borderColor: `${scheme}.5`,
+              },
+            },
+          }
+        }
+
+        if (variant === 'ghost') {
+          if (scheme === 'red') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: 'transparent',
+                color: `accent.${scheme}.2`,
+                _hover: {
+                  bg: '#1b1c1d0d',
+                },
+              },
+            }
+          }
+
+          if (scheme === 'grey') {
+            return {
+              variant,
+              colorPalette: scheme,
+              css: {
+                bg: 'transparent',
+                color: `grey.8`,
+                _hover: {
+                  bg: '#1b1c1d0d',
+                },
+              },
+            }
+          }
+
+          return {
+            variant,
+            colorPalette: scheme,
+            css: {
+              bg: 'transparent',
+              color: `${scheme}.4`,
+              _hover: {
+                bg: '#1b1c1d0d',
+              },
+              _disabled: {
+                opacity: '0.4',
+              },
+            },
+          }
+        }
+
+        if (variant === 'unstyled') {
+          return {
+            variant,
+            colorPalette: scheme,
+            css: {
+              justifyContent: 'initial',
+            },
+          }
+        }
+
+        return {
+          variant,
+          colorPalette: scheme,
+          css: {
+            bg: 'transparent',
+          },
+        }
+      }),
+    )
+    .filter(Boolean)
+}
 
 export const buttonRecipe = defineRecipe({
   className: 'chakra-button',
@@ -7,7 +193,6 @@ export const buttonRecipe = defineRecipe({
     appearance: 'none',
     alignItems: 'center',
     justifyContent: 'center',
-    userSelect: 'none',
     position: 'relative',
     borderRadius: 'l2',
     whiteSpace: 'nowrap',
@@ -17,14 +202,13 @@ export const buttonRecipe = defineRecipe({
     cursor: 'button',
     flexShrink: '0',
     outline: '0',
-    lineHeight: '1.2',
     isolation: 'isolate',
-    fontWeight: 'medium',
     transitionProperty: 'common',
     transitionDuration: 'moderate',
     focusVisibleRing: 'outside',
     _disabled: {
       layerStyle: 'disabled',
+      opacity: '0.4',
     },
     _icon: {
       flexShrink: '0',
@@ -32,155 +216,67 @@ export const buttonRecipe = defineRecipe({
   },
   variants: {
     size: {
-      '2xs': {
-        h: '6',
-        minW: '6',
-        textStyle: 'xs',
-        px: '2',
-        gap: '1',
-        _icon: {
-          width: '3.5',
-          height: '3.5',
-        },
-      },
-      xs: {
-        h: '8',
-        minW: '8',
-        textStyle: 'xs',
-        px: '2.5',
-        gap: '1',
-        _icon: {
-          width: '4',
-          height: '4',
-        },
-      },
       sm: {
-        h: '9',
-        minW: '9',
-        px: '3.5',
-        textStyle: 'sm',
-        gap: '2',
+        minW: '32px',
+        minH: '32px',
+        px: '12px',
+        textStyle: 'pre-caption-1',
+        columnGap: '4px',
+        borderRadius: '6px',
         _icon: {
-          width: '4',
-          height: '4',
+          width: '18px',
+          height: '18px',
         },
       },
       md: {
-        h: '10',
-        minW: '10',
-        textStyle: 'sm',
-        px: '4',
-        gap: '2',
+        minW: '40px',
+        minH: '40px',
+        px: '16px',
+        textStyle: 'pre-body-7',
+        columnGap: '6px',
+        borderRadius: '8px',
         _icon: {
-          width: '5',
-          height: '5',
+          width: '24px',
+          height: '24px',
         },
       },
       lg: {
-        h: '11',
-        minW: '11',
-        textStyle: 'md',
-        px: '5',
-        gap: '3',
+        minW: '48px',
+        minH: '48px',
+        px: '24px',
+        textStyle: 'pre-body-4',
+        columnGap: '8px',
+        borderRadius: '10px',
         _icon: {
-          width: '5',
-          height: '5',
+          width: '24px',
+          height: '24px',
         },
       },
-      xl: {
-        h: '12',
-        minW: '12',
-        textStyle: 'md',
-        px: '5',
-        gap: '2.5',
-        _icon: {
-          width: '5',
-          height: '5',
-        },
+    },
+    fullWidth: {
+      true: {
+        w: '100%',
       },
-      '2xl': {
-        h: '16',
-        minW: '16',
-        textStyle: 'lg',
-        px: '7',
-        gap: '3',
-        _icon: {
-          width: '6',
-          height: '6',
-        },
-      },
+    },
+    colorPalette: {
+      primary: {},
+      grey: {},
+      red: {},
     },
     variant: {
-      solid: {
-        bg: 'colorPalette.solid',
-        color: 'colorPalette.contrast',
-        _hover: {
-          bg: 'colorPalette.solid/90',
-        },
-        _expanded: {
-          bg: 'colorPalette.solid/90',
-        },
-      },
-      subtle: {
-        bg: 'colorPalette.subtle',
-        color: 'colorPalette.fg',
-        _hover: {
-          bg: 'colorPalette.muted',
-        },
-        _expanded: {
-          bg: 'colorPalette.muted',
-        },
-      },
-      surface: {
-        bg: 'colorPalette.subtle',
-        color: 'colorPalette.fg',
-        shadow: '0 0 0px 1px var(--shadow-color)',
-        shadowColor: 'colorPalette.muted',
-        _hover: {
-          bg: 'colorPalette.muted',
-        },
-        _expanded: {
-          bg: 'colorPalette.muted',
-        },
-      },
-      outline: {
-        borderWidth: '1px',
-        borderColor: 'colorPalette.muted',
-        color: 'colorPalette.fg',
-        _hover: {
-          bg: 'colorPalette.subtle',
-        },
-        _expanded: {
-          bg: 'colorPalette.subtle',
-        },
-      },
-      ghost: {
-        color: 'colorPalette.fg',
-        _hover: {
-          bg: 'colorPalette.subtle',
-        },
-        _expanded: {
-          bg: 'colorPalette.subtle',
-        },
-      },
-      plain: {
-        color: 'colorPalette.fg',
-      },
-      unstyled: {
-        bg: 'transparent',
-        color: 'colorPalette.fg',
-        _hover: {
-          bg: 'colorPalette.subtle',
-        },
-        _expanded: {
-          bg: 'colorPalette.subtle',
-        },
-      },
+      solid: {},
+      outline: {},
+      ghost: {},
+      unstyled: {},
     },
   },
-
+  compoundVariants: makeCompoundVariants(
+    ['primary', 'grey', 'red'],
+    ['solid', 'outline', 'ghost', 'unstyled'],
+  ),
   defaultVariants: {
     size: 'md',
     variant: 'solid',
+    colorPalette: 'primary',
   },
 })

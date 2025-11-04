@@ -348,6 +348,127 @@ export const colorSchema = {
   },
 }
 
+const customColorTokens = {
+  grey: {
+    solid: {
+      value: {
+        _light: '{colors.grey.600}',
+        _dark: '{colors.grey.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.grey.100}',
+        _dark: '{colors.grey.800}',
+      },
+    },
+  },
+  primary: {
+    border: {
+      value: {
+        _light: '{colors.brandprimary.500}',
+        _dark: '{colors.brandprimary.400}',
+      },
+    },
+    solid: {
+      value: {
+        _light: '{colors.brandprimary.500}',
+        _dark: '{colors.brandprimary.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.brandsecondary.50}',
+        _dark: '{colors.brandprimary.800}',
+      },
+    },
+  },
+  green: {
+    solid: {
+      value: {
+        _light: '{colors.green.500}',
+        _dark: '{colors.green.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.green.50}',
+        _dark: '{colors.green.800}',
+      },
+    },
+  },
+  yellow: {
+    solid: {
+      value: {
+        _light: '{colors.yellow.500}',
+        _dark: '{colors.yellow.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.yellow.100}',
+        _dark: '{colors.yellow.800}',
+      },
+    },
+  },
+  blue: {
+    solid: {
+      value: {
+        _light: '{colors.blue.500}',
+        _dark: '{colors.blue.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.blue.50}',
+        _dark: '{colors.blue.800}',
+      },
+    },
+  },
+  red: {
+    solid: {
+      value: {
+        _light: '{colors.red.500}',
+        _dark: '{colors.red.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.red.50}',
+        _dark: '{colors.red.800}',
+      },
+    },
+  },
+  pink: {
+    solid: {
+      value: {
+        _light: '{colors.pink.500}',
+        _dark: '{colors.pink.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.pink.50}',
+        _dark: '{colors.pink.800}',
+      },
+    },
+  },
+  violet: {
+    solid: {
+      value: {
+        _light: '{colors.violet.500}',
+        _dark: '{colors.violet.400}',
+      },
+    },
+    subtle: {
+      value: {
+        _light: '{colors.violet.50}',
+        _dark: '{colors.violet.800}',
+      },
+    },
+  },
+}
+
 export const colors = {
   'accent.yellow1': {
     value: {
@@ -763,4 +884,5 @@ export const colors = {
       _dark: '{colors.violet.400}',
     },
   },
+  ...customColorTokens,
 }
