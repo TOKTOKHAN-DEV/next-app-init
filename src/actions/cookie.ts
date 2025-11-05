@@ -11,15 +11,18 @@ export async function setCookie(
     | [key: string, value: string, cookie?: Partial<ResponseCookie>]
     | [options: ResponseCookie]
 ) {
-  cookies().set(...args)
+  const cookieStore = await cookies()
+  cookieStore.set(...args)
 }
 
 export async function removeCookie(
   ...args: [key: string] | [options: Omit<ResponseCookie, 'value' | 'expires'>]
 ) {
-  cookies().delete(...args)
+  const cookieStore = await cookies()
+  cookieStore.delete(...args)
 }
 
 export async function getCookie(...args: [name: string] | [RequestCookie]) {
-  return cookies().get(...args)
+  const cookieStore = await cookies()
+  return cookieStore.get(...args)
 }
