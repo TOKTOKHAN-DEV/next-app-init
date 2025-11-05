@@ -17,7 +17,7 @@ export const withStorageDOMEvents = (store: StoreWithPersist) => {
 
   const handleStorage = (e: StorageEvent) => {
     if (e.key === store.persist.getOptions().name && e.newValue) {
-      store.persist.rehydrate()
+      void store.persist.rehydrate()
     }
   }
   window.addEventListener('storage', handleStorage)

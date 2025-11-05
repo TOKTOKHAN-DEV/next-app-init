@@ -52,6 +52,7 @@ export default [
   // TypeScript specific configuration (타입 체크 규칙은 TypeScript 파일에만 적용)
   {
     files: ['**/*.ts', '**/*.tsx'],
+
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -137,6 +138,10 @@ export default [
       '.prettierrc.js',
       '.lintstagedrc.js',
       'public/**',
+      // generated files
+      'src/generated/**',
+      // scripts
+      '.scripts/**',
     ],
   },
 ]

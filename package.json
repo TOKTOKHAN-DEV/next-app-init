@@ -8,7 +8,7 @@
     "build": "pnpm theme && next build --turbopack",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --skipLibCheck --noEmit",
-    "lint": "pnpm type-check && next lint",
+    "lint": "pnpm type-check && npx eslint",
     "lint:staged": "lint-staged",
     "start": "pnpm build && next start",
     "test": "jest --coverage --coverageReporters=text-summary",
