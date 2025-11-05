@@ -11,7 +11,7 @@ const API_KEY = ENV['X_API_KEY']
  * @param id
  * @description 캐시된 데이터를 갱신시켜 주는 api 입니다.
  */
-async function handleValidRequest(
+function handleValidRequest(
   revalidateName: string | string[],
   id: string | null,
 ) {
@@ -33,7 +33,7 @@ async function handleValidRequest(
   })
 }
 
-async function handleInvalidRequest() {
+function handleInvalidRequest() {
   return new Response(JSON.stringify({}), {
     status: 401,
     statusText: 'unauthorized',
@@ -45,9 +45,9 @@ export async function DELETE(
   {
     params,
   }: {
-    params: {
+    params: Promise<{
       revalidateName: string | string[]
-    }
+    }>
   },
 ) {
   const isValidApiKey = req.headers.get('x-api-key') === API_KEY
@@ -56,7 +56,7 @@ export async function DELETE(
     return handleInvalidRequest()
   }
 
-  const { revalidateName } = params
+  const { revalidateName } = await params
 
   if (!revalidateName) {
     return new Response(JSON.stringify({}), {

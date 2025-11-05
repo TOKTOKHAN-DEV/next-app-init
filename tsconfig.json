@@ -1,6 +1,30 @@
 {
-  "extends": "@toktokhan-dev/ts-config/nextjs.json",
   "compilerOptions": {
+    // Type Checking
+    "strict": true,
+
+    // Modules
+    "resolveJsonModule": true,
+
+    // Emit
+    "noEmit": true,
+    "downlevelIteration": true,
+    "removeComments": false,
+    "sourceMap": false,
+
+    // JavaScript Support
+    "allowJs": false,
+
+    // Language and Environment
+    "lib": ["DOM", "DOM.Iterable", "ES2022", "ESNext.AsyncIterable"],
+    "target": "ES2022",
+    "jsx": "react-jsx",
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "skipLibCheck": true,

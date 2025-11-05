@@ -39,3 +39,10 @@ yarn-error.log*
 #build info
 tsconfig.tsbuildinfo
 .eslintcache
+
+# TypeScript compiled output (should not be committed)
+*.js.map
+src/**/*.js
+!src/**/*.config.js
+!src/scripts/
+!src/generated/
