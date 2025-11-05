@@ -5,7 +5,7 @@
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "pnpm theme && next build --turbopack",
+    "build": "pnpm theme && next build",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --skipLibCheck --noEmit",
     "lint": "pnpm type-check && npx eslint",

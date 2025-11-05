@@ -61,13 +61,6 @@ export default [
       },
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
-      ],
       '@typescript-eslint/no-array-constructor': 'off',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-misused-new': 'off',
@@ -85,8 +78,6 @@ export default [
       '@typescript-eslint/no-unsafe-argument': 'warn',
       '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
       '@typescript-eslint/no-unsafe-function-type': 'warn',
-      '@typescript-eslint/no-unsafe-return': 'warn',
-      '@typescript-eslint/no-unsafe-return': 'warn',
     },
   },
   {

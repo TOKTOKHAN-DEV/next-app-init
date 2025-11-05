@@ -31,10 +31,10 @@ const config = {
     ],
 
     // Scoped Modules
-    [startWith(`@${nagative('/')}`)],
+    [startWith(`@${negative('/')}`)],
 
     // External Modules
-    [startWith(`${nagative('./@')}`)],
+    [startWith(`${negative('./@')}`)],
 
     // Path Alias Modules
     [startWith('@/')],
@@ -61,7 +61,7 @@ function startWith(str) {
   return `^${str}.*`
 }
 
-function nagative(str) {
+function negative(str) {
   return `[^${str}]`
 }
 
