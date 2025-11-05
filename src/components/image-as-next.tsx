@@ -49,7 +49,7 @@ interface ImageAsNextProps
  * @see https://chakra-ui.com/docs/components/aspect-ratio/usage
  *
  */
-const _ImageAsNext: ForwardRefRenderFunction<
+const ImageAsNextInternal: ForwardRefRenderFunction<
   HTMLImageElement,
   ImageAsNextProps
 > = (
@@ -121,4 +121,4 @@ const _ImageAsNext: ForwardRefRenderFunction<
   )
 }
 
-export const ImageAsNext = memo(forwardRef(_ImageAsNext))
+export const ImageAsNext = memo(forwardRef(ImageAsNextInternal))

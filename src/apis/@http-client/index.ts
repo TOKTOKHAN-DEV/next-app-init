@@ -39,7 +39,7 @@ export interface HttpResponse<D, E> extends Response {
   error: E
 }
 
-type CancelToken = Symbol | string | number
+type CancelToken = symbol | string | number
 
 export enum ContentType {
   Json = 'application/json',
