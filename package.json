@@ -4,8 +4,8 @@
   "description": "Simple project that shows the usage of Next.js with TypeScript",
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
-    "dev": "next dev",
-    "build": "pnpm theme && next build",
+    "dev": "next dev --turbopack",
+    "build": "pnpm theme && next build --turbopack",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --skipLibCheck --noEmit",
     "lint": "pnpm type-check && next lint",

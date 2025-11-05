@@ -1,4 +1,4 @@
-import { revalidateTag } from 'next/cache'
+import { revalidateTag } from 'next/dist/server/web/spec-extension/revalidate'
 import { NextRequest } from 'next/server'
 
 import { ENV } from '@/configs/env'
@@ -11,14 +11,8 @@ const API_KEY = ENV['X_API_KEY']
  * @param id
  * @description 캐시된 데이터를 갱신시켜 주는 api 입니다.
  */
-function handleValidRequest(
-  revalidateName: string | string[],
-  id: string | null,
-) {
-  const revalidateTargetName =
-    typeof revalidateName === 'string' ? revalidateName : (
-      revalidateName.join('/')
-    )
+function handleValidRequest(revalidateName: string[], id: string | null) {
+  const revalidateTargetName = revalidateName.join('/')
 
   if (id) {
     revalidateTag(`${revalidateTargetName}${id}`)
@@ -46,7 +40,7 @@ export async function DELETE(
     params,
   }: {
     params: Promise<{
-      revalidateName: string | string[]
+      revalidateName?: string[]
     }>
   },
 ) {
@@ -58,7 +52,7 @@ export async function DELETE(
 
   const { revalidateName } = await params
 
-  if (!revalidateName) {
+  if (!revalidateName || revalidateName.length === 0) {
     return new Response(JSON.stringify({}), {
       status: 400,
       statusText: 'bad request',
