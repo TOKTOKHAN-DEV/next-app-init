@@ -47,9 +47,10 @@ const requestInterceptor: (
   ]
 }
 
-const handleUnAuthorized = () => {
+const handleInvalidTokenRefreshResponse = () => {
   clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
   clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
+
   window.location.replace('/')
 }
 
@@ -66,9 +67,8 @@ const handleTokenRefresh = async (
   })
 
   if (!refreshResponse.ok) {
-    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
-    clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
-    window.location.replace('/')
+    handleInvalidTokenRefreshResponse()
+
     throw new Error('Failed to refresh token')
   }
 
@@ -76,7 +76,15 @@ const handleTokenRefresh = async (
     access: string
     refresh: string
   }
+
+  if (!newToken?.access || !newToken?.refresh) {
+    handleInvalidTokenRefreshResponse()
+
+    throw new Error('Invalid token refresh response structure')
+  }
+
   const { access: newAccess, refresh: newRefresh } = newToken
+
   const decodedAccess = jwtDecode(newAccess)
   const decodedRefresh = jwtDecode(newRefresh)
 
@@ -109,6 +117,7 @@ const handleExpiredToken = async (
   if (!refreshToken) {
     clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
     window.location.replace('/')
+
     throw new Error('No refresh token available')
   }
 
@@ -141,11 +150,11 @@ const responseInterceptor: (
     const isExpiredToken = status === 444
 
     if (isUnAuthorized) {
-      handleUnAuthorized()
+      handleInvalidTokenRefreshResponse()
     }
 
     if (isExpiredToken) {
-      await handleExpiredToken(requestArgs, fetch)
+      return await handleExpiredToken(requestArgs, fetch)
     }
   }
   return response

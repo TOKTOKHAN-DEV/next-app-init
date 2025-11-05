@@ -1,4 +1,4 @@
-import { revalidateTag } from 'next/dist/server/web/spec-extension/revalidate'
+import { revalidateTag } from 'next/cache'
 import { NextRequest } from 'next/server'
 
 import { ENV } from '@/configs/env'
