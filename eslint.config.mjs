@@ -8,14 +8,17 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default [
-  // Base ESLint recommended rules
   js.configs.recommended,
 
-  // TypeScript ESLint recommended rules
+  /**
+   * @see https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslintrc/recommended.ts
+   */
   ...tseslint.configs.recommended,
+  /**
+   * @see https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslintrc/recommended-type-checked.ts
+   */
   ...tseslint.configs.recommendedTypeChecked,
 
-  // Next.js plugin configuration
   {
     plugins: {
       '@next/next': nextPlugin,
@@ -39,8 +42,8 @@ export default [
     rules: {
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off', // Next.js는 자동으로 import
-      'react/prop-types': 'off', // TypeScript로 타입 체크
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
     },
@@ -68,12 +71,18 @@ export default [
           varsIgnorePattern: '^_',
         },
       ],
+      '@typescript-eslint/no-array-constructor': 'off',
+      '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-misused-new': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off',
+      '@typescript-eslint/prefer-as-const': 'off',
+
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-require-imports': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unsafe-assignment': 'warn',
     },
   },
-
-  // Global configuration
   {
     languageOptions: {
       ecmaVersion: 'latest',
@@ -86,10 +95,8 @@ export default [
     },
   },
 
-  // Prettier config (always last to override conflicting rules)
   prettierConfig,
 
-  // Ignore patterns
   {
     ignores: [
       // dependencies

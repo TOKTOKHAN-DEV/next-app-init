@@ -22,7 +22,12 @@ export const viewport: Viewport = {
  */
 
 export const metadata: Metadata = {
-  ...(ENV.DOMAIN && { metadataBase: new URL(ENV.DOMAIN) }),
+  metadataBase: new URL(
+    ENV.DOMAIN ||
+      (process.env.NODE_ENV === 'production' ?
+        'https://example.com'
+      : 'http://localhost:3000'),
+  ),
   title: {
     default: '똑똑한개발자',
     template: `%s | 똑똑한개발자`,
