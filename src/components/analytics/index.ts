@@ -1,2 +1,2 @@
 export { GoogleAnalytics } from './google-analytics'
-export { GoogleTagManagerHead } from './google-tag-manager'
+export { GoogleTagManager } from './google-tag-manager'
