@@ -1,6 +1,6 @@
 import { Metadata, Viewport } from 'next'
 
-import { GoogleAnalytics, GoogleTagManagerHead } from '@/components/analytics'
+import { GoogleAnalytics, GoogleTagManager } from '@/components/analytics'
 import { Provider as ThemeProvider } from '@/components/ui/provider'
 import { ENV } from '@/configs/env'
 import { pretendard } from '@/generated/fonts/next-fonts'
@@ -109,7 +109,7 @@ export default function RootLayout({
       </body>
 
       <GoogleAnalytics />
-      <GoogleTagManagerHead />
+      <GoogleTagManager />
     </html>
   )
 }
