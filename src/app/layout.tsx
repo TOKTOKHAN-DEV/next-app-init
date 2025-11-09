@@ -1,11 +1,10 @@
 import { Metadata, Viewport } from 'next'
 
+import { GoogleAnalytics, GoogleTagManagerHead } from '@/components/analytics'
 import { Provider as ThemeProvider } from '@/components/ui/provider'
 import { ENV } from '@/configs/env'
 import { pretendard } from '@/generated/fonts/next-fonts'
 import { AppProvider } from '@/providers/app-provider'
-
-// import { GoogleAnalytics } from "@next/third-parties/google";
 
 /**
  *
@@ -103,12 +102,14 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       suppressHydrationWarning
     >
-      <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
       <body>
         <AppProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </AppProvider>
       </body>
+
+      <GoogleAnalytics />
+      <GoogleTagManagerHead />
     </html>
   )
 }
