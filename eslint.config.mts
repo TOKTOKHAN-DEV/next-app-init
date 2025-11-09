@@ -4,10 +4,11 @@ import nextPlugin from '@next/eslint-plugin-next'
 import prettierConfig from 'eslint-config-prettier'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-export default [
+export default defineConfig([
   js.configs.recommended,
 
   /**
@@ -78,6 +79,18 @@ export default [
       '@typescript-eslint/no-unsafe-argument': 'warn',
       '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
       '@typescript-eslint/no-unsafe-function-type': 'warn',
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@chakra-ui/react',
+              message:
+                "Please use individual imports from @chakra-ui/react instead of importing everything. Example: import { Button } from '@chakra-ui/react/button'",
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -140,4 +153,4 @@ export default [
       '.scripts/**',
     ],
   },
-]
+])
