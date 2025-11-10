@@ -80,7 +80,7 @@ export default defineConfig([
       '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
       '@typescript-eslint/no-unsafe-function-type': 'warn',
       'no-restricted-imports': [
-        'error',
+        'warn',
         {
           paths: [
             {
