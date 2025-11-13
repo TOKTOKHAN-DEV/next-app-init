@@ -1,28 +1,24 @@
 'use server'
 
-import {
-  RequestCookie,
-  ResponseCookie,
-} from 'next/dist/compiled/@edge-runtime/cookies'
 import { cookies } from 'next/headers'
 
-export async function setCookie(
-  ...args:
-    | [key: string, value: string, cookie?: Partial<ResponseCookie>]
-    | [options: ResponseCookie]
-) {
+type CookieStore = Awaited<ReturnType<typeof cookies>>
+type SetCookieArgs = Parameters<CookieStore['set']>
+type DeleteCookieArgs = Parameters<CookieStore['delete']>
+type GetCookieArgs = Parameters<CookieStore['get']>
+
+export async function setCookie(...args: SetCookieArgs) {
   const cookieStore = await cookies()
   cookieStore.set(...args)
 }
 
-export async function removeCookie(
-  ...args: [key: string] | [options: Omit<ResponseCookie, 'value' | 'expires'>]
-) {
+export async function removeCookie(...args: DeleteCookieArgs) {
   const cookieStore = await cookies()
+
   cookieStore.delete(...args)
 }
 
-export async function getCookie(...args: [name: string] | [RequestCookie]) {
+export async function getCookie(...args: GetCookieArgs) {
   const cookieStore = await cookies()
   return cookieStore.get(...args)
 }
