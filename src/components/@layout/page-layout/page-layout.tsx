@@ -1,64 +1,25 @@
 'use client'
 
-import { PropsWithChildren, useCallback, useEffect, useState } from 'react'
+import { PropsWithChildren } from 'react'
 
-import { ContainerProps, Grid, GridItem, GridItemProps } from '@chakra-ui/react'
-import { keyframes } from '@emotion/react'
+import type { ContainerProps } from '@chakra-ui/react/container'
+import { Grid, GridItem } from '@chakra-ui/react/grid'
 
 import { LAYOUT } from '@/constants/layout'
-
-import { PageLayoutFooter } from './components/page-layout-footer'
-import { PageLayoutHeader } from './components/page-layout-header'
 
 interface PageLayoutProps {
   header?: React.ReactNode
   footer?: React.ReactNode
   containerProps?: ContainerProps
 }
-const bounceAnimation = keyframes`
-  0% {  transform: translateY(-100px); }
-  60% {  transform: translateY(10px); }
-  80% {  transform: translateY(-5px); }
-  100% {  transform: translateY(0px); }
-`
 
 export const PageLayout = ({
   //
-  header = <PageLayoutHeader />,
-  footer = <PageLayoutFooter />,
+  header = <></>,
+  footer = <></>,
   containerProps,
   children,
 }: PropsWithChildren<PageLayoutProps>) => {
-  const [isScroll, setIsScroll] = useState(false)
-
-  const handleScroll = useCallback(() => {
-    setIsScroll(window.scrollY > 66)
-  }, [])
-
-  const scrollConfig: GridItemProps =
-    isScroll ?
-      {
-        top: `-10px`,
-        h: `calc(${LAYOUT.HEADER.HEIGHT} + 10px)`,
-        boxShadow: 'card',
-        pt: '10px',
-        animation: `${bounceAnimation} 0.8s`,
-      }
-    : {
-        top: 0,
-        h: LAYOUT.HEADER.HEIGHT,
-        boxShadow: 'none',
-        pt: '0',
-        animation: 'none',
-      }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [handleScroll])
-
   return (
     <Grid
       w={'100%'}
@@ -78,8 +39,6 @@ export const PageLayout = ({
         w={'100%'}
         display="flex"
         justifyContent={'center'}
-        pt={isScroll ? '10px' : '0'}
-        {...scrollConfig}
       >
         {header}
       </GridItem>

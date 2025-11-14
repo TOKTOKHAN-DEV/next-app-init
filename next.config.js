@@ -12,10 +12,6 @@ const removeConsole = (() => {
   if (isServer) return false
 })()
 module.exports = withBundleAnalyzer({
-  // images: {
-  //   domains: ['example.com'], // remote 이미지를 next image 로 랜더링하고싶다면 도메인을 설정해주세요
-  // },
-  swcMinify: true,
   poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true,
@@ -40,7 +36,13 @@ module.exports = withBundleAnalyzer({
     },
   },
   experimental: {
-    optimizePackageImports: ['@chakra-ui/react', '@emotion/react'],
+    reactCompiler: true,
+
+    optimizePackageImports: [
+      '@chakra-ui/react',
+      '@emotion/react',
+      '@phosphor-icons/react',
+    ],
     webVitalsAttribution: ['FCP', 'LCP', 'CLS', 'FID', 'TTFB', 'INP'],
   },
   async headers() {

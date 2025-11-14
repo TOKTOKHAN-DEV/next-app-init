@@ -15,6 +15,7 @@ export const ENV = {
   FACEBOOK_PIXEL_KEY: process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_KEY,
   KAKAO_PIXEL_KEY: process.env.NEXT_PUBLIC_KAKAO_PIXEL_KEY,
   GA_KEY: process.env.NEXT_PUBLIC_GA_KEY,
+  GTM_KEY: process.env.NEXT_PUBLIC_GTM_KEY,
   /** For: API revalidate */
   X_API_KEY: process.env.NEXT_X_API_KEY,
 } as const

@@ -12,7 +12,7 @@ export const PageTemplate = ({
   ...props
 }: PropsWithChildren<PageTemplateProps>) => {
   return (
-    <Container template {...props}>
+    <Container {...props}>
       <Text
         pt={[0, '48px']}
         pb={'24px'}

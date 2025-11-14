@@ -16,10 +16,11 @@ const setAuthorizationHeader = async () => {
   let accessToken: string | undefined | null
 
   if (typeof window !== 'undefined') {
-    accessToken = clientCookie.get(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
+    accessToken = clientCookie.get(COOKIE_KEYS.AUTH.ACCESS_TOKEN) as string
   } else {
     const { cookies } = await import('next/headers')
-    accessToken = cookies().get(COOKIE_KEYS.AUTH.ACCESS_TOKEN)?.value
+    const cookieStore = await cookies()
+    accessToken = cookieStore.get(COOKIE_KEYS.AUTH.ACCESS_TOKEN)?.value
   }
 
   return accessToken ? `Bearer ${accessToken}` : undefined
@@ -46,9 +47,10 @@ const requestInterceptor: (
   ]
 }
 
-const handleUnAuthorized = () => {
+const handleInvalidTokenRefreshResponse = () => {
   clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
   clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
+
   window.location.replace('/')
 }
 
@@ -65,14 +67,24 @@ const handleTokenRefresh = async (
   })
 
   if (!refreshResponse.ok) {
-    clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
-    clientCookie.remove(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
-    window.location.replace('/')
+    handleInvalidTokenRefreshResponse()
+
     throw new Error('Failed to refresh token')
   }
 
-  const newToken = await refreshResponse.json()
+  const newToken = (await refreshResponse.json()) as {
+    access: string
+    refresh: string
+  }
+
+  if (!newToken?.access || !newToken?.refresh) {
+    handleInvalidTokenRefreshResponse()
+
+    throw new Error('Invalid token refresh response structure')
+  }
+
   const { access: newAccess, refresh: newRefresh } = newToken
+
   const decodedAccess = jwtDecode(newAccess)
   const decodedRefresh = jwtDecode(newRefresh)
 
@@ -98,11 +110,14 @@ const handleExpiredToken = async (
   fetch: NonNullable<FetchHelperDefaultOptions['fetch']>,
 ): Promise<Response> => {
   const [url, requestInit] = requestArgs
-  const refreshToken = clientCookie.get(COOKIE_KEYS.AUTH.REFRESH_TOKEN)
+  const refreshToken = clientCookie.get(
+    COOKIE_KEYS.AUTH.REFRESH_TOKEN,
+  ) as string
 
   if (!refreshToken) {
     clientCookie.remove(COOKIE_KEYS.AUTH.ACCESS_TOKEN)
     window.location.replace('/')
+
     throw new Error('No refresh token available')
   }
 
@@ -135,11 +150,11 @@ const responseInterceptor: (
     const isExpiredToken = status === 444
 
     if (isUnAuthorized) {
-      handleUnAuthorized()
+      handleInvalidTokenRefreshResponse()
     }
 
     if (isExpiredToken) {
-      handleExpiredToken(requestArgs, fetch)
+      return await handleExpiredToken(requestArgs, fetch)
     }
   }
   return response

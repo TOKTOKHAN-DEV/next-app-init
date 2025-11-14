@@ -1,16 +1,10 @@
 import { Metadata, Viewport } from 'next'
 
-import { TokGuide } from '@/app/_source/components/tok-guide'
-import { TokGuideTriggerButton } from '@/app/_source/components/tok-guide-trigger-button'
-import { DrawerBasis as TokGuideDrawer } from '@/components/@drawer/drawer-basis'
-import { PageLayout } from '@/components/@layout/page-layout'
-import { ColorModeButton } from '@/components/ui/color-mode'
+import { GoogleAnalytics, GoogleTagManager } from '@/components/analytics'
 import { Provider as ThemeProvider } from '@/components/ui/provider'
 import { ENV } from '@/configs/env'
 import { pretendard } from '@/generated/fonts/next-fonts'
 import { AppProvider } from '@/providers/app-provider'
-
-// import { GoogleAnalytics } from "@next/third-parties/google";
 
 /**
  *
@@ -27,7 +21,12 @@ export const viewport: Viewport = {
  */
 
 export const metadata: Metadata = {
-  ...(ENV.DOMAIN && { metadataBase: new URL(ENV.DOMAIN) }),
+  metadataBase: new URL(
+    ENV.DOMAIN ||
+      (process.env.NODE_ENV === 'production' ?
+        'https://example.com'
+      : 'http://localhost:3000'),
+  ),
   title: {
     default: '똑똑한개발자',
     template: `%s | 똑똑한개발자`,
@@ -103,22 +102,14 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       suppressHydrationWarning
     >
-      <head>{/* <GoogleAnalytics gaId={ENV.GA_KEY || ""} /> */}</head>
       <body>
         <AppProvider>
-          <ThemeProvider>
-            <PageLayout>
-              {children}
-              <ColorModeButton />
-              <TokGuideDrawer
-                size="md"
-                trigger={<TokGuideTriggerButton />}
-                content={<TokGuide />}
-              />
-            </PageLayout>
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </AppProvider>
       </body>
+
+      <GoogleAnalytics />
+      <GoogleTagManager />
     </html>
   )
 }
