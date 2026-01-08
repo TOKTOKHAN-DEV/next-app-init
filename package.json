@@ -7,7 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "pnpm theme && next build --turbopack",
     "analyze": "ANALYZE=true next build",
-    "type-check": "tsc --skipLibCheck --noEmit",
+    "type-check": "tsc --noEmit",
     "lint": "pnpm type-check && npx eslint",
     "lint:staged": "lint-staged",
     "start": "pnpm build && next start",
