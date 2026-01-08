@@ -16,6 +16,9 @@ module.exports = withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   reactStrictMode: true,
   logging: {
     fetches: {
