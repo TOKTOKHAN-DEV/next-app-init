@@ -2,7 +2,7 @@
 
 import { ReactElement, cloneElement } from 'react'
 
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react/hooks'
 
 interface OpenBtnProps {
   button: ReactElement<{ onClick?: () => void }>

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Field as ChakraField } from '@chakra-ui/react'
+import { Field as ChakraField } from '@chakra-ui/react/field'
 
 export interface FieldProps extends Omit<ChakraField.RootProps, 'label'> {
   label?: React.ReactNode

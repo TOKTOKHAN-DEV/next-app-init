@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
 
-import { Container, ContainerProps, Text } from '@chakra-ui/react'
+import { Container, type ContainerProps } from '@chakra-ui/react/container'
+import { Text } from '@chakra-ui/react/text'
 
 interface PageTemplateProps extends ContainerProps {
   title: string

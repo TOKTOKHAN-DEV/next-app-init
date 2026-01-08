@@ -1,6 +1,8 @@
 import { PropsWithChildren } from 'react'
 
-import { Box, BoxProps, HTMLChakraProps, Text } from '@chakra-ui/react'
+import { Box, type BoxProps } from '@chakra-ui/react/box'
+import { type HTMLChakraProps } from '@chakra-ui/react/styled-system'
+import { Text } from '@chakra-ui/react/text'
 
 interface AdmonitionProps extends BoxProps {
   type: 'info' | 'warning' | 'danger' | 'success'

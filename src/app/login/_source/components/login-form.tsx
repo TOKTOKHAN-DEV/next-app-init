@@ -3,7 +3,9 @@
 import { Route } from 'next'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { Box, BoxProps, Button, Input } from '@chakra-ui/react'
+import { Box, type BoxProps } from '@chakra-ui/react/box'
+import { Button } from '@chakra-ui/react/button'
+import { Input } from '@chakra-ui/react/input'
 
 import { FormHelper } from '@/components/form-helper'
 

@@ -1,4 +1,5 @@
-import { Field as ChakraField, Text, TextProps } from '@chakra-ui/react'
+import { Field as ChakraField } from '@chakra-ui/react/field'
+import { Text, type TextProps } from '@chakra-ui/react/text'
 
 interface FormHelperProps extends Omit<ChakraField.RootProps, 'label'> {
   label?: React.ReactNode

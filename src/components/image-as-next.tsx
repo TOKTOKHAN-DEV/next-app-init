@@ -2,12 +2,10 @@ import { ForwardRefRenderFunction, forwardRef, memo } from 'react'
 
 import Image from 'next/image'
 
-import {
-  Box,
-  Skeleton,
-  SystemStyleObject,
-  useControllableState,
-} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react/box'
+import { useControllableState } from '@chakra-ui/react/hooks'
+import { Skeleton } from '@chakra-ui/react/skeleton'
+import { type SystemStyleObject } from '@chakra-ui/react/styled-system'
 import { PropsOf } from '@toktokhan-dev/react-universal'
 
 interface ImageAsNextProps

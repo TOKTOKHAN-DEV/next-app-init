@@ -2,7 +2,8 @@
 
 import { useRouter } from 'next/navigation'
 
-import { Flex, Text } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react/flex'
+import { Text } from '@chakra-ui/react/text'
 
 /**
  *

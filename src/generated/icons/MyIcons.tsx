@@ -1,4 +1,4 @@
-import { Icon, IconProps } from '@chakra-ui/react'
+import { Icon, type IconProps } from '@chakra-ui/react/icon'
 
 export const LogoIcon = (props: IconProps) => (
   <Icon {...props}>

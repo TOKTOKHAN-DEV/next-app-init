@@ -1,4 +1,5 @@
-import { Dialog, DialogRootProps } from '@chakra-ui/react'
+import { Dialog } from '@chakra-ui/react/dialog'
+import type { DialogRootProps } from '@chakra-ui/react/dialog'
 
 interface ModalBasisProps extends Omit<DialogRootProps, 'children'> {
   trigger: React.ReactNode

@@ -1,10 +1,11 @@
 import { Route } from 'next'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { Button, Center } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react/button'
+import { Center } from '@chakra-ui/react/center'
 import { useOauthLinkCallback } from '@toktokhan-dev/react-web'
 
-import { Splash } from '@/components/splash'
+import { Splash } from '@/_source/components/splash'
 
 import { OauthCallback } from '../types'
 

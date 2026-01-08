@@ -1,4 +1,5 @@
-import { Center, CenterProps, Spinner } from '@chakra-ui/react'
+import { Center, type CenterProps } from '@chakra-ui/react/center'
+import { Spinner } from '@chakra-ui/react/spinner'
 
 export const Splash = (props: CenterProps) => {
   return (

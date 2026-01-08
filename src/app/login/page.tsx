@@ -2,10 +2,12 @@ import { Suspense } from 'react'
 
 import { Metadata } from 'next'
 
-import { Box, Code, List } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react/box'
+import { Code } from '@chakra-ui/react/code'
+import { List } from '@chakra-ui/react/list'
 
+import { Admonition } from '@/_source/components/admonition'
 import { PageTemplate } from '@/components/@template/page-template'
-import { Admonition } from '@/components/admonition'
 
 import { LoginForm } from './_source/components/login-form'
 import { SocialButton } from './_source/components/social-button'

@@ -1,6 +1,6 @@
 import { useOauthPopupCallback } from '@toktokhan-dev/react-web'
 
-import { Splash } from '@/components/splash'
+import { Splash } from '@/_source/components/splash'
 
 import { OauthCallback } from '../types'
 

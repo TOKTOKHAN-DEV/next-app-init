@@ -1,6 +1,7 @@
 'use client'
 
-import { Flex, Text } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react/flex'
+import { Text } from '@chakra-ui/react/text'
 
 // Render the default Next.js 404 page when a route
 // is requested that doesn't match the middleware and

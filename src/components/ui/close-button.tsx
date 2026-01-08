@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import type { ButtonProps } from '@chakra-ui/react'
-import { IconButton as ChakraIconButton } from '@chakra-ui/react'
+import type { ButtonProps } from '@chakra-ui/react/button'
+import { IconButton as ChakraIconButton } from '@chakra-ui/react/button'
 
 import { XIcon } from '@/generated/icons/MyIcons'
 

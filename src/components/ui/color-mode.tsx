@@ -5,8 +5,12 @@ import * as React from 'react'
 import { ThemeProvider, useTheme } from 'next-themes'
 import type { ThemeProviderProps } from 'next-themes'
 
-import type { IconButtonProps, SpanProps } from '@chakra-ui/react'
-import { ClientOnly, IconButton, Skeleton, Span } from '@chakra-ui/react'
+import type { IconButtonProps } from '@chakra-ui/react/button'
+import { IconButton } from '@chakra-ui/react/button'
+import { ClientOnly } from '@chakra-ui/react/client-only'
+import { Skeleton } from '@chakra-ui/react/skeleton'
+import type { SpanProps } from '@chakra-ui/react/span'
+import { Span } from '@chakra-ui/react/span'
 
 import { MoonIcon, SunIcon } from '@/generated/icons/MyIcons'
 
