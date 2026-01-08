@@ -123,8 +123,8 @@ importers:
         specifier: 0.0.10
         version: 0.0.10(esbuild@0.25.12)
       '@toktokhan-dev/cli-plugin-gen-api-react-query':
-        specifier: 0.1.6
-        version: 0.1.6(esbuild@0.25.12)(prettier@3.3.2)(typescript@5.4.5)
+        specifier: 0.1.8
+        version: 0.1.8(esbuild@0.25.12)(prettier@3.3.2)(typescript@5.4.5)
       '@toktokhan-dev/cli-plugin-gen-icon-chakra':
         specifier: 0.0.13
         version: 0.0.13(esbuild@0.25.12)
@@ -188,6 +188,9 @@ importers:
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
+      prettier-plugin-organize-imports:
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.3.2)(typescript@5.4.5)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -1228,8 +1231,8 @@ packages:
   '@toktokhan-dev/cli-plugin-commit@0.0.10':
     resolution: {integrity: sha512-2UpnH06fmFHZyTRDK23K1+d2oXQ+/fsSTkxz/kWzAG9GU2J/9zNf+URlylFJp2yrSqVrXdTPqwxPj3TJICgyiw==}
 
-  '@toktokhan-dev/cli-plugin-gen-api-react-query@0.1.6':
-    resolution: {integrity: sha512-bVDjAGDvV4aFKoRmqSOzl3CsOZ6TogsznSQF1XCDjox4lQPRDLV7/pPQ4hR6D7dyRFXmMhOcq+Zzs+bg0ZQJyg==}
+  '@toktokhan-dev/cli-plugin-gen-api-react-query@0.1.8':
+    resolution: {integrity: sha512-aunCx84u8q2+iPFcv/hblwCEMTsb7HQjXCnIROp2krijFgEtzENoeEh292DOfEHhcuvAXNTxfzLcyDrtpGJOyg==}
 
   '@toktokhan-dev/cli-plugin-gen-icon-chakra@0.0.13':
     resolution: {integrity: sha512-02LlUmltz/oWquk1NnHdKB+jRo5/6+2b3Wp8zYHvcWwyPql83hsWsR754Tn/mlUykbuCA9/Uyc9tmLxO0PVRgA==}
@@ -3696,6 +3699,16 @@ packages:
       '@volar/vue-typescript':
         optional: true
 
+  prettier-plugin-organize-imports@4.3.0:
+    resolution: {integrity: sha512-FxFz0qFhyBsGdIsb697f/EkvHzi5SZOhWAjxcx2dLt+Q532bAlhswcXGYB1yzjZ69kW8UoadFBw7TyNwlq96Iw==}
+    peerDependencies:
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+      vue-tsc: ^2.1.0 || 3
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -5873,7 +5886,7 @@ snapshots:
     transitivePeerDependencies:
       - esbuild
 
-  '@toktokhan-dev/cli-plugin-gen-api-react-query@0.1.6(esbuild@0.25.12)(prettier@3.3.2)(typescript@5.4.5)':
+  '@toktokhan-dev/cli-plugin-gen-api-react-query@0.1.8(esbuild@0.25.12)(prettier@3.3.2)(typescript@5.4.5)':
     dependencies:
       '@toktokhan-dev/cli': 0.0.11(esbuild@0.25.12)
       '@toktokhan-dev/node': 0.0.10
@@ -9149,6 +9162,11 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   prettier-plugin-organize-imports@3.2.4(prettier@3.3.2)(typescript@5.4.5):
+    dependencies:
+      prettier: 3.3.2
+      typescript: 5.4.5
+
+  prettier-plugin-organize-imports@4.3.0(prettier@3.3.2)(typescript@5.4.5):
     dependencies:
       prettier: 3.3.2
       typescript: 5.4.5
